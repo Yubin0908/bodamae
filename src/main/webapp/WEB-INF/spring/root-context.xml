@@ -17,11 +17,11 @@
 	</bean>
 	
 	<!-- 빈 추가 -->
-	<!-- [빈 예시]
-	<bean id="repository(변경)" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="himedia.project.bodam.repository.ItemRepository(변경)" />
+	<!-- [빈 예시] -->
+	<bean id="CompanyRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="himedia.project.bodamae.repository.CompanyRepository" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean> 
-	-->
+	
 	
 </beans>

@@ -20,14 +20,13 @@ a {
 
 #container {
 	display: flex;
-	height: 150px;
+	height: 100%;
 }
 
 .header-wrap {
 	background: #E6E6E6;
 	width: 250px;
-	height: auto;
-	min-height: 650px;
+	min-height: 100%; /* 사이드바가 전체 높이를 차지하도록 설정 */
 	font-size: 17px;
 	font-weight: bold;
 	color: rgb(107, 107, 107);
@@ -38,7 +37,7 @@ a {
 
 .admin-info {
 	height: 96px;
-	width: 100%;
+	width: 250px;
 	display: flex;
 	align-items: center;
 	padding: 10px;
@@ -57,7 +56,7 @@ a {
 	margin-right: 15px;
 }
 
-.admin-logo-img {
+.admin-icon-img {
 	width: 40px;
 	text-align: center;
 }
@@ -92,4 +91,21 @@ li:hover {
 
 .active {
 	background-color: #fff;
+}
+
+.admin-logo {
+	width: 100%;
+	text-align: center;
+	max-height: 125px;
+	margin-bottom: 20px;
+}
+
+.admin-logo-img {
+	width: 125px; 
+	height: 125px;
+}
+
+.main-content {
+  flex: 1; /* 사이드바를 제외한 나머지 공간을 차지하도록 설정 */
+  padding: 20px; /* 적당한 여백 추가 */
 }

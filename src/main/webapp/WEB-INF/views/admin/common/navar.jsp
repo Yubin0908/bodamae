@@ -30,8 +30,8 @@
     </div>
   </div>
   <div style="width: 80%;text-align: center;max-height: 125px;">
-  	  <img alt="" src="${resPath }img/logo_admin.png" style="width: 125px; height: 125px;">
-  	</div>
+ 	  <img alt="" src="${resPath }img/logo_admin.png" style="width: 125px; height: 125px;">
+ 	</div>
   </div>
   
   

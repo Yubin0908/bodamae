@@ -78,8 +78,7 @@
         <h3>공지사항 관리</h3>
       </div>
       <div class="search-group">
-        <a class="btn-new-company"
-          href="${ context }admin/company/companyAdd"><button
+        <a href="${ context }admin/company/companyAdd"><button
             class="btn-new-company">등록</button></a>
         <!-- searchForm -->
         <form class="category-search-box" action="${ context }">

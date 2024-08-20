@@ -7,22 +7,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import himedia.project.bodamae.dto.Company;
+import himedia.project.bodamae.repository.CompanyRepository;
+
 @Controller
 @RequestMapping("admin/company")
 public class CompanyController {
 	
-	/*
-	 * private final CompanyRepository repository;
-	 * 
-	 * @Autowired public CompanyController(CompanyRepository repository) {
-	 * this.repository = repository; }
-	 */
+	
+	  private final CompanyRepository repository;
+	  
+	  @Autowired public CompanyController(CompanyRepository repository) {
+	  this.repository = repository; }
+	 
 	@GetMapping("/companyList")
 	public String companyList(Model model) {
-		/*
-		 * List<Company> companyList = repository.companyList();
-		 * model.addAttribute("company", companyList);
-		 */
+		
+		  List<Company> companyList = repository.companyList();
+		  model.addAttribute("company", companyList);
+		 
 		return "admin/company/companyList";
 	}
 	
