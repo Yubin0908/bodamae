@@ -4,36 +4,58 @@
 <%@ page session="false" %>
 <c:url var="resPath" value="/resources/" />
 <c:url var="context" value="/" />
-<html>
-<head>
-  <title>보담 愛</title>
-  <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
-  <script src="${ resPath }js/bootstrap.bundle.min.js" ></script>
-  <link rel="stylesheet" href="${resPath}css/admin-header.css">
-</head>
+
 <body>
-<div class="header-wrap">
-  <div class="admin-info">
-    <div class="thumbnail">
-      <img src="${resPath}img/user-icon.png" style="width: 40px; height: 40px; position: relative; left: 15px; top: 10px" alt="">
+  <div id="container">
+  	
+  <div class="header-wrap">
+    <div class="admin-info">
+      <div class="thumbnail">
+        <img src="${resPath}img/user-icon.png" class="admin-logo-img" alt="관리자로고">
+      </div>
+      <div class="admin">
+        <p class="admin-name">홍길동 관리자님</p>
+      </div>
     </div>
-    <div class="admin">
-      <p>홍길동 관리자님</p>
+    <div>
+      <ul class="menu-ul">
+        <li class="menu-list"><a class="menu-anchor" href="#">사이트로 이동</a></li>
+        <li class="menu-list"><a class="menu-anchor"  href="#">회원 관리</a></li>
+        <li class="menu-list"><a class="menu-anchor"  href="#">관리자 관리</a></li>
+        <li class="menu-list"><a class="menu-anchor"  href="#">공지사항 관리</a></li>
+        <li class="menu-list"><a class="menu-anchor"  href="#">테마 관리</a></li>
+        <li class="menu-list"><a class="menu-anchor"  href="#">업체 관리</a></li>
+        <li class="menu-list"><a class="menu-anchor"  href="#">로그아웃</a></li>
+      </ul>
     </div>
   </div>
-  <div>
-    <ul>
-      <li><a href="">사이트로 이동</a></li>
-      <li><a href="">회원 관리</a></li>
-      <li><a href="">관리자 관리</a></li>
-      <li><a href="">공지사항 관리</a></li>
-      <li><a href="">테마 관리</a></li>
-      <li><a href="">업체 관리</a></li>
-    </ul>
+  <div style="width: 80%;text-align: center;max-height: 125px;">
+  	  <img alt="" src="${resPath }img/logo_admin.png" style="width: 125px; height: 125px;">
+  	</div>
   </div>
-  <div>
-    <a href="" class="logout">로그아웃</a>
-  </div>
-</div>
+  
+  
+  <script>
+    const li = document.getElementsByClassName("menu-list");
+    const anchors = document.getElementsByClassName("menu-anchor");
+  
+    function clickEvent(e) {
+      const target = e.target;
+  
+      if (target.classList.contains("active")) {
+        target.parentElement.classList.remove("active");
+      } else {
+        for (let i = 0; i < li.length; i++) {
+          li[i].classList.remove("active");
+          li[i].parentElement.classList.remove("active");
+        }
+        target.parentElement.classList.add("active");
+      }
+    }
+  
+    for (let i = 0; i < anchors.length; i++) {
+      anchors[i].addEventListener("click", clickEvent);
+    }
+  </script>
 </body>
 </html>
