@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  padding-left: 25px;
+}
+
+.header-wrap {
+  background: #E6E6E6;
+  width: 250px;
+  height: 100%;
+}
+
+.admin-info {
+  height: 96px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  background-color: #adb5bd;
+  border-radius: 50%;
+  position: relative;
+  top: 15px;
+  left: 15px;
+}
+
+.admin {
+  position: relative;
+  top: -29px;
+  left: 100px;
+}
+
+ul > li {
+  padding: 27px 0;
+}
+
+ul > li:nth-child(odd) {
+  background: #fff;
+}
+
+.logout {
+  position: absolute;
+  bottom: 10px;
+  left: 65px;
+}
