@@ -83,6 +83,7 @@
         <img class="admin-logo-img" alt="관리자로고이미지"
           src="${resPath}img/logo_admin.png">
       </div>
+<<<<<<< HEAD
 
       <!-- 컨텐츠 -->
       <!-- 본인이 작업할 영역 -->
@@ -98,6 +99,15 @@
           <form class="category-search-box" action="${ context }">
             <label class="cmp-category" for="column"></label> <select
               id="column" name="column">
+=======
+      <div class="search-group">
+        <a href="${ context }admin/company/companyAdd"><button
+            class="btn-new-company">등록</button></a>
+        <!-- searchForm -->
+        <form class="category-search-box" action="${ context }">
+          <label class="cmp-category" for="column"></label> 
+            <select id="column" name="column">
+>>>>>>> honghong
               <option selected>선택</option>
               <option value="cmp_code">게시글 번호</option>
               <option value="cmp_name">글 제목</option>
