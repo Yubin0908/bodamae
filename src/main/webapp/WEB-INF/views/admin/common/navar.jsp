@@ -23,7 +23,7 @@
   </div>
   <div>
     <ul>
-      <li><a href="">메인페이지로 이동</a></li>
+      <li><a href="">사이트로 이동</a></li>
       <li><a href="">회원 관리</a></li>
       <li><a href="">관리자 관리</a></li>
       <li><a href="">공지사항 관리</a></li>

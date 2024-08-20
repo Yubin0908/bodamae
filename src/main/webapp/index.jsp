@@ -11,6 +11,7 @@
   <script src="${ resPath }js/bootstrap.bundle.min.js" ></script>
 </head>
 <body>
+  <jsp:include page="/WEB-INF/views/admin/common/navar.jsp" />
   <div>
    <p>indexpage</p>
   </div>
