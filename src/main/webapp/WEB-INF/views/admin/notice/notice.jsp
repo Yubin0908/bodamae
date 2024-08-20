@@ -29,7 +29,7 @@
   	justify-content: flex-start;
   }
   
-  .btn-new-company {
+  .btn-new-notice {
   	display: inline-block;
   	margin-right: auto;
   	border: 1px solid #888;
@@ -86,36 +86,37 @@
 
       <!-- 컨텐츠 -->
       <!-- 본인이 작업할 영역 -->
-      <%-- <div class="notice-list">
+      <div class="notice-list">
         <div>
           <h3>공지사항 관리</h3>
         </div>
         <div class="search-group">
-          <a class="btn-new-company"
-            href="${ context }admin/company/companyAdd"><button
-              class="btn-new-company">등록</button></a>
+          <a class="btn-new-notice" href="${ context }admin/company/companyAdd"><button
+              class="btn-new-notice">등록</button></a>
           <!-- searchForm -->
           <form class="category-search-box" action="${ context }">
-            <label class="cmp-category" for="column"></label> <select
+            <label class="notice-category" for="column"></label> <select
               id="column" name="column">
               <option selected>선택</option>
-              <option value="cmp_code">게시글 번호</option>
-              <option value="cmp_name">글 제목</option>
-            </select> <label for="search"></label> <input type="search"
-              name="search" id="search"> <input type="submit"
-              id="submit" value="검색">
+              <option value="notice_no">게시글 번호</option>
+              <option value="notice_title">글 제목</option>
+            </select> 
+            <label for="search" ></label> 
+              <input type="search" name="search" id="search"> 
+              <input type="submit" id="submit" value="검색">
           </form>
         </div>
-        <!-- 업체 리스트 -->
-        <div class="cmp-table">
+        
+        <!-- 공지사항 리스트 -->
+        <div class="notice-table">
           <table class="table">
             <thead class="table-light">
               <tr>
-                <th>코드</th>
-                <th>업체명</th>
-                <th>주소_구</th>
-                <th>전화번호</th>
-                <th>테마</th>
+                <th>게시글 번호</th>
+                <th>글 제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+                <th>조회수</th>
                 <th>상태</th>
               </tr>
             </thead>
@@ -125,7 +126,6 @@
           </table>
         </div>
       </div>
-       --%>
     </div>
   </div>
 
