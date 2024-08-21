@@ -15,7 +15,8 @@
 	input::-webkit-search-decoration,
 	input::-webkit-search-cancel-button,
 	input::-webkit-search-results-button,
-	input::-webkit-search-results-decoration{ display:none; }
+	input::-webkit-search-results-decoration
+    { display:none; }
 	.cmp-list { margin:0 auto; width: 1000px; }
 	/* 양쪽 정렬(https://seons-dev.tistory.com/entry/display-flex-좌우-정렬) */
 	
@@ -28,7 +29,6 @@
 	select#column {	padding: 2.5px 6px;	}
 	input#search { width: 206px; }
 	input#submit { width: 50px; line-height: 30px; background-color: #D9D9D9; }
-
 </style>
 
 </head>

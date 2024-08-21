@@ -1,12 +1,10 @@
 package himedia.project.bodamae.dto;
 
 import org.apache.ibatis.annotations.Mapper;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 @Setter @Getter
 @Mapper
