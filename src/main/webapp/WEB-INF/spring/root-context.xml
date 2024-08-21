@@ -21,7 +21,11 @@
 	<bean id="CompanyRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="himedia.project.bodamae.repository.CompanyRepository" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean> 
+	</bean>
+  <bean id="freeBoardRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="himedia.project.bodamae.repository.FreeBoardRepository" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	
 	<bean id="Notice_repository" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="himedia.project.bodamae.repository.NoticeRepositoty" />
