@@ -1,0 +1,62 @@
+
+.login {
+	margin: 20px auto 20px;	
+}
+
+.select_btn {
+	text-align: center;
+}
+
+.select_btn button {
+	width: 250px; height: 55px
+}
+
+.out_warp {
+	width: 1200px;
+	height: 680px;
+	border: 1px solid;
+	background: #ddd;
+}
+
+.mid_wrap {
+	position: relative;
+	width: 500px;
+	height: 500px;
+	margin: 0 auto;
+	border: 1px solid;
+}
+
+.in_wrap {
+	position: relative;
+	width: 380px;
+	height: 300px;
+	margin: 20% auto;
+	background-color: #ddd;
+	border: 1px solid;
+}
+
+.login_text {
+	margin: 20px auto 20px;
+	text-align: center;
+}
+
+.text_input input {
+	width: 280px; height: 35px;
+}
+
+.login_btn {
+	text-align: center;
+}
+
+.login_btn button {
+	width: 130px;
+	height: 35px;
+}
+
+.id_input {
+	margin: 0 auto 0;
+}
+
+.pw_input {
+	margin: 10px auto 30px;
+}
