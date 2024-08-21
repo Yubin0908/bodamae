@@ -30,11 +30,22 @@ public class NoticeController {
 	// [공지사항 목록]
 	@GetMapping("")
 	public String noticeList(Model model) {
-		log.info("<< 공지사항 들어옴 >>");
 		List<Notice> noticeList = noticeRepositoty.noticeList();
 		model.addAttribute("noticeList", noticeList);
 		
 		return "admin/notice/notice";
+	}
+	
+	// [공지사항 조회]
+	@GetMapping("/search")
+	public String noticeSearch(String search, Model model) {
+		
+		log.info("search >>>>> " + search);
+		
+		List<Notice> notice = noticeRepositoty.findByTitle("%" + search + "%");
+		model.addAttribute("notice", notice);
+		
+		return "admin/notice/noticeSearch";
 	}
 	
 	// [공지사항 상세]
@@ -53,8 +64,6 @@ public class NoticeController {
 
 		Notice notice = noticeRepositoty.findById(notice_no).get();
 		model.addAttribute("notice", notice);
-		
-		log.info("일단 수정 페이지 완료");
 		
 		return "admin/notice/noticeEdit";
 	}
