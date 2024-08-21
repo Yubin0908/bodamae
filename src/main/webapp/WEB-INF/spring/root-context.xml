@@ -7,7 +7,7 @@
 	<!-- MySQL 설정 -->	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://34.64.217.26:3306/bodam?useSSL=false&amp;serverTimezone=Asia/seoul" />
+		<property name="url" value="jdbc:mysql://34.64.217.26:3306/bodam?useSSL=false&amp;serverTimezone=Asia/Seoul" />
 		<property name="username" value="bodam_root"/>
 		<property name="password" value="sgO@Ct1r}7^4[?l5"/>
 	</bean>
@@ -21,7 +21,11 @@
 	<bean id="CompanyRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="himedia.project.bodamae.repository.CompanyRepository" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean> 
+	</bean>
+  <bean id="freeBoardRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="himedia.project.bodamae.repository.FreeBoardRepository" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	
 	
 </beans>
