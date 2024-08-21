@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>보담 愛 | 공지사항 관리</title>
+    <title>보담 愛 | 공지사항 조회</title>
     
     <link href="${ resPath }css/webSettings.css" rel="stylesheet">
     <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
@@ -91,7 +91,7 @@
       <div class="notice-list">
         <div class="notice-list-content">
           <div>
-            <h3>공지사항 관리</h3>
+            <h3>공지사항 관리 > 공지사항 조회</h3>
           </div>
   
           <div class="search-group">
