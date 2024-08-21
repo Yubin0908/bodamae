@@ -18,18 +18,12 @@
       </div>
       <div>
         <ul class="menu-ul">
-          <li class="menu-list"><a class="menu-anchor" href="#">사이트로
-              이동</a></li>
-          <li class="menu-list"><a class="menu-anchor" href="#">회원
-              관리</a></li>
-          <li class="menu-list"><a class="menu-anchor" href="#">관리자
-              관리</a></li>
-          <li class="menu-list"><a class="menu-anchor" href="#">공지사항
-              관리</a></li>
-          <li class="menu-list"><a class="menu-anchor" href="#">테마
-              관리</a></li>
-          <li class="menu-list"><a class="menu-anchor" href="#">업체
-              관리</a></li>
+          <li class="menu-list"><a class="menu-anchor" href="${ context }">사이트로 이동</a></li>
+          <li class="menu-list"><a class="menu-anchor" href="${ context }admin/user">회원 관리</a></li>
+          <li class="menu-list"><a class="menu-anchor" href="${ context }admin/admin">관리자 관리</a></li>
+          <li class="menu-list"><a class="menu-anchor" href="${ context }admin/notice">공지사항 관리</a></li>
+          <li class="menu-list"><a class="menu-anchor" href="${ context }admin/theme">테마 관리</a></li>
+          <li class="menu-list"><a class="menu-anchor" href="${ context }admin/company">업체 관리</a></li>
           <li class="menu-list"><a class="menu-anchor" href="#">로그아웃</a></li>
         </ul>
       </div>
