@@ -38,11 +38,6 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
-	<bean id="userRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
-	  <property name="mapperInterface" value="himedia.project.bodamae.repository.UserRepository" />
-	  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
-	
 	<bean id="adminRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
 	  <property name="mapperInterface" value="himedia.project.bodamae.repository.AdminRepository" />
 	  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
