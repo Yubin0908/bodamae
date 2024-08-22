@@ -17,7 +17,7 @@
 	</bean>
 	
 	
-	<bean id="userRepoitoty" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<bean id="userRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="himedia.project.bodamae.repository.UserRepository" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean> 
