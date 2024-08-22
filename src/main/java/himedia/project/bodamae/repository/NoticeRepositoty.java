@@ -23,9 +23,9 @@ public interface NoticeRepositoty {
 	@Select("select * from notice where notice_no like #{ notice_no }")
 	Optional<Notice> findById(int notice_no);
 	
-	// 게시글 제목 일부 찾기
-	@Select("select * from notice where notice_title like #{ notice_title }")
-	List<Notice> findByTitle(String notice_title);
+	// 게시글 조회 - 게시글 번호, 글 제목
+	@Select("select * from notice where ${ filter } like #{ search }")
+	List<Notice> findByNotice(@Param("filter") String filter, @Param("search") String search);
 	
 	// 게시글 수정
 	@Select("update notice set notice_title = #{updateNotice.notice_title}, notice_content = #{updateNotice.notice_content} where notice_no = #{notice_no}")

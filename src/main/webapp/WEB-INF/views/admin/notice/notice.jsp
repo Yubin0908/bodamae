@@ -143,7 +143,8 @@
                       <a href="${ context }admin/notice/edit/${noticeList.notice_no}">
                         <button type="button" class="btn btn-outline-info">수정</button>
                       </a>
-                      <button type="button" class="btn btn-outline-info">삭제</button>
+                      
+                      <jsp:include page="/WEB-INF/views/admin/common/deleteModal.jsp" />
                     </td>
                   </tr>
                 </c:forEach>

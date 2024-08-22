@@ -73,7 +73,7 @@
               <p>${ notice.notice_content }</p>
             </div>
             <button type="button" class="btn btn-outline-info w-100 btn-lg"
-                  onclick="location.href='${ context }admin/notice'">뒤로 가기</button>
+                onclick="location.href='${ context }admin/notice'">뒤로 가기</button>
           </div>
         </div>
       </div>

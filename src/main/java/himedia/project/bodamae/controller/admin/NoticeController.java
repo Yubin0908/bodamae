@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import himedia.project.bodamae.dto.Notice;
 import himedia.project.bodamae.repository.NoticeRepositoty;
@@ -38,11 +39,11 @@ public class NoticeController {
 	
 	// [공지사항 조회]
 	@GetMapping("/search")
-	public String noticeSearch(String search, Model model) {
+	public String noticeSearch(@RequestParam(name="search") String search, 
+			@RequestParam (name="filter") String filter, Model model) {
 		
-		log.info("search >>>>> " + search);
-		
-		List<Notice> notice = noticeRepositoty.findByTitle("%" + search + "%");
+		List<Notice> notice = noticeRepositoty.findByNotice(filter, "%" + search + "%");
+		System.out.println(notice);
 		model.addAttribute("notice", notice);
 		
 		return "admin/notice/noticeSearch";
@@ -99,4 +100,8 @@ public class NoticeController {
 		
 		return "redirect:/store/items/" + notice.getNotice_no();
 	}
+	
+	// [공지사항 삭제]
+	
+	
 }
