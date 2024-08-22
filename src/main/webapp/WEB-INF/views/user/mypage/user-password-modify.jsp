@@ -8,22 +8,27 @@
 <html>
 <head>
   <title>보담 愛</title>
-  <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="${resPath}css/webSettings.css">
+  <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
   <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <style>
+    a {
+      text-decoration: none;
+      color: #000;
+    }
     .content {
       width: 1200px;
       margin: 0 auto;
     }
 
     .mypage-title {
-      background-color: #dddddd;
+      background: #dddddd url("${resPath}img/title-bg.jpg") 50% 50%;
       height: 300px;
     }
 
     .mypage-title > p {
+      color: whitesmoke;
       line-height: 300px;
       letter-spacing: 2px;
     }
@@ -120,7 +125,7 @@
   <div class="content my-5">
     <div class="mypage-title w-100">
       <p class="fw-bold fs-2 text-center">
-        <span class="userName fs-4">홍길동님, </span>
+        <span class="userName fs-4">${sessionScope.user.user_name == null ? "이름":sessionScope.user.user_name}님, </span>
         <span class="title">마이페이지</span>
       </p>
     </div>
@@ -143,9 +148,10 @@
       </div>
       <div class="form">
         <form action="${context}mypage/passwordModify" method="post">
+          <input type="hidden" name="user_id" value="admin001">
           <input type="password" name="current_pw" placeholder="기존 비밀번호">
           <input type="password" name="new_pw" placeholder="변경할 비밀번호">
-          <input type="password" name="new_pw_chk" placeholder="변경할 비밀번호">
+          <input type="password" name="new_pw_chk" placeholder="변경할 비밀번호 확인">
           <br>
           <input type="submit" value="확 인">
         </form>
@@ -175,6 +181,39 @@
     for (let item of li) {
       item.addEventListener('click', handler);
     }
+
+    const submit_btn = document.querySelector('input[type="submit"]');
+
+    submit_btn.addEventListener('click', e => {
+      e.preventDefault();
+      const new_pw = document.querySelector('input[name="new_pw"]').value;
+      const new_pw_chk = document.querySelector('input[name="new_pw_chk"]').value;
+      const current_pw = document.querySelector('input[name="current_pw"]').value;
+      const user_id = document.querySelector('input[type="hidden"]').value;
+
+      if (current_pw !== null && new_pw !== null && new_pw_chk !== null && new_pw === new_pw_chk) {
+        $.ajax({
+          url: '${context}mypage/userPasswordCheck',
+          method: 'post',
+          data: {
+            user_id: user_id,
+            user_password: current_pw
+          },
+          dataType: 'html',
+          success: function (data, status) {
+            if (data === 'pass') {
+              alert('비밀번호 변경이 완료되었습니다. 다시 로그인 바랍니다.');
+              location.href = '${context}mypage/list';
+            }
+          },
+          error: function () {
+            alert('잘못된 비밀번호 입니다. 다시 확인하신 후 입력바랍니다.');
+          }
+        });
+      } else {
+        alert('비밀번호가 입력되지 않았거나, 변경할 비밀번호가 일치하지 않습니다. 다시 확인 바랍니다.');
+      }
+    });
   </script>
 </body>
 </html>

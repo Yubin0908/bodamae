@@ -8,22 +8,28 @@
 <html>
 <head>
   <title>보담 愛</title>
-  <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="${resPath}css/webSettings.css">
+  <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
   <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <style>
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+
     .content {
       width: 1200px;
       margin: 0 auto;
     }
 
     .mypage-title {
-      background-color: #dddddd;
       height: 300px;
+      background: #dddddd url("${resPath}img/title-bg.jpg") 50% 50%;
     }
 
     .mypage-title > p {
+      color: whitesmoke;
       line-height: 300px;
       letter-spacing: 2px;
     }
@@ -114,7 +120,7 @@
   <div class="content my-5">
     <div class="mypage-title w-100">
       <p class="fw-bold fs-2 text-center">
-        <span class="userName fs-4">홍길동님, </span>
+        <span class="userName fs-4">${sessionScope.user.user_name == null ? "이름":sessionScope.user.user_name}님, </span>
         <span class="title">마이페이지</span>
       </p>
     </div>
@@ -123,7 +129,7 @@
       <div class="list-table">
         <ul>
           <li class="list-table-list"><a href="${context}mypage/list">나의 작성글</a></li>
-          <li class="list-table-list"><a href="${context}mypage/emailCheck">회원정보수정</a></li>
+          <li class="list-table-list"><a href="${context}mypage/pwCheck">회원정보수정</a></li>
         </ul>
       </div>
     </div>
@@ -136,7 +142,8 @@
         <p>가입된 계정의 비밀번호를 입력하세요.</p>
       </div>
       <div class="form">
-        <form action="${context}mypage/emailCheck" method="post">
+        <form>
+          <input type="hidden" name="user_id" value="admin001">
           <input type="password" name="user_password" placeholder="비밀번호를 입력하세요...">
           <br>
           <input type="submit" value="확 인">
@@ -167,6 +174,39 @@
     for (let item of li) {
       item.addEventListener('click', handler);
     }
+
+    const submit_btn = document.querySelector('input[type="submit"]');
+
+    submit_btn.addEventListener('click', e => {
+      const user_id = document.querySelector('input[type=hidden]').value;
+      const user_password = document.querySelector('input[type="password"]').value;
+
+      if (!user_password) {
+        e.preventDefault();
+        alert('비밀번호를 입력하세요');
+      } else {
+        e.preventDefault();
+        $.ajax({
+          url: '${context}mypage/userPasswordCheck',
+          method: 'post',
+          data: {
+            user_id: user_id,
+            user_password: user_password
+          },
+          dataType: 'html',
+          success: function (data, status) {
+            if (data === 'pass') {
+              location.href = '${context}mypage/userPasswordModify';
+            }
+          },
+          error: function () {
+            alert('잘못된 비밀번호 입니다. 다시 확인하신 후 입력바랍니다.');
+          }
+        });
+      }
+
+
+    });
   </script>
 </body>
 </html>
