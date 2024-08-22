@@ -6,7 +6,11 @@
 
 <head>
   <style type="text/css">
+<<<<<<< HEAD
     .logo-content { margin: 0 auto; text-align: center; }
+=======
+    .logo-content { margin: 0 auto; text-align: center; margin-bottom: 100px; }
+>>>>>>> 65bc8adc07ac922eaa512404aa7969f64c72a6c2
     .logo { width: 150px; }
   </style>
 </head>

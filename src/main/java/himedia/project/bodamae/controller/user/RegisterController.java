@@ -57,3 +57,4 @@ public class RegisterController {
 		return "0";
 	}
 }
+
