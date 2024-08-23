@@ -85,7 +85,7 @@
         <div class="date">
           <label class="label" for="user_birthdate">생년월일</label>
           <div>
-            <input type="date" id="user_birthdate" name="user_birthdate" value="1998-06-22"
+            <input type="date" id="user_birthdate" name="user_birthdate" value="1990-01-01"
                    class="form-control" max="2024-12-31" min="1900-01-01" oninput="validateForm()">
           </div>
         </div>
@@ -105,7 +105,7 @@
         </div>
   
         <!-- 버튼 -->
-        <button type="submit" class="btn btn-outline-info btn-lg disabled" id="submitBtn" disabled>가입하기</button>
+        <button type="submit" class="btn btn-outline-info btn-lg disabled" id="submitBtn">가입하기</button>
       </form>
     </div>
 </body>

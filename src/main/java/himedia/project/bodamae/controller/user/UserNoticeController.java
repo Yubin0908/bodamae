@@ -12,7 +12,7 @@ import himedia.project.bodamae.dto.Notice;
 import himedia.project.bodamae.repository.NoticeRepositoty;
 
 @Controller
-@RequestMapping("community/notice")
+@RequestMapping("notice")
 public class UserNoticeController {
 	
 	private final NoticeRepositoty noticeRepositoty;

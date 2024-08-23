@@ -14,7 +14,7 @@
     <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
     
     <style type="text/css">
-      .register { width: 500px;  margin: 0 auto; text-align: center; }
+      .register { width: 500px;  margin: 100px auto; text-align: center; }
       .checkBox { width: 500px; text-align: left; }
       
       .form-check { padding-left: 0; margin-bottom: 0; }
@@ -63,9 +63,8 @@
       
       <!-- 버튼 -->
       <div>
-         <a class="logoA" href="${ context }register">
-          <button type="button" class="btn btn-outline-info btn-lg" id="nextButton" >다음</button>
-        </a>
+        <button type="button" class="btn btn-outline-info btn-lg" id="nextButton" disabled
+                onclick="location.href='${ context }register'">다음</button>
       </div>
     </div>
   </body>

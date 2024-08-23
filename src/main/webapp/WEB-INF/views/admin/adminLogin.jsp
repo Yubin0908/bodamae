@@ -113,7 +113,7 @@
               <div><input class="user_password" name="user_password" id="user_password" type="password" placeholder="PW" minlength="8" maxlength="20"></div>
             </div>
             <div class="btn_box">
-              <input class="btn_login " type="submit" value="login">
+              <input class="btn_login" type="submit" value="login">
             </div>
           </form>
         </div>

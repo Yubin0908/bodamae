@@ -27,13 +27,13 @@ public class RegisterController {
 	@GetMapping("/checkRegister")
 	public String checkRegister() {
 		
-		return "checkRegister";
+		return "user/register/checkRegister";
 	}
 
 	@GetMapping("/register")
 	public String registerForm() {
 		
-		return "register";
+		return "user/register/register";
 	}
 
 	@PostMapping("/register")
