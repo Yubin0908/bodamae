@@ -7,7 +7,7 @@
 <c:if test="${sessionScope.admin == null}">
   <script>
     alert('해당 페이지는 관리자만 이용가능 합니다.');
-    history.back();
+    location.href="${ context }/admin/login";
   </script>
 </c:if>
 

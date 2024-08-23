@@ -12,7 +12,7 @@ import himedia.project.bodamae.dto.Notice;
 public interface NoticeRepositoty {
 	
 	// 등록
-	@Insert("insert into notice(notice_id, notice_title, notice_content) valuse(#{ notice_id }, #{ notice_title }, #{ notice_content })")
+	@Insert("insert into notice(user_id, notice_title, notice_content) values(#{user_id}, #{notice_title}, #{notice_content})")
 	void save(Notice notice);
 	
 	// 전체 조회

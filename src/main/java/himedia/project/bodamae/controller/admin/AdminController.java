@@ -37,10 +37,10 @@ public class AdminController {
             redirect.addAttribute("loginFailMsg", "아이디 또는 비밀번호가 일치하지 않습니다.");
         }
 
-        return "redirect:/admin/userList";
+        return "redirect:/admin/user";
     }
 
-    @GetMapping("/admin/adminList")
+    @GetMapping("/admin/admin")
     public String adminList(Model model, String option, String keyword, String page) {
         int limit = 10;
         int offSet = 0;
@@ -120,7 +120,7 @@ public class AdminController {
         return "redirect:/admin/adminManagement";
     }
 
-    @GetMapping("/admin/userList")
+    @GetMapping("/admin/user")
     public String userList(Model model, String option, String keyword, String page) {
         int limit = 10;
         int offSet = 0;
