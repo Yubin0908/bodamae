@@ -46,6 +46,7 @@ public class RegisterController {
 		return "redirect:/";
 	}
 
+	@PostMapping("/idCheck")
 	@ResponseBody
 	public String idCheck(String id) {
 		
