@@ -1,7 +1,6 @@
 package himedia.project.bodamae.dto;
 
 import lombok.Data;
-
 import java.sql.Timestamp;
 
 @Data

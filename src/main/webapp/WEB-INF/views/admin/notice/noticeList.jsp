@@ -95,12 +95,12 @@
           </div>
   
           <div class="search-group">
-            <a href="${ context }admin/notice/add">
+            <a href="${ context }admin/noticeList/add">
               <button class="btn-new-notice">등록</button>
             </a>
   
             <!-- searchForm -->
-            <form class="category-search-box" action="${ context }admin/notice/search">
+            <form class="category-search-box" action="${ context }admin/noticeList/search">
               <label class="notice-category" for="column"></label> 
               <select id="filter" name="filter">
                 <option value="notice_no">게시글 번호</option>
@@ -129,21 +129,41 @@
                 <c:forEach var="noticeList" items="${ noticeList }">
                   <tr>
                     <td>
-                      <a class="text-primary" href="${ context }admin/notice/${noticeList.notice_no}">${ noticeList.notice_no }</a>
+                      <a class="text-primary" href="${ context }admin/noticeList/${ noticeList.notice_no }">${ noticeList.notice_no }</a>
                     </td>
                     <td>${ noticeList.user_id }</td>
                     <td>
-                      <a class="text-primary" href="${ context }admin/notice/${noticeList.notice_no}">${ noticeList.notice_title }</a>
+                      <a class="text-primary" href="${ context }admin/noticeList/${ noticeList.notice_no }">${ noticeList.notice_title }</a>
                     </td>
                     <td>
                       <fmt:formatDate value="${ noticeList.notice_date }" type="both" />
                     </td>
                     <td>${ noticeList.notice_hits }</td>
                     <td>
-                      <a href="${ context }admin/notice/edit/${noticeList.notice_no}">
-                        <button type="button" class="btn btn-outline-info">수정</button>
+                      <a href="${ context }admin/noticeList/edit/${noticeList.notice_no}">
+                        <button type="button" class="btn btn-outline-info" onclick="location.href='${ context }admin/notice/${ noticeList.notice_no }/'">수정</button>
                       </a>
-                      <button type="button" class="btn btn-outline-info">삭제</button>
+                      
+                      <!-- Button trigger modal -->
+                      <button type="button" class="btn btn-outline-info" 
+                        data-bs-toggle="modal" data-bs-target="#Modal-${ noticeList.notice_no }">삭제</button>
+                      
+                      <!-- Modal -->
+                      <div class="modal fade" id="Modal-${ noticeList.notice_no }" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5 text-size-bold" id="exampleModalLabel">삭제 하시겠습니까 ?</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                              <button type="button" class="btn btn-info" 
+                              onclick="location.href='${ context }admin/noticeList/delete/${ noticeList.notice_no }'">삭제</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                 </c:forEach>

@@ -1,9 +1,9 @@
 package himedia.project.bodamae.dto;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import org.apache.ibatis.annotations.Mapper;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,11 +22,10 @@ public class User {
 	private String user_gender;
 	private String user_tel;
 	private Date user_birthdate;
-	private Date user_regist_date;
+	private Timestamp user_regist_date;
 	
-	public User(int admin_no, String user_id, String user_password, String user_name, String user_gender,
-			String user_tel, Date user_birthdate) {
-		this.admin_no = admin_no;
+	public User(String user_id, String user_password, String user_name, String user_gender, String user_tel,
+			Date user_birthdate) {
 		this.user_id = user_id;
 		this.user_password = user_password;
 		this.user_name = user_name;
@@ -34,6 +33,4 @@ public class User {
 		this.user_tel = user_tel;
 		this.user_birthdate = user_birthdate;
 	}
-	
-	
 }

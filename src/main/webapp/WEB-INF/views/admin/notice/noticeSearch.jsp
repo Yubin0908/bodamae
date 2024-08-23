@@ -95,12 +95,12 @@
           </div>
   
           <div class="search-group">
-            <a href="${ context }admin/notice/add">
+            <a href="${ context }admin/noticeList/add">
               <button class="btn-new-notice">등록</button>
             </a>
   
             <!-- searchForm -->
-            <form class="category-search-box" action="${ context }admin/notice/search">
+            <form class="category-search-box" action="${ context }admin/noticeList/search">
               <label class="notice-category" for="column"></label> 
               <select id="filter" name="filter">
                 <option value="notice_no">게시글 번호</option>
@@ -126,21 +126,21 @@
                 </tr>
               </thead>
               <tbody>
-                <c:forEach var="noticeList" items="${ noticeList }">
+                <c:forEach var="notice" items="${ notice }">
                   <tr>
                     <td>
-                      <a class="text-primary" href="${ context }admin/notice/${noticeList.notice_no}">${ noticeList.notice_no }</a>
+                      <a class="text-primary" href="${ context }admin/noticeList/${ notice.notice_no }">${ notice.notice_no }</a>
                     </td>
-                    <td>${ noticeList.user_id }</td>
+                    <td>${ notice.user_id }</td>
                     <td>
-                      <a class="text-primary" href="${ context }admin/notice/${noticeList.notice_no}">${ noticeList.notice_title }</a>
+                      <a class="text-primary" href="${ context }admin/noticeList/${ notice.notice_no }">${ notice.notice_title }</a>
                     </td>
                     <td>
-                      <fmt:formatDate value="${ noticeList.notice_date }" type="both" />
+                      <fmt:formatDate value="${ notice.notice_date }" type="both" />
                     </td>
-                    <td>${ noticeList.notice_hits }</td>
+                    <td>${ notice.notice_hits }</td>
                     <td>
-                      <a href="${ context }admin/notice/edit/${noticeList.notice_no}">
+                      <a href="${ context }admin/noticeList/edit/${ notice.notice_no }">
                         <button type="button" class="btn btn-outline-info">수정</button>
                       </a>
                       <button type="button" class="btn btn-outline-info">삭제</button>

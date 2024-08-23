@@ -8,21 +8,26 @@
 <html>
 <head>
   <title>보담 愛</title>
+  <link rel="stylesheet" href="${ resPath }css/webSettings.css">
   <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="${resPath}css/webSettings.css">
   <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
   <style>
+    a {
+      text-decoration: none;
+      color: #000;
+    }
     .content {
       width: 1200px;
       margin: 0 auto;
     }
 
     .mypage-title {
-      background-color: #dddddd;
+      background: #dddddd url("${resPath}img/title-bg.jpg") 50% 50%;
       height: 300px;
     }
 
     .mypage-title > p {
+      color: whitesmoke;
       line-height: 300px;
       letter-spacing: 2px;
     }
@@ -71,6 +76,10 @@
       background-size: 20px;
     }
 
+    table {
+      table-layout: fixed;
+    }
+
     .table {
       width: 1100px;
       margin: 20px auto;
@@ -92,6 +101,10 @@
 
     .table > thead {
       border-top: 2px solid gray;
+    }
+
+    .table tbody td, a {
+      word-break: break-word;
     }
 
     .pagination {
@@ -117,7 +130,7 @@
   <div class="content my-5">
     <div class="mypage-title w-100">
       <p class="fw-bold fs-2 text-center">
-        <span class="userName fs-4">홍길동님, </span>
+        <span class="userName fs-4">${sessionScope.user.user_name == null ? "이름":sessionScope.user.user_name}님, </span>
         <span class="title">마이페이지</span>
       </p>
     </div>
@@ -126,11 +139,17 @@
       <div class="list-table">
         <ul>
           <li class="list-table-list"><a href="${context}mypage/list">나의 작성글</a></li>
-          <li class="list-table-list"><a href="${context}mypage/emailCheck">회원정보수정</a></li>
+          <li class="list-table-list"><a href="${context}mypage/pwCheck">회원정보수정</a></li>
         </ul>
       </div>
     </div>
     <table class="table table-hover table-bordered results">
+      <colgroup>
+        <col style="width: 10%">
+        <col style="width: 60%">
+        <col style="width: 10%">
+        <col style="width: 20%">
+      </colgroup>
       <thead>
         <tr>
           <th>글번호</th>

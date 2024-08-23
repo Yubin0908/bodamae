@@ -18,22 +18,33 @@
 	
 	<!-- 빈 추가 -->
 	<!-- [빈 예시] -->
+	<bean id="UserRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="himedia.project.bodamae.repository.UserRepository" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean> 
+	
 	<bean id="CompanyRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="himedia.project.bodamae.repository.CompanyRepository" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	
   	<bean id="freeBoardRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="himedia.project.bodamae.repository.FreeBoardRepository" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
-	<bean id="Notice_repository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<bean id="NoticeRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="himedia.project.bodamae.repository.NoticeRepositoty" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean> 
-	<bean id="userRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="himedia.project.bodamae.repository.UserRepository" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
+	<bean id="adminRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	  <property name="mapperInterface" value="himedia.project.bodamae.repository.AdminRepository" />
+	  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="mypageRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	  <property name="mapperInterface" value="himedia.project.bodamae.repository.MypageRepository" />
+	  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 </beans>
