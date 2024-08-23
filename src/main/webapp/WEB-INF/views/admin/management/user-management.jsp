@@ -113,7 +113,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-              <button type="button" class="btn btn-primary" onclick="location.href='${context}admin/userDrop/${user.user_id}/${user.admin_check}'">삭제</button>
+              <button type="button" class="btn btn-primary" onclick="location.href='${context}admin/userDrop/${user.user_id}'">삭제</button>
             </div>
           </div>
         </div>

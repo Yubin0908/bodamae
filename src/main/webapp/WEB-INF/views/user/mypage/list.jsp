@@ -76,6 +76,10 @@
       background-size: 20px;
     }
 
+    table {
+      table-layout: fixed;
+    }
+
     .table {
       width: 1100px;
       margin: 20px auto;
@@ -97,6 +101,10 @@
 
     .table > thead {
       border-top: 2px solid gray;
+    }
+
+    .table tbody td, a {
+      word-break: break-word;
     }
 
     .pagination {
@@ -136,6 +144,12 @@
       </div>
     </div>
     <table class="table table-hover table-bordered results">
+      <colgroup>
+        <col style="width: 10%">
+        <col style="width: 60%">
+        <col style="width: 10%">
+        <col style="width: 20%">
+      </colgroup>
       <thead>
         <tr>
           <th>글번호</th>

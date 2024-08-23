@@ -101,6 +101,21 @@
 </head>
 
 <body>
+  <c:set var="msg" value="${param.loginFailMsg}" />
+  <c:if test="${msg != null}">
+    <script>
+      alert('${msg}');
+      history.back();
+    </script>
+    <p>${msg}</p>
+  </c:if>
+  <c:if test="${param.failMsg != null}">
+    <script>
+      alert('${param.failMsg}');
+      history.back();
+    </script>
+    <p>${param.failMsg}</p>
+  </c:if>
   <div id="container">
     <!-- nav -->
     <jsp:include page="/WEB-INF/views/admin/common/navar.jsp" />
@@ -191,9 +206,7 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
-
 </body>
 </html>

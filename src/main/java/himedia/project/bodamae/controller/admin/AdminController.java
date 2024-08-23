@@ -1,16 +1,16 @@
 package himedia.project.bodamae.controller.admin;
 
-import himedia.project.bodamae.dto.Admin;
+import himedia.project.bodamae.dto.User;
 import himedia.project.bodamae.repository.AdminRepository;
 import himedia.project.bodamae.service.Pagination;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpSession;
 
 @Slf4j
 @Controller
@@ -23,14 +23,31 @@ public class AdminController {
         this.adminRepository = adminRepository;
     }
 
+    @GetMapping("/admin/login")
+    public String login() {
+        return "admin/adminLogin";
+    }
 
-    @GetMapping("/admin/adminList")
+    @PostMapping("/admin/login")
+    public String login(HttpSession session, RedirectAttributes redirect, String user_id, String user_password) {
+        User admin = adminRepository.findUserById(user_id);
+        if (admin != null && admin.getUser_password().equals(user_password) && admin.getAdmin_check() == 1) {
+            session.setAttribute("admin", admin);
+        } else {
+            redirect.addAttribute("loginFailMsg", "아이디 또는 비밀번호가 일치하지 않습니다.");
+        }
+
+        return "redirect:/admin/user";
+    }
+
+    @GetMapping("/admin/admin")
     public String adminList(Model model, String option, String keyword, String page) {
         int limit = 10;
         int offSet = 0;
         if (page != null && Integer.parseInt(page) != 1) {
             offSet = (Integer.parseInt(page) - 1) * limit;
         }
+
         model.addAttribute("paging", new Pagination(adminRepository.adminCount(), page, limit, 10));
 
         log.info(model.toString());
@@ -103,7 +120,7 @@ public class AdminController {
         return "redirect:/admin/adminManagement";
     }
 
-    @GetMapping("/admin/userList")
+    @GetMapping("/admin/user")
     public String userList(Model model, String option, String keyword, String page) {
         int limit = 10;
         int offSet = 0;
@@ -126,19 +143,28 @@ public class AdminController {
         return "admin/management/user-management";
     }
 
-    @GetMapping("/admin/userDrop/{user_id}/{admin_check}")
-    public String userDrop(@PathVariable String user_id, @PathVariable int admin_check) {
-        if (admin_check == 0) {
-            try {
-                boolean result = adminRepository.deleteUserById(user_id);
-            } catch (Exception e) {
-
-            }
-        } else {
-            adminRepository.changeAdminToUser(user_id);
-            boolean result = adminRepository.deleteUserById(user_id);
+    @GetMapping("/admin/userDrop/{user_id}")
+    public String userDrop(@PathVariable String user_id, Model model) {
+        try {
+            adminRepository.deleteAllPetByUserId(user_id);
+            adminRepository.deleteAllFreeBoardByUserId(user_id);
+            adminRepository.deleteByUserId(user_id);
+        } catch (DropUserException e) {
+            model.addAttribute("failMsg", new DropUserException(e.getMessage()));
         }
-        return "redirect:/admin/userList";
+
+        return "redirect:/admin/user";
     }
 
+    @GetMapping("/admin/logout")
+    public String adminLogout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/admin/login";
+    }
+
+}
+
+class DropUserException extends RuntimeException {
+    DropUserException() {}
+    DropUserException(String message) { super("해당 유저는 삭제가 불가능합니다. 관리자에게 문의하세요."); }
 }

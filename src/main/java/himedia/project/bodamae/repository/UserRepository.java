@@ -26,5 +26,6 @@ public interface UserRepository {
 	
 	@Select("select * from user where user_id like #{ user_id }")
 	User findByUserId(String user_id);
+
 	
 }

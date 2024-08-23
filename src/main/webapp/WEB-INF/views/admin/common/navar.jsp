@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page session="false"%>
 <c:url var="resPath" value="/resources/" />
 <c:url var="context" value="/" />
 
@@ -13,7 +12,7 @@
           <img src="${resPath}img/user-icon.png" class="admin-icon-img" alt="사이트관리자로고">
         </div>
         <div class="admin">
-          <p class="admin-name">홍길동 관리자님</p>
+          <p class="admin-name">${sessionScope.admin.user_name} 관리자님</p>
         </div>
       </div>
       <div>
@@ -24,7 +23,7 @@
           <li class="menu-list"><a class="menu-anchor" href="${ context }admin/adminList">관리자 관리</a></li>
           <li class="menu-list"><a class="menu-anchor" href="${ context }admin/noticeList">공지사항 관리</a></li>
           <li class="menu-list"><a class="menu-anchor" href="${ context }admin/company">업체 관리</a></li>
-          <li class="menu-list"><a class="menu-anchor" href="#">로그아웃</a></li>
+          <li class="menu-list"><a class="menu-anchor" href="${ context }admin/logout">로그아웃</a></li>
         </ul>
       </div>
     </div>
