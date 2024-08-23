@@ -1,7 +1,6 @@
 package himedia.project.bodamae.controller.admin;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,30 +10,32 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import himedia.project.bodamae.dto.Notice;
 import himedia.project.bodamae.repository.NoticeRepositoty;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("admin/notice")
-public class NoticeController {
+@RequestMapping("admin/noticeList")
+public class AdminNoticeController {
 	
 	private final NoticeRepositoty noticeRepositoty;
 	
 	@Autowired
-	public NoticeController(NoticeRepositoty noticeRepositoty) {
+	public AdminNoticeController(NoticeRepositoty noticeRepositoty) {
 		this.noticeRepositoty = noticeRepositoty;
 	}
 	
 	// [공지사항 목록]
 	@GetMapping("")
 	public String noticeList(Model model) {
-		List<Notice> noticeList = noticeRepositoty.noticeList();
-		model.addAttribute("noticeList", noticeList);
 		
-		return "admin/notice/notice";
+		try {
+			List<Notice> noticeList = noticeRepositoty.noticeList();
+			model.addAttribute("noticeList", noticeList);
+		} catch (Exception e) { }
+		
+		return "admin/notice/noticeList";
 	}
 	
 	// [공지사항 조회]
@@ -42,9 +43,10 @@ public class NoticeController {
 	public String noticeSearch(@RequestParam(name="search") String search, 
 			@RequestParam (name="filter") String filter, Model model) {
 		
-		List<Notice> notice = noticeRepositoty.findByNotice(filter, "%" + search + "%");
-		System.out.println(notice);
-		model.addAttribute("notice", notice);
+		try {
+			List<Notice> notice = noticeRepositoty.findByNotice(filter, "%" + search + "%");
+			model.addAttribute("notice", notice);
+		} catch (Exception e) { }
 		
 		return "admin/notice/noticeSearch";
 	}
@@ -53,8 +55,10 @@ public class NoticeController {
 	@GetMapping("/{notice_no}")
 	public String noticeDetail(@PathVariable("notice_no") int notice_no, Model model) {
 		
-		Notice notice = noticeRepositoty.findById(notice_no).get();
-		model.addAttribute("notice", notice);
+		try {
+			Notice notice = noticeRepositoty.findById(notice_no).get();
+			model.addAttribute("notice", notice);
+		} catch (Exception e) { }
 		
 		return "admin/notice/noticeDetail";
 	}
@@ -63,8 +67,10 @@ public class NoticeController {
 	@GetMapping("/edit/{notice_no}")
 	public String noticeEditForm(@PathVariable("notice_no") int notice_no, Model model) {
 
-		Notice notice = noticeRepositoty.findById(notice_no).get();
-		model.addAttribute("notice", notice);
+		try {
+			Notice notice = noticeRepositoty.findById(notice_no).get();
+			model.addAttribute("notice", notice);
+		} catch (Exception e) { }
 		
 		return "admin/notice/noticeEdit";
 	}
@@ -74,9 +80,12 @@ public class NoticeController {
 	public String noticeEdit(@PathVariable(name = "notice_no") int notice_no, 
 			@ModelAttribute(name="notice") Notice notice) {
 		
-		noticeRepositoty.update(notice_no, notice);
+		try {
+			noticeRepositoty.updateByNotice(notice_no, notice);
+		} catch (Exception e) { }
 		
-		return "redirect:/admin/notice/{notice_no}";
+		
+		return "redirect:/admin/noticeList/{notice_no}";
 	}
 	
 	
@@ -91,17 +100,22 @@ public class NoticeController {
 	@PostMapping("/add") 
 	public String noticeAdd(@ModelAttribute(name = "notice") Notice notice) {
 		
-	    if (notice == null) {
-	        log.info("notice 객체가 null입니다.");
-	    } else {
-	        log.info(notice.getNotice_title(), notice.getNotice_content());
-	    }
-		noticeRepositoty.save(notice);
+		try {
+			noticeRepositoty.save(notice);
+		} catch (Exception e) { }
 		
-		return "redirect:/store/items/" + notice.getNotice_no();
+		return "redirect:/admin/noticeList/" + notice.getNotice_no();
 	}
 	
 	// [공지사항 삭제]
-	
+	@GetMapping("/delete/{notice_no}")
+	public String noticeDelte(@PathVariable String notice_no) {
+		
+		try {
+			noticeRepositoty.deleteByNotice(notice_no);
+		} catch (Exception e) { }
+		
+		return "redirect:/admin/noticeList/";
+	}
 	
 }

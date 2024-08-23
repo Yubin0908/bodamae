@@ -49,9 +49,9 @@
           aria-expanded="false">커뮤니티</a>
           
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="notice">공지사항</a></li>
-            <li><a class="dropdown-item" href="pets">반려동물 자랑</a></li>
-            <li><a class="dropdown-item" href="free_board">자유게시판</a></li>
+            <li><a class="dropdown-item" href="community/notice">공지사항</a></li>
+            <li><a class="dropdown-item" href="community/pets">반려동물 자랑</a></li>
+            <li><a class="dropdown-item" href="community/free_board">자유게시판</a></li>
           </ul>
       </ul>
       

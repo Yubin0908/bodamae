@@ -60,10 +60,29 @@
               </div>
               
               <div class="notice-btn">
-                <a href="${ context }admin/notice/edit/${notice.notice_no}">
+                <a href="${ context }admin/noticeList/edit/${ notice.notice_no }">
                   <button type="button" class="btn btn-outline-info">수정</button>
                 </a>
-                <button type="button" class="btn btn-outline-info">삭제</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-info" 
+                  data-bs-toggle="modal" data-bs-target="#Modal-${ noticeList.notice_no }">삭제</button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="Modal-${ noticeList.notice_no }" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5 text-size-bold" id="exampleModalLabel">삭제 하시겠습니까 ?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                        <button type="button" class="btn btn-info" 
+                        onclick="location.href='${ context }admin/noticeList/delete/${ notice.notice_no }'">삭제</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               
             </div>
@@ -73,7 +92,7 @@
               <p>${ notice.notice_content }</p>
             </div>
             <button type="button" class="btn btn-outline-info w-100 btn-lg"
-                onclick="location.href='${ context }admin/notice'">뒤로 가기</button>
+                onclick="location.href='${ context }admin/noticeList'">뒤로 가기</button>
           </div>
         </div>
       </div>

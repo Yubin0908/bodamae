@@ -45,7 +45,7 @@
   
           <!-- 공지사항 추가폼 -->
           <div class="notice-form">
-            <form action="${ context }admin/notice/edit/${ notice.notice_no }" method="post">
+            <form action="${ context }admin/noticeList/edit/${ notice.notice_no }" method="post">
             
               <div class="row my-2">
                 <div class="col-2 fw-bolder">
@@ -70,7 +70,7 @@
               <div class="row mt-5">
                 <div class="col">
                   <button type="button" class="btn btn-outline-info w-100 btn-lg"
-                    onclick="location.href='${ context }admin/notice'">뒤로 가기</button>
+                    onclick="location.href='${ context }admin/noticeList'">뒤로 가기</button>
                 </div>
                 <div class="col">
                   <button type="submit" class="btn btn-outline-info w-100 btn-lg">수정 완료</button>
