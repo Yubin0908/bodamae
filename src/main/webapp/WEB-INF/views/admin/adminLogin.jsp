@@ -6,23 +6,14 @@
 <html>
 <head>
   <meta charset="UTF-8">
-<<<<<<< HEAD
-  <title>보담 愛 | 로그인</title>
-=======
   <title>보담 愛 | 관리자 로그인</title>
->>>>>>> c12898ad24839adacfef04134e5eed8f2af86f75
 
   <link href="${ resPath }css/webSettings.css" rel="stylesheet">
   <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
   <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
   <style>
     .content {
-<<<<<<< HEAD
-      position: relative;
-      margin: 20px auto;
-=======
       margin: 100px auto;
->>>>>>> c12898ad24839adacfef04134e5eed8f2af86f75
     }
 
     .out_wrap {
@@ -117,11 +108,7 @@
         <div class="form_wrap">
           <form action="${context}admin/login" method="post">
             <div class="txt_box" id="txt_box">
-<<<<<<< HEAD
               <div><input class="user_id" name="user_id" type="text" id="user_id" placeholder="ID" minlength="5" maxlength="15" autofocus></div>
-=======
-              <div><input class="user_id" name="user_id" type="text" id="user_id" placeholder="ID" minlength="5" maxlength="15" autofocus ></div>
->>>>>>> c12898ad24839adacfef04134e5eed8f2af86f75
               <div><input class="user_password" name="user_password" id="user_password" type="password" placeholder="PW" minlength="8" maxlength="20"></div>
             </div>
             <div class="btn_box">
