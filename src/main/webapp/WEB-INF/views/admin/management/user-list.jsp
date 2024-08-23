@@ -16,16 +16,16 @@
   <style>
     .content {
       width: 1000px;
-      margin: 0 auto;
+      margin: 100px auto;
     }
 
     .title {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .title > span {
-      font-weight: bold;
-      font-size: 24px;
+      font-weight: 500;
+      font-size: 1.75rem;
     }
 
     button[type="button"] {
