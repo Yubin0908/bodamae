@@ -12,6 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Notice {
+	
 	private int notice_no;
 	private String user_id;
 	private String notice_title;

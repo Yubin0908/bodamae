@@ -1,14 +1,14 @@
 package himedia.project.bodamae.controller.user;
 
 import himedia.project.bodamae.repository.FreeBoardRepository;
+import himedia.project.bodamae.repository.MypageRepository;
+import himedia.project.bodamae.repository.UserRepository;
 import himedia.project.bodamae.service.Pagination;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/mypage")
@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MypageController {
 
     private final FreeBoardRepository freeBoardRepository;
+    private final MypageRepository myPageRepository;
 
     @Autowired
-    public MypageController(FreeBoardRepository freeBoardRepository) {
+    public MypageController(FreeBoardRepository freeBoardRepository, MypageRepository myPageRepository) {
         this.freeBoardRepository = freeBoardRepository;
+        this.myPageRepository = myPageRepository;
     }
 
     @GetMapping("/list")
@@ -35,14 +37,26 @@ public class MypageController {
         return "user/mypage/list";
     }
 
-    @GetMapping("/emailCheck")
+    @GetMapping("/pwCheck")
     public String emailCheck() {
-        return "user/mypage/email-check";
+        return "user/mypage/password-check";
     }
 
-    @PostMapping("/emailCheck")
-    public String emailCheck(Model model, String email) {
+    @PostMapping("/userPasswordCheck")
+    @ResponseBody
+    public String userPasswordCheck(Model model, String user_id, String user_password) {
+        String $user_password = myPageRepository.findUserPassword(user_id, user_password);
 
+        if ($user_password.equals(user_password)) {
+            return "pass";
+        } else {
+            model.addAttribute("result", 0);
+            return "fail";
+        }
+    }
+
+    @GetMapping("/userPasswordModify")
+    public String userPasswordModify() {
         return "user/mypage/user-password-modify";
     }
 }

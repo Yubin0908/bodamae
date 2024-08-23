@@ -16,7 +16,6 @@
     <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.tiny.cloud/1/nd8grynjd8268gdl5ya7l9blew0p9nql98thf7fre8azeeg6/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     
-    
     <style type="text/css">
       .notice-list { margin: 0 auto; width: 1200px; }
       .notice-list-content { margin: 100px; }

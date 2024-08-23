@@ -8,22 +8,24 @@
 <html>
 <head>
   <title>보담 愛</title>
-  <link rel="stylesheet" href="${ resPath }css/webSettings.css">
+  <link rel="stylesheet" href="${resPath}css/webSettings.css">
   <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
   <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <style>
     a {
       text-decoration: none;
       color: #000;
     }
+
     .content {
       width: 1200px;
       margin: 0 auto;
     }
 
     .mypage-title {
-      background: #dddddd url("${resPath}img/title-bg.jpg") 50% 50%;
       height: 300px;
+      background: #dddddd url("${resPath}img/title-bg.jpg") 50% 50%;
     }
 
     .mypage-title > p {
@@ -76,49 +78,37 @@
       background-size: 20px;
     }
 
-    table {
-      table-layout: fixed;
-    }
-
-    .table {
+    .form_wrap {
+      background-color: #dddddd;
       width: 1100px;
-      margin: 20px auto;
-      text-align: right;
-      border-collapse: collapse;
+      height: 450px;
+      margin: 0 auto 40px auto;
     }
 
-    .table th, .table td {
-      border: 1px solid lightgray;
-      padding: 8px;
+    .notion-msg {
       text-align: center;
+      margin-top: 90px;
     }
 
-    .table th {
-      border-top: 2px solid gray;
-      border-bottom: 2px solid gray;
-      background-color: #f9f9f9;
-    }
-
-    .table > thead {
-      border-top: 2px solid gray;
-    }
-
-    .table tbody td, a {
-      word-break: break-word;
-    }
-
-    .pagination {
-      display: inline-block;
-      width: 1200px;
-      text-align: center;
-    }
-
-    .pagination b {
+    .notion-msg > p {
       font-weight: bold;
+      font-size: 1.2em;
+      line-height: 50px;
     }
 
-    .arrow {
-      width: 20px;
+    .form {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .form input {
+      padding: 10px 55px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    .form input[type="submit"] {
+      margin-top: 60px;
     }
   </style>
 </head>
@@ -143,81 +133,80 @@
         </ul>
       </div>
     </div>
-    <table class="table table-hover table-bordered results">
-      <colgroup>
-        <col style="width: 10%">
-        <col style="width: 60%">
-        <col style="width: 10%">
-        <col style="width: 20%">
-      </colgroup>
-      <thead>
-        <tr>
-          <th>글번호</th>
-          <th>제 목</th>
-          <th>조회수</th>
-          <th>작성일자</th>
-        </tr>
-      </thead>
-      <tbody>
-        <c:forEach var="freeboard" items="${freeBoards}">
-          <tr>
-            <td>${freeboard.board_no}</td>
-            <td><a href="#">${freeboard.board_title}</a></td>
-            <td>${freeboard.board_hits}</td>
-            <td><fmt:formatDate value="${freeboard.board_date}" pattern="YYYY-MM-dd hh분 mm초" /> </td>
-          </tr>
-        </c:forEach>
-      </tbody>
-    </table>
-    <div class="pagination">
-      <c:if test="${paging.startPage > paging.blockSize}">
-        <a href="${context}mypage/list?page=${paging.startPage - 1}">
-          <img class="arrow" src="${resPath}img/left-arrow-icon.png" alt="">
-        </a>
-      </c:if>
-      <c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}">
-        <c:if test="${paging.currentPage == i}">
-          <b>${i}</b>
-        </c:if>
-        <c:if test="${paging.currentPage != i}">
-          <a href="${context}mypage/list?page=${i}">${i}</a>
-        </c:if>
-      </c:forEach>
-      <c:if test="${paging.endPage < paging.totalPages}">
-        <a href="${context}mypage/list?page=${paging.startPage + 10}">
-          <img class="arrow" src="${resPath}img/right-arrow-icon.png" alt="">
-        </a>
-      </c:if>
-    </div>
+
+
   </div>
+    <div class="form_wrap">
+      <div class="notion-msg">
+        <p>개인정보보호를 위해 본인확인은 필수입니다.</p>
+        <p>가입된 계정의 비밀번호를 입력하세요.</p>
+      </div>
+      <div class="form">
+        <form>
+          <input type="hidden" name="user_id" value="admin001">
+          <input type="password" name="user_password" placeholder="비밀번호를 입력하세요...">
+          <br>
+          <input type="submit" value="확 인">
+        </form>
+      </div>
+    </div>
   <jsp:include page="../common/footer.jsp" />
   <script>
     const li = document.getElementsByClassName("list-table-list");
 
-    li[0].style.backgroundColor = "#fff";
-    li[0].firstChild.style.backgroundColor = "#87CEEB";
-    li[0].firstChild.style.color = "#fff";
+    li[1].style.backgroundColor = "#fff";
+    li[1].firstChild.style.backgroundColor = "#87CEEB";
+    li[1].firstChild.style.color = "#fff";
 
     function handler(e) {
       const target = e.target;
 
-      if (target.textContent.includes("나의 작성글")) {
+      if (target.textContent.includes("회원정보수정")) {
         li[1].style.backgroundColor = "#fff";
         li[1].firstChild.style.backgroundColor = "#87CEEB";
         li[1].firstChild.style.color = "#fff";
         li[0].style.backgroundColor = "#dddddd";
         li[0].firstChild.style.backgroundColor = "#fff";
         li[0].firstChild.style.color = "#000";
-      } else {
-        li[0].style.backgroundColor = "#fff";
-        li[0].firstChild.style.backgroundColor = "#87CEEB";
-        li[0].firstChild.style.color = "#fff";
       }
     }
 
     for (let item of li) {
       item.addEventListener('click', handler);
     }
+
+    const submit_btn = document.querySelector('input[type="submit"]');
+
+    submit_btn.addEventListener('click', e => {
+      const user_id = document.querySelector('input[type=hidden]').value;
+      const user_password = document.querySelector('input[type="password"]').value;
+
+      if (!user_password) {
+        e.preventDefault();
+        alert('비밀번호를 입력하세요');
+      } else {
+        e.preventDefault();
+        $.ajax({
+          url: '${context}mypage/userPasswordCheck',
+          method: 'post',
+          data: {
+            user_id: user_id,
+            user_password: user_password
+          },
+          dataType: 'html',
+          success: function (data, status) {
+            if (data === 'pass') {
+              location.href = '${context}mypage/userPasswordModify';
+            }
+          },
+          error: function () {
+            alert('잘못된 비밀번호 입니다. 다시 확인하신 후 입력바랍니다.');
+          }
+        });
+      }
+
+
+    });
   </script>
 </body>
 </html>
