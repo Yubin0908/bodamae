@@ -23,4 +23,17 @@ public class User {
 	private String user_tel;
 	private Date user_birthdate;
 	private Date user_regist_date;
+	
+	public User(int admin_no, String user_id, String user_password, String user_name, String user_gender,
+			String user_tel, Date user_birthdate) {
+		this.admin_no = admin_no;
+		this.user_id = user_id;
+		this.user_password = user_password;
+		this.user_name = user_name;
+		this.user_gender = user_gender;
+		this.user_tel = user_tel;
+		this.user_birthdate = user_birthdate;
+	}
+	
+	
 }
