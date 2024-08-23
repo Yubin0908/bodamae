@@ -4,6 +4,13 @@
 <c:url var="resPath" value="/resources/" />
 <c:url var="context" value="/" />
 
+<c:if test="${sessionScope.admin == null}">
+  <script>
+    alert('해당 페이지는 관리자만 이용가능 합니다.');
+    history.back();
+  </script>
+</c:if>
+
 <body>
   <div>
     <div class="header-wrap">

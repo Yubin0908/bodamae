@@ -14,6 +14,7 @@
   
   <style type="text/css">
     .content { width: 1200px; margin: 100px auto; }
+    .notice-table { width: 1000px; margin: 0 auto; }
     .table { margin: 0 auto; }
   </style>
 </head>
