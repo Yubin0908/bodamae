@@ -16,25 +16,23 @@
   <style>
     .content {
       width: 1000px;
-      margin: 100px auto;
-
+      margin: 0 auto;
     }
 
     .title {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     .title > span {
       font-weight: 500;
-      font-size: 1.75rem;
+      font-size: 18px;
     }
 
     button[type="button"] {
       border: none;
       border-radius: 10px;
-      padding: 10px;
+      padding: 5px;
       background-color: lightgray;
-      font-weight: bold;
     }
 
     .search-wrap {
