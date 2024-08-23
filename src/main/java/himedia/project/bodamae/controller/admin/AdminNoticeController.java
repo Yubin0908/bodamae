@@ -1,6 +1,7 @@
 package himedia.project.bodamae.controller.admin;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import himedia.project.bodamae.dto.Notice;
 import himedia.project.bodamae.repository.NoticeRepositoty;
 import lombok.extern.slf4j.Slf4j;
@@ -100,9 +102,8 @@ public class AdminNoticeController {
 	@PostMapping("/add") 
 	public String noticeAdd(@ModelAttribute(name = "notice") Notice notice) {
 		
-		try {
-			noticeRepositoty.save(notice);
-		} catch (Exception e) { }
+		noticeRepositoty.save(notice);
+		log.info("notice.getNotice_no() > " + notice.getNotice_no());
 		
 		return "redirect:/admin/noticeList/" + notice.getNotice_no();
 	}

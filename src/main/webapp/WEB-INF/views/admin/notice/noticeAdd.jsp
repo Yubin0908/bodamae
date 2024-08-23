@@ -42,12 +42,17 @@
         <div class="notice-list-content">
           <div>
             <h3>공지사항 관리 > 공지사항 추가</h3>
+            
           </div>
   
           <!-- 공지사항 추가폼 -->
           <div class="notice-form">
-            <form action="${ context }admin/notice/add" method="post">
-            
+            <form action="${ context }admin/noticeList/add/" method="post">
+              
+              <div class="admin" style="display: none">
+                <input type="text" id="user_id" name="user_id" value="${ sessionScope.admin.user_id }">
+              </div>
+              
               <div class="row my-2">
                 <div class="col-2 fw-bolder">
                   <label for="notice_title">제목</label>
@@ -67,13 +72,11 @@
                 </div>
               </div>
               
-              <!-- <hr class="my-4"> -->
-          
               <!-- 버튼 -->
               <div class="row mt-5">
                 <div class="col">
                   <button type="button" class="btn btn-outline-info w-100 btn-lg"
-                    onclick="location.href='${ context }admin/notice'">뒤로 가기</button>
+                    onclick="location.href='${ context }admin/noticeList'">뒤로 가기</button>
                 </div>
                 <div class="col">
                   <button type="submit" class="btn btn-outline-info w-100 btn-lg">등록 완료</button>
@@ -86,7 +89,6 @@
       </div>
     </div>
   </div>
-
 </body>
 
 <script>
