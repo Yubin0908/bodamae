@@ -31,6 +31,10 @@ public interface CompanyRepository {
 	@Select("select * from company")
 	List<Company> companyList();
 	
+	// 인덱스 장소 4개 조회
+	@Select("select * from company limit 4")
+	List<Company> companyIndexList();
+	
 	// 업체정보 검색(카테고리 선택이 "선택"으로 됐을 경우)
   @Select("select * from company where cmp_code like concat('%',#{search},'%')\r\n"
   		+ "						or cmp_name like concat('%',#{search},'%')\r\n"

@@ -64,7 +64,7 @@
       <!-- 버튼 -->
       <div>
         <button type="button" class="btn btn-outline-info btn-lg" id="nextButton" disabled
-                onclick="location.href='${ context }register'">다음</button>
+                onclick="location.href='${ context }user/register'">다음</button>
       </div>
     </div>
   </body>
