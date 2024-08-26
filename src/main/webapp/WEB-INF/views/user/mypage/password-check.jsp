@@ -50,6 +50,8 @@
 
     .list-table > ul {
       text-align: center;
+      width: 100%;
+      padding: 0;
     }
 
     .list-table > ul > li {
@@ -113,6 +115,12 @@
   </style>
 </head>
 <body>
+  <c:if test="${sessionScope.user == null}">
+    <script>
+      alert('정상적인 접근이 아닙니다. 로그인 이후 다시 이용해 주세요.');
+      location.href = '${context}user/login';
+    </script>
+  </c:if>
   <%-- header --%>
   <jsp:include page="../common/navar.jsp" />
 
@@ -143,8 +151,8 @@
       </div>
       <div class="form">
         <form>
-          <input type="hidden" name="user_id" value="admin001">
-          <input type="password" name="user_password" placeholder="비밀번호를 입력하세요...">
+          <input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
+          <input type="password" name="user_password" placeholder="비밀번호를 입력하세요..." autofocus>
           <br>
           <input type="submit" value="확 인">
         </form>
@@ -178,7 +186,7 @@
     const submit_btn = document.querySelector('input[type="submit"]');
 
     submit_btn.addEventListener('click', e => {
-      const user_id = document.querySelector('input[type=hidden]').value;
+      const user_id = document.querySelector('input[name="user_id"]').value;
       const user_password = document.querySelector('input[type="password"]').value;
 
       if (!user_password) {
@@ -190,11 +198,12 @@
           url: '${context}mypage/userPasswordCheck',
           method: 'post',
           data: {
-            user_id: user_id,
-            user_password: user_password
+            'user_id': user_id,
+            'user_password': user_password
           },
-          dataType: 'html',
+          // dataType: 'html',
           success: function (data, status) {
+            console.log(data)
             if (data === 'pass') {
               location.href = '${context}mypage/userPasswordModify';
             }

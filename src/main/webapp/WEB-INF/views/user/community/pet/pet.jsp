@@ -23,8 +23,8 @@
 			<!-- searchForm -->
 			<form class="category-search-box" action="${ context }">
 				<label class="cmp-category" for="column"></label><label for="search"></label>
-				<input type="search" name="search" id="search"> <input
-					type="submit" id="submit" value="검색">
+				<input type="search" name="search" id="search">
+        <input type="submit" id="submit" value="검색">
 			</form>
 
 			<button class="btn-new-pet" href="#">등록</button>

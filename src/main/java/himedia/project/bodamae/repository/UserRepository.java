@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import himedia.project.bodamae.dto.User;
+import org.apache.ibatis.annotations.Update;
 
 public interface UserRepository {
 	@Insert("insert into user(user_id, user_name, user_password, user_gender, user_birthdate, user_tel) values(#{ user_id }, #{ user_name }, #{ user_password }, #{ user_gender }, #{ user_birthdate }, #{ user_tel })")
@@ -24,8 +25,9 @@ public interface UserRepository {
 	@Select("select * from user")
 	List<User> userList();
 	
-	@Select("select * from user where user_id like #{ user_id }")
+	@Select("select * from user where user_id like #{ user_id } and admin_check = 0")
 	User findByUserId(String user_id);
 
-	
+	@Update("update user set user_password = #{user_password} where user_id like #{user_id}")
+    boolean updatePassword(@Param("user_id") String user_id, @Param("user_password") String user_password);
 }
