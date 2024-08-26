@@ -114,7 +114,7 @@
               <div><input class="user_password" name="user_password" id="user_password" type="password" placeholder="PW" minlength="8" maxlength="20"></div>
             </div>
             <div class="btn_box">
-              <button class="btn_sign_up" onclick="location.href='${context}user/register'">sign-up</button>
+              <button type="button" class="btn_sign_up" onclick="location.href='${context}user/checkRegister'">sign-up</button>
               <input class="btn_login " type="submit" value="login">
             </div>
             <span class="error-msg">${loginFailMsg != null ? loginFailMsg : ""}</span>

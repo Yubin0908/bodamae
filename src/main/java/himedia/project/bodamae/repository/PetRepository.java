@@ -13,5 +13,14 @@ public interface PetRepository {
 
     @Select("select * from pet")
     List<Pet> findAllPets();
+
+    @Select("select * from pet order by pet_no desc limit #{limit} offset #{offset}")
+    List<Pet> findAllPetsPaging(int limit, int offset);
+
+    @Select("select count(*) count from pet")
+    int countAllPets();
+
+    @Select("select * from pet where pet_no = #{pet_no}")
+    Pet findPetByPetNo(int pet_no);
 }
 

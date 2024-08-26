@@ -2,6 +2,7 @@ package himedia.project.bodamae.controller.user;
 
 import himedia.project.bodamae.dto.Pet;
 import himedia.project.bodamae.repository.PetRepository;
+import himedia.project.bodamae.service.Pagination;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,9 +25,16 @@ public class PetController {
     }
 
     @GetMapping("")
-    public String pet(Model model) {
+    public String pet(Model model, String page) {
+        int limit = 16;
+        int offSet = 0;
+        if (page != null && Integer.parseInt(page) != 1) {
+            offSet = (Integer.parseInt(page) - 1) * limit;
+        }
+
         model.addAttribute("pets", petRepository.findAllPets());
-        return "user/community/pet/pet";
+        model.addAttribute("paging", new Pagination(petRepository.countAllPets(), page, limit, 10));
+        return "user/community/pet/petList";
     }
 
     @GetMapping("/write")
@@ -38,5 +46,13 @@ public class PetController {
     public String petWritePost(@ModelAttribute("pet") Pet pet) {
         boolean result = petRepository.petAdd(pet);
         return "redirect:community/pets";
+    }
+
+    @GetMapping("/modify")
+    public String petModify(Model model, int pet_no) {
+        model.addAttribute("pet", petRepository.findPetByPetNo(pet_no));
+
+        System.out.println(petRepository.findPetByPetNo(pet_no));
+        return "user/community/pet/petModify";
     }
 }
