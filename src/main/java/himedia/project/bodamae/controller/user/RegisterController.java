@@ -14,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Controller
-@RequestMapping("user/")
+@RequestMapping("/user")
 public class RegisterController {
 
 	private final UserRepository userRepository;

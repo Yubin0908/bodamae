@@ -31,13 +31,10 @@
 				</div>
 				<div class="cmp-detail" >
 					<div>
-						<img alt="이미지 미리보기" src="">
+						<img alt="이미지 미리보기"  src ="${ img }">
 					</div>
 					<div>
 						업체 코드 : ${ cmp.cmp_code }
-					</div>
-					<div>
-						업체 카테고리 : ${ cmp.cmp_category }
 					</div>
 					<div>
 						업체 주소 : ${ cmp.cmp_address }
@@ -52,7 +49,7 @@
 						업체 휴무일 : ${ cmp.cmp_holidays }
 					</div>
 					<div>
-						업체 운영시간 : ${ cmp.operating_hours }
+						업체 운영시간 : ${ cmp.operation_hours }
 					</div>
 					<div>
 						업체 반려동물 제한사항 내용 : ${ cmp.pet_restriction }

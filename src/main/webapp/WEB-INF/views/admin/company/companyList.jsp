@@ -129,11 +129,11 @@
 						<tbody>
 							<c:forEach var="companyList" items="${ companyList }">
 								<tr>
-									<td>${ companyList.cmp_code }</td>
-										<td>${ companyList.cmp_name }</td>
-										<td>${ companyList.cmp_address_gu }</td>
-										<td>${ companyList.cmp_tel_no }</td>
-										<td></td>
+									<td><a href="${ context }admin/company/companyDetail/${companyList.cmp_code}" >${ companyList.cmp_code }</a></td>
+									<td>${ companyList.cmp_name }</td>
+									<td>${ companyList.cmp_address_gu }</td>
+									<td>${ companyList.cmp_tel_no }</td>
+									<td></td>
 								</tr>
 								</c:forEach>
 						</tbody>
