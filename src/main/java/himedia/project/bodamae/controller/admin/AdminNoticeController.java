@@ -102,9 +102,10 @@ public class AdminNoticeController {
 	public String noticeAdd(@ModelAttribute(name = "notice") Notice notice) {
 		
 		noticeRepositoty.save(notice);
-		log.info("notice.getNotice_no() > " + notice.getNotice_no());
+		int noticeId = notice.getNotice_no();
+		// log.info("notice.getNotice_no() > " + notice.getNotice_no());
 		
-		return "redirect:/admin/noticeList/" + notice.getNotice_no();
+		return "redirect:/admin/noticeList/" + noticeId;
 	}
 	
 	// [공지사항 삭제]

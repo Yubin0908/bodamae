@@ -24,34 +24,24 @@
 
   <%-- content --%>
   <div class="content">
-    <!-- 공지사항 리스트 -->
+  <!-- 공지사항 상세페이지 -->
     <div class="notice-table">
-      <table class="table">
-        <thead class="table-light">
-          <tr>
-            <th>게시글 번호 </th>
-            <th>작성자</th>
-            <th>글 제목</th>
-            <th>작성일</th>
-            <th>조회수</th>
-          </tr>
-        </thead>
-        <tbody>
-          <c:forEach var="noticeList" items="${ noticeList }">
-            <tr>
-              <td>${ noticeList.notice_no }</td>
-              <td>관리자</td>
-              <td>
-                <a class="text-primary" href="${ context }notice/${ noticeList.notice_no }">${ noticeList.notice_title }</a>
-              </td>
-              <td>
-                <fmt:formatDate value="${ noticeList.notice_date }" type="both" />
-              </td>
-              <td>${ noticeList.notice_hits }</td>
-            </tr>
-          </c:forEach>
-        </tbody>
-      </table>
+      <h3>${ notice.notice_title }</h3>
+      
+      <div class="display-flex">
+        <div class="notice-info">
+          <span class="notice-info">관리자</span>
+          <span class="notice-info">${ notice.notice_date }</span>
+          <span class="notice-info">조회 ${ notice.notice_hits }</span>
+        </div>
+      </div>
+      <hr class="my-2">
+      
+      <div class="notice-content">
+        <p>${ notice.notice_content }</p>
+      </div>
+      <button type="button" class="btn btn-outline-info w-100 btn-lg"
+          onclick="location.href='${ context }notice'">뒤로 가기</button>
     </div>
   </div>
 </body>
