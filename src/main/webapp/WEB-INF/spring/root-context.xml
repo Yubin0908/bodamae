@@ -23,7 +23,6 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean> 
 	
-<<<<<<< HEAD
 	<bean id="CompanyRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="himedia.project.bodamae.repository.CompanyRepository" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
@@ -48,6 +47,9 @@
 	  <property name="mapperInterface" value="himedia.project.bodamae.repository.MypageRepository" />
 	  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-=======
->>>>>>> honghong
+
+  <bean id="petRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="himedia.project.bodamae.repository.PetRepository" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
 </beans>
