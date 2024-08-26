@@ -69,6 +69,7 @@
           <li class="nav-item">
             <a class="nav-link mypage-a" href="${context}mypage/list">
               <span class="userName fs-4">${sessionScope.user.user_name == null ? "이름":sessionScope.user.user_name}님</span>
+              <img class="mypage" alt="" src="${ resPath }img/user-icon.png">
             </a>
           </li>
           <li class="nav-item"><a class="nav-link logout" href="${context}user/logout">로그아웃</a></li>
