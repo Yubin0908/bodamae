@@ -57,16 +57,20 @@
       </form>
       
       <!-- 로그인 / 회원가입 -->
-      <!-- <ul class="navbar-nav navbar-userInfo">
-        <li class="nav-item"><a class="nav-link" href="login">로그인</a></li>
-        <li class="nav-item"><a class="nav-link" href="register">회원가입</a></li>
-      </ul> -->
+      <c:if test="${user == null}">
+        <ul class="navbar-nav navbar-userInfo">
+          <li class="nav-item"><a class="nav-link" href="${context}user/login">로그인</a></li>
+          <li class="nav-item"><a class="nav-link" href="${context}user/register">회원가입</a></li>
+        </ul>
+      </c:if>
       <!-- 내 계정 / 로그아웃 -->
-      <ul class="navbar-nav navbar-userInfo">
-        <li class="nav-item"><a class="nav-link mypage-a" href="mypage"><img class="mypage" alt="" src="${ resPath }img/user-icon.png"></a></li>
-        <li class="nav-item"><a class="nav-link logout" href="logout">로그아웃</a></li>
-      </ul>
-      
+      <c:if test="${user != null}">
+        <ul class="navbar-nav navbar-userInfo">
+          <li class="nav-item"><a class="nav-link mypage-a" href="${context}mypage/list"><img class="mypage" alt="" src="${ resPath }img/user-icon.png"></a></li>
+          <li class="nav-item"><a class="nav-link logout" href="${context}user/logout">로그아웃</a></li>
+        </ul>
+      </c:if>
+
     </div>
   </div>
 </nav>
