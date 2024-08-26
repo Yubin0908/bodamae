@@ -44,7 +44,7 @@ public interface CompanyRepository {
   List<Company> findByColumn(@Param("column") String column, @Param("other") String other);
 	
   // 상세 페이지 진입 시 cmp_code에 해당하는 업체 조회
-  @Select("select *from Company where cmp_code = #{cmp_code}")
+  @Select("select * from Company where cmp_code = #{cmp_code}")
   Optional<Company> findByCode(int cmp_code);
   
   
