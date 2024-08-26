@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import himedia.project.bodamae.dto.Company;
+import himedia.project.bodamae.dto.CompanyImage;
+import himedia.project.bodamae.repository.CompanyImageRepository;
 import himedia.project.bodamae.repository.CompanyRepository;
 import lombok.extern.slf4j.Slf4j;
 
@@ -18,11 +20,12 @@ import lombok.extern.slf4j.Slf4j;
 public class IndexController {
 	
 	private final CompanyRepository companyRepository;
-	// private final CompanyRepository companyRepository;
+	private final CompanyImageRepository imgRepository;
 	
 	@Autowired
-	public IndexController(CompanyRepository companyRepository) {
+	public IndexController(CompanyRepository companyRepository, CompanyImageRepository imgRepository) {
 		this.companyRepository = companyRepository;
+		this.imgRepository = imgRepository;
 	}
 	
 	@GetMapping("")
@@ -31,8 +34,10 @@ public class IndexController {
 		
 		// 반려동물 동반
 		List<Company> companyList = companyRepository.companyIndexList();
+		List<CompanyImage> companyUrlList = imgRepository.companyIndexUrlList();
 		log.info("장소 : {}",companyList);
 		model.addAttribute("companyList", companyList);
+		model.addAttribute("companyUrlList", companyUrlList);
 		return "index";
 	}
 }

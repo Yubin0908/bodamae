@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
-
 import himedia.project.bodamae.dto.CompanyImage;
 
 public interface CompanyImageRepository {
@@ -15,4 +14,8 @@ public interface CompanyImageRepository {
 	
 	@Select("select cmp_img_url from company_image where cmp_img_no = ${cmp_img_no} ")
 	Optional<String> findImgUrl(int cmp_img_no);
+	
+	// 인덱스 장소 이미지 4개 조회
+	@Select("select * from company_image limit 4")
+	List<CompanyImage> companyIndexUrlList();
 }

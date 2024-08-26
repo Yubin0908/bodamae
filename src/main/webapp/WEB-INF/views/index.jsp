@@ -18,12 +18,15 @@
     #banner { margin: 0 auto; }
     
     .sub-content { margin-bottom: 150px; text-align: center; }
+    .title-content { margin-bottom: 40px; }
     .title { display: inline; font-size: 40px; font-weight: bold; }
     .title-color { color: #599AD2; } 
     .title-two { margin-top: 15px; }
     
-    .cmp-list { margin: 0 auto; display: inline-block; height: 310px; }
+    .add { margin-bottom: 30px; }
     
+    .cmp { margin: 0 auto; display: inline-block; height: 310px; }
+    .cmp_img { height: 300px; }
   </style>
 </head>
 <body>
@@ -52,46 +55,46 @@
   <%-- content --%>
   <div class="content">
     <div class="sub-content">
-      <div>
+      <div class="title-content">
         <h1 class="title">반려인들의 이야기가 가득한</h1>
         <h1 class="title title-color"> 커뮤니티</h1>
         <h2 class="title-two">반려생활의 모든 이야기를 시작해보세요 !</h2>
       </div>
       
-<%--       <c:forEach var="pets" items="${ pets }">
-        <div class="card" style="width: 18rem;">
-          <img src="${ pets.pet_img }" class="card-img-top" alt="반려동물${ pets.pet_no }">
-          <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-      </c:forEach> --%>
+      <div class="add">
+        <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='${ context }community/pets'">더 보기 ></button>
+      </div>
+
     </div>
     
     <div class="sub-content">
-      <div>
+      <div class="title-content">
         <h1 class="title">반려동물 동반 장소를 </h1>
         <h1 class="title title-color">한 번에</h1>
         <h2 class="title-two">지도에서 장소 정보를 확인할 수 있어요 !</h2>
       </div>
       
-      <c:forEach var="companyList" items="${ companyList }">
-        <div class="cmp-list">
-          <div class="card" style="width: 18rem;">
-            <img src="${ companyList.cmp_img_no }" class="card-img-top" alt="업체_${ companyList.cmp_code }">
+      <div class="add">
+        <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='${ context }place'">더 보기 ></button>
+      </div>
+      
+      <div class="cmp-list">
+        
+        <c:forEach var="companyList" items="${ companyList }" varStatus="status">
+          <div class="cmp">
+            <div class="card" style="width: 18rem;">
+              <img src="${ companyUrlList[status.index].cmp_img_url }" class="card-img-top cmp_img" alt="업체_${ companyUrlList[status.index].cmp_img_no }">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title company-name">${ companyList.cmp_name  }</h5>
+              <p class="card-text company-address">서울 특별시 ${ companyList.cmp_address_gu }</p>
+              <a href="#" class="btn btn-info">상세보기 ></a>
+            </div>
           </div>
-          <div class="card-body">
-            <h5 class="company-name">${ companyList.cmp_name  }</h5>
-            <p class="company-address">서울 특별시 ${ companyList.cmp_address_gu }</p>
-            <a href="#" class="btn btn-info">상세보기 ></a>
-          </div>
-        </div>
-      </c:forEach>
+        </c:forEach>
+      </div>
       
     </div>
-  
   </div>
 </body>
 </html>
