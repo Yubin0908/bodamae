@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import himedia.project.bodamae.dto.Notice;
@@ -12,6 +13,7 @@ public interface NoticeRepositoty {
 	
 	// 등록
 	@Insert("insert into notice(user_id, notice_title, notice_content) values(#{user_id}, #{notice_title}, #{notice_content})")
+	@Options(useGeneratedKeys = true, keyProperty = "notice_no")
 	void save(Notice notice);
 	
 	// 전체 조회

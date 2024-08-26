@@ -1,8 +1,8 @@
 package himedia.project.bodamae.dto;
 
+import java.sql.Date;
+
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.type.Alias;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +12,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Company {
 	private int cmp_code;
+	private int theme_no;
+	private int cmp_img_no;
 	private String cmp_name;
 	private String cmp_address;
 	private String cmp_address_gu;
@@ -19,6 +21,7 @@ public class Company {
 	private String cmp_holidays;
 	private String operating_hours;
 	private String pet_restriction;
+	private Date cmp_date;
 	
 	public Company(String cmp_name, String cmp_address, String cmp_address_gu, String cmp_tel_no,
 			String cmp_holidays, String operating_hours, String pet_restriction) {
