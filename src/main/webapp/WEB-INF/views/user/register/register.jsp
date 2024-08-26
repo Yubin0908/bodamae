@@ -40,7 +40,7 @@
   
     <!-- content -->
     <div class="register">
-      <form action="${context}register" method="post" id="registrationForm">
+      <form action="${context}user/register" method="post" id="registrationForm">
         <div class="form-floating mb-3">
           <!-- oninput="validateForm()" -->
           <input type="text" class="form-control" onChange = "checkId()" 
@@ -147,9 +147,9 @@
                     }
                 }
             },
-            error:function(){
+/*             error:function(){
                 alert("에러입니다");
-            }
+            } */
         });
         };
 	

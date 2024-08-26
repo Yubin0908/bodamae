@@ -13,6 +13,7 @@ public interface PetRepository {
 
     @Select("select * from pet")
     List<Pet> findAllPets();
+<<<<<<< HEAD
 
     @Select("select * from pet order by pet_no desc limit #{limit} offset #{offset}")
     List<Pet> findAllPetsPaging(int limit, int offset);
@@ -22,5 +23,10 @@ public interface PetRepository {
 
     @Select("select * from pet where pet_no = #{pet_no}")
     Pet findPetByPetNo(int pet_no);
+=======
+    
+    @Select("select * from pet limit 4")
+    List<Pet> petIndexlList();
+>>>>>>> 3c4e866f84d1c1aa5b42abc8d152f61e13730797
 }
 

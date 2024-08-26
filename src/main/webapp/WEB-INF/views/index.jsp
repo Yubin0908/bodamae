@@ -15,9 +15,9 @@
   <style type="text/css">
     .content { width: 1200px; margin: 150px auto; }
     .table { margin: 0 auto; }
-    #banner { margin: 0 auto; }
+    #banner { margin: 0 auto; width: 1200px; }
     
-    .sub-content { margin-bottom: 150px; text-align: center; }
+    .sub-content { margin-bottom: 300px; text-align: center; }
     .title-content { margin-bottom: 40px; }
     .title { display: inline; font-size: 40px; font-weight: bold; }
     .title-color { color: #599AD2; } 
@@ -25,8 +25,8 @@
     
     .add { margin-bottom: 30px; }
     
-    .cmp { margin: 0 auto; display: inline-block; height: 310px; }
-    .cmp_img { height: 300px; }
+    .cnt { margin: 0 auto; display: inline-block; height: 310px; }
+    .cnt_img { height: 300px; }
   </style>
 </head>
 <body>
@@ -64,7 +64,21 @@
       <div class="add">
         <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='${ context }community/pets'">더 보기 ></button>
       </div>
-
+      
+      <div class="cnt-list">
+        <c:forEach var="petList" items="${ petList }" >
+          <div class="cnt">
+            <div class="card" style="width: 18rem;">
+              <img src="${ petList.pet_img }" class="card-img-top cnt_img" alt="${ petList.pet_name }">
+              <div class="card-body">
+                <h5 class="card-title">${ petList.pet_name  }</h5>
+                <p class="card-text">${ petList.user_id }</p>
+                <a href="${ context }}community/pets/" class="btn btn-info">상세보기 ></a>
+              </div>
+            </div>
+          </div>
+        </c:forEach>
+      </div>
     </div>
     
     <div class="sub-content">
@@ -78,23 +92,24 @@
         <button type="button" class="btn btn-outline-info btn-lg" onclick="location.href='${ context }place'">더 보기 ></button>
       </div>
       
-      <div class="cmp-list">
-        
+      <div class="cnt-list">
         <c:forEach var="companyList" items="${ companyList }" varStatus="status">
-          <div class="cmp">
+          <div class="cnt">
             <div class="card" style="width: 18rem;">
-              <img src="${ companyUrlList[status.index].cmp_img_url }" class="card-img-top cmp_img" alt="업체_${ companyUrlList[status.index].cmp_img_no }">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title company-name">${ companyList.cmp_name  }</h5>
-              <p class="card-text company-address">서울 특별시 ${ companyList.cmp_address_gu }</p>
-              <a href="#" class="btn btn-info">상세보기 ></a>
+              <img src="${ companyUrlList[status.index].cmp_img_url }" class="card-img-top cnt_img" alt="업체_${ companyUrlList[status.index].cmp_img_no }">
+              <div class="card-body">
+                <h5 class="card-title">${ companyList.cmp_name  }</h5>
+                <p class="card-text">서울 특별시 ${ companyList.cmp_address_gu }</p>
+                <a href="${ context }place/" class="btn btn-info">상세보기 ></a>
+              </div>
             </div>
           </div>
         </c:forEach>
       </div>
-      
     </div>
   </div>
+  
+  <%-- footer --%>
+  <jsp:include page="/WEB-INF/views/user/common/footer.jsp" />
 </body>
 </html>

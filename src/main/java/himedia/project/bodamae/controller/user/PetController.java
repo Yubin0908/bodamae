@@ -32,7 +32,7 @@ public class PetController {
             offSet = (Integer.parseInt(page) - 1) * limit;
         }
 
-        model.addAttribute("pets", petRepository.findAllPets());
+        model.addAttribute("pets", petRepository.findAllPetsPaging(limit, offSet));
         model.addAttribute("paging", new Pagination(petRepository.countAllPets(), page, limit, 10));
         return "user/community/pet/petList";
     }
