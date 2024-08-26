@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import himedia.project.bodamae.dto.Notice;
 import himedia.project.bodamae.repository.NoticeRepositoty;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
+@Slf4j
 @RequestMapping("notice")
 public class UserNoticeController {
 	
@@ -39,10 +41,13 @@ public class UserNoticeController {
 		
 		try {
 			Notice notice = noticeRepositoty.findById(notice_no).get();
+			int notice_cnt = notice.getNotice_hits() + 1;
+			
+			noticeRepositoty.updateCnt(notice_no, notice_cnt);
+			
 			model.addAttribute("notice", notice);
 		} catch (Exception e) { }
 		
 		return "user/notice/noticeDetail";
 	}
-	
 }

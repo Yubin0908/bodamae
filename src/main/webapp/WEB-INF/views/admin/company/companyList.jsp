@@ -1,26 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:url var="resPath" value="/resources/" />
-<c:url var="context" value="/" />
-<!DOCTYPE html>
-<html>
+		<c:url var="resPath" value="/resources/" />
+		<c:url var="context" value="/" />
+		<!DOCTYPE html>
+		<html>
 
-<head>
-	<meta charset="UTF-8">
-	<title>보담 愛-관리자</title>
-    <link href="${ resPath }css/webSettings.css" rel="stylesheet">
-    <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
-    <link href="${ resPath }css/admin-header.css" rel="stylesheet">
-    <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
-  
-	<style type="text/css">
-		/* input x자 표시 없애기 크롬(https://wazacs.tistory.com/33) */
-		input::-webkit-search-decoration,
-		input::-webkit-search-cancel-button,
-		input::-webkit-search-results-button,
-		input::-webkit-search-results-decoration {
-			display: none;
-		}
+		<head>
+			<meta charset="UTF-8">
+			<title>보담 愛-관리자</title>
+			<link href="${ resPath }css/webSettings.css" rel="stylesheet">
+    	<link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
+ 	  	<link href="${ resPath }css/admin-header.css" rel="stylesheet">
+   	  <script src="${ resPath }js/bootstrap.bundle.min.js" ></script>
+   	  
+			<style type="text/css">
+				/* input x자 표시 없애기 크롬(https://wazacs.tistory.com/33) */
+				input::-webkit-search-decoration,
+				input::-webkit-search-cancel-button,
+				input::-webkit-search-results-button,
+				input::-webkit-search-results-decoration {
+					display: none;
+				}
 
 		.cmp-list {
 			margin: 0 auto;
@@ -123,7 +123,6 @@
 								<th>업체명</th>
 								<th>주소_구</th>
 								<th>전화번호</th>
-								<th>테마</th>
 								<th>상태</th>
 							</tr>
 						</thead>
@@ -134,7 +133,6 @@
 										<td>${ companyList.cmp_name }</td>
 										<td>${ companyList.cmp_address_gu }</td>
 										<td>${ companyList.cmp_tel_no }</td>
-										<td></td>
 										<td></td>
 								</tr>
 								</c:forEach>
