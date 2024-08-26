@@ -60,7 +60,7 @@
       <c:if test="${user == null}">
         <ul class="navbar-nav navbar-userInfo">
           <li class="nav-item"><a class="nav-link" href="${context}user/login">로그인</a></li>
-          <li class="nav-item"><a class="nav-link" href="${context}user/register">회원가입</a></li>
+          <li class="nav-item"><a class="nav-link" href="${context}user/checkRegister">회원가입</a></li>
         </ul>
       </c:if>
       <!-- 내 계정 / 로그아웃 -->

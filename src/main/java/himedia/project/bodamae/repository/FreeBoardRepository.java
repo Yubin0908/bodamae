@@ -1,6 +1,7 @@
 package himedia.project.bodamae.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -13,7 +14,7 @@ import himedia.project.bodamae.dto.FreeBoard;
 public interface FreeBoardRepository {
 
     @Select("select * from free_board")
-    List<FreeBoard> findAll();
+    List<FreeBoard> boardList();
 
     @Select("select count(*) as count from free_board")
     int board_count();
@@ -28,8 +29,8 @@ public interface FreeBoardRepository {
     int updateWrite(@Param("board_title") String board_title, @Param("board_content") String board_content, @Param("board_no") int board_no);
     
     @Delete("delete from free_board where board_no = #{board_no}")
-    int deleteBoard(@Param("board_no") int board_no);
+    boolean deleteBoard(@Param("board_no") String board_no);
    
     @Select("select * from free_board where board_no = #{board_no}")
-    FreeBoard boardDetail(@Param("board_no") int board_no);
+    Optional<FreeBoard> boardDetail(int board_no);
 }

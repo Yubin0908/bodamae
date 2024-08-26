@@ -29,7 +29,7 @@
           <li class="menu-list"><a class="menu-anchor" href="${ context }admin/userList">회원 관리</a></li>
           <li class="menu-list"><a class="menu-anchor" href="${ context }admin/adminList">관리자 관리</a></li>
           <li class="menu-list"><a class="menu-anchor" href="${ context }admin/noticeList">공지사항 관리</a></li>
-          <li class="menu-list"><a class="menu-anchor" href="${ context }admin/company">업체 관리</a></li>
+          <li class="menu-list"><a class="menu-anchor" href="${ context }admin/company/companyList">업체 관리</a></li>
           <li class="menu-list"><a class="menu-anchor" href="${ context }admin/logout">로그아웃</a></li>
         </ul>
       </div>

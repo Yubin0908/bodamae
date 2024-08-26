@@ -140,7 +140,7 @@
                     </td>
                     <td>${ noticeList.notice_hits }</td>
                     <td>
-                      <a href="${ context }admin/noticeList/edit/${noticeList.notice_no}">
+                      <a href="${ context }admin/noticeList/edit/${ noticeList.notice_no }">
                         <button type="button" class="btn btn-outline-info" onclick="location.href='${ context }admin/notice/${ noticeList.notice_no }/'">수정</button>
                       </a>
                       

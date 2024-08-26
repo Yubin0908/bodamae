@@ -28,7 +28,12 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
-  	<bean id="freeBoardRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	<bean id="CompanyImageRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="himedia.project.bodamae.repository.CompanyImageRepository" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="freeBoardRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="himedia.project.bodamae.repository.FreeBoardRepository" />
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
@@ -52,4 +57,5 @@
     <property name="mapperInterface" value="himedia.project.bodamae.repository.PetRepository" />
     <property name="sqlSessionFactory" ref="sqlSessionFactory" />
   </bean>
+
 </beans>

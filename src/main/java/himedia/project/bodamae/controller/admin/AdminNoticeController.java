@@ -89,7 +89,6 @@ public class AdminNoticeController {
 		return "redirect:/admin/noticeList/{notice_no}";
 	}
 	
-	
 	// [공지사항 등록 페이지]
 	@GetMapping("/add")
 	public String noticeAddForm(Model model) {
