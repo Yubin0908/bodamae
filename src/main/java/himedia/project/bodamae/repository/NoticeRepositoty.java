@@ -2,11 +2,14 @@ package himedia.project.bodamae.repository;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.transaction.annotation.Transactional;
+
 import himedia.project.bodamae.dto.Notice;
 
 public interface NoticeRepositoty {
@@ -19,6 +22,11 @@ public interface NoticeRepositoty {
 	// 전체 조회
 	@Select("select * from notice")
 	List<Notice> noticeList();
+	
+	// 조회수
+	@Transactional
+	@Select("update notice set notice_hits = #{ notice_hits } where notice_no = #{ notice_no }")
+	List<Notice> updateCnt(@Param("notice_no") int notice_no, @Param("notice_hits") int notice_hits);
 	
 	// 게시글 번호 찾기
 	@Select("select * from notice where notice_no like #{ notice_no }")
