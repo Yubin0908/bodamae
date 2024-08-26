@@ -13,6 +13,7 @@
     	<link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
  	  	<link href="${ resPath }css/admin-header.css" rel="stylesheet">
    	  <script src="${ resPath }js/bootstrap.bundle.min.js" ></script>
+   	  
 			<style type="text/css">
 				/* input x자 표시 없애기 크롬(https://wazacs.tistory.com/33) */
 				input::-webkit-search-decoration,
@@ -124,7 +125,7 @@
 				<div class="search-group">
 					<a href="${ context }admin/company/companyAdd"><button class="btn-new-company">신규 등록</button></a>
 					<!-- searchForm -->
-					<form class="category-search-box" action="${ context }">
+					<form class="category-search-box" action="${ context }admin/company/search" method="get" >
 						<label class="cmp-category" for="column"></label>
 						<select id="column" name="column">
 							<option selected>선택</option>
@@ -153,12 +154,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="companyLIst" items="companyLIst">
+							<c:forEach var="companyList" items="${ companyList }">
 								<tr>
-									<td>${ companyLIst.cmp_code }</td>
-										<td>${ companyLIst.cmp_name }</td>
-										<td>${ companyLIst.cmp_address_gu }</td>
-										<td>${ companyLIst.cmp_tel_no }</td>
+									<td>${ companyList.cmp_code }</td>
+										<td>${ companyList.cmp_name }</td>
+										<td>${ companyList.cmp_address_gu }</td>
+										<td>${ companyList.cmp_tel_no }</td>
 										<td></td>
 										<td></td>
 								</tr>
