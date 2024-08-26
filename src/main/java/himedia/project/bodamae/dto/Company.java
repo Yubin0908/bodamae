@@ -3,12 +3,7 @@ package himedia.project.bodamae.dto;
 import java.sql.Date;
 
 import org.apache.ibatis.annotations.Mapper;
-<<<<<<< HEAD
-import org.apache.ibatis.type.Alias;
-import lombok.AllArgsConstructor;
-=======
 
->>>>>>> honghong
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

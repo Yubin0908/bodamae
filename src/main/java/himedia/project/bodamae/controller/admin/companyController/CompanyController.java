@@ -65,10 +65,9 @@ public class CompanyController {
 	}
 	
 	// 업체 상세 페이지 ==================================
-	@GetMapping("/companyDetail") 
+	@GetMapping("/companyDetail/{cmp_code}") 
 	public String companyDetail() { 
-		
-		return "admin/company/compayDetail";
+		return "admin/company/companyDetail";
 	}
 
 	// 업체 수정 페이지
