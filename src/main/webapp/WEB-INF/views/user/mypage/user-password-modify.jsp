@@ -49,6 +49,8 @@
 
     .list-table > ul {
       text-align: center;
+      width: 1100px;
+      padding: 0;
     }
 
     .list-table > ul > li {
@@ -118,6 +120,12 @@
   </style>
 </head>
 <body>
+  <c:if test="${sessionScope.user == null}">
+    <script>
+      alert('정상적인 접근이 아닙니다. 로그인 이후 다시 이용해 주세요.');
+      location.href = '${context}user/login';
+    </script>
+  </c:if>
   <%-- header --%>
   <jsp:include page="../common/navar.jsp" />
 
@@ -138,8 +146,6 @@
         </ul>
       </div>
     </div>
-
-
   </div>
     <div class="form_wrap">
       <div class="notion-msg">
@@ -147,9 +153,9 @@
         <p>변경할 비밀번호를 입력하세요.</p>
       </div>
       <div class="form">
-        <form action="${context}mypage/passwordModify" method="post">
-          <input type="hidden" name="user_id" value="admin001">
-          <input type="password" name="current_pw" placeholder="기존 비밀번호">
+        <form action="${context}mypage/userPasswordModify" method="post">
+          <input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
+          <input type="password" name="current_pw" placeholder="기존 비밀번호" autofocus>
           <input type="password" name="new_pw" placeholder="변경할 비밀번호">
           <input type="password" name="new_pw_chk" placeholder="변경할 비밀번호 확인">
           <br>
@@ -191,7 +197,7 @@
       const current_pw = document.querySelector('input[name="current_pw"]').value;
       const user_id = document.querySelector('input[type="hidden"]').value;
 
-      if (current_pw !== null && new_pw !== null && new_pw_chk !== null && new_pw === new_pw_chk) {
+      if (current_pw && new_pw && new_pw_chk && new_pw === new_pw_chk) {
         $.ajax({
           url: '${context}mypage/userPasswordCheck',
           method: 'post',
@@ -202,8 +208,19 @@
           dataType: 'html',
           success: function (data, status) {
             if (data === 'pass') {
-              alert('비밀번호 변경이 완료되었습니다. 다시 로그인 바랍니다.');
-              location.href = '${context}mypage/list';
+              $.ajax({
+                url: '${context}mypage/userPasswordModify',
+                method: 'post',
+                data: {
+                  user_id: user_id,
+                  user_password: new_pw
+                },
+                dataType: 'html',
+                success: function (data) {
+                  alert('비밀번호 변경이 완료되었습니다. 다시 로그인 바랍니다.');
+                  location.href = '${context}user/login';
+                }
+              });
             }
           },
           error: function () {

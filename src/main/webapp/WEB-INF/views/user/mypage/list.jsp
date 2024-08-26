@@ -32,9 +32,13 @@
       letter-spacing: 2px;
     }
 
-    .content-tab {
+    .container {
       width: 1100px;
       margin: 0 auto;
+    }
+
+    .content-tab {
+      width: 100%;
     }
 
     .list-table {
@@ -48,6 +52,8 @@
 
     .list-table > ul {
       text-align: center;
+      width: 100%;
+      padding: 0;
     }
 
     .list-table > ul > li {
@@ -81,7 +87,7 @@
     }
 
     .table {
-      width: 1100px;
+      width: 100%;
       margin: 20px auto;
       text-align: right;
       border-collapse: collapse;
@@ -123,6 +129,12 @@
   </style>
 </head>
 <body>
+  <c:if test="${sessionScope.user == null}">
+    <script>
+      alert('정상적인 접근이 아닙니다. 로그인 이후 다시 이용해 주세요.');
+      location.href = '${context}user/login';
+    </script>
+  </c:if>
   <%-- header --%>
   <jsp:include page="../common/navar.jsp" />
 
@@ -135,40 +147,49 @@
       </p>
     </div>
     <br>
-    <div class="content-tab">
-      <div class="list-table">
-        <ul>
-          <li class="list-table-list"><a href="${context}mypage/list">나의 작성글</a></li>
-          <li class="list-table-list"><a href="${context}mypage/pwCheck">회원정보수정</a></li>
-        </ul>
+    <div class="container">
+      <div class="content-tab">
+        <div class="list-table">
+          <ul>
+            <li class="list-table-list"><a href="${context}mypage/list">나의 작성글</a></li>
+            <li class="list-table-list"><a href="${context}mypage/pwCheck">회원정보수정</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <table class="table table-hover table-bordered results">
-      <colgroup>
-        <col style="width: 10%">
-        <col style="width: 60%">
-        <col style="width: 10%">
-        <col style="width: 20%">
-      </colgroup>
-      <thead>
+      <table class="table table-hover table-bordered results">
+        <colgroup>
+          <col style="width: 10%">
+          <col style="width: 60%">
+          <col style="width: 10%">
+          <col style="width: 20%">
+        </colgroup>
+        <thead>
         <tr>
           <th>글번호</th>
           <th>제 목</th>
           <th>조회수</th>
           <th>작성일자</th>
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
+        <c:if test="${freeBoards.size() == 0}">
+          <tr>
+            <td colspan="4">
+              <b>등록한 게시물이 아직 없어요. :)</b>
+            </td>
+          </tr>
+        </c:if>
         <c:forEach var="freeboard" items="${freeBoards}">
           <tr>
             <td>${freeboard.board_no}</td>
             <td><a href="#">${freeboard.board_title}</a></td>
             <td>${freeboard.board_hits}</td>
-            <td><fmt:formatDate value="${freeboard.board_date}" pattern="YYYY-MM-dd hh분 mm초" /> </td>
+            <td><fmt:formatDate value="${freeboard.board_date}" pattern="YYYY-MM-dd hh분 mm초"/></td>
           </tr>
         </c:forEach>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
     <div class="pagination">
       <c:if test="${paging.startPage > paging.blockSize}">
         <a href="${context}mypage/list?page=${paging.startPage - 1}">

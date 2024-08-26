@@ -25,6 +25,33 @@
 .board-list-content {
 	margin: 100px;
 }
+
+.board-table {
+	margin: 50px;
+}
+
+.display-flex {
+	display: flex;
+	align-items: center;
+}
+
+.board-info {
+	display: inline;
+	margin-right: 20px;
+}
+
+.board-btn {
+	display: inline;
+	margin-left: auto;
+}
+
+.board-content {
+	margin-top: 20px;
+}
+
+.board-content {
+	margin: 50px 0;
+}
 </style>
 </head>
 
@@ -41,13 +68,24 @@
 					<h3>자유 게시판</h3>
 				</div>
 
+				<div class="board-table">
+					<h3>${ freeBoard.board_title }</h3>
+					<div class="display-flex">
+						<div class="board-info">
+							<span class="board-info">${freeBoard.user_id}</span> 
+							<span class="board-info">${freeBoard.board_date}</span> 
+							<span class="board-info">${freeBoard.board_hits}</span>
+						</div>
+					</div>
+					<div class="board-content">
+						<p>${ freeBoard.board_content }</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	<!--  footer -->
 	<jsp:include page="/WEB-INF/views/user/common/footer.jsp" />
 </body>
-
-
 
 </html>
