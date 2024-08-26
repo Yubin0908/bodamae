@@ -13,5 +13,8 @@ public interface PetRepository {
 
     @Select("select * from pet")
     List<Pet> findAllPets();
+    
+    @Select("select * from pet limit 4")
+    List<Pet> petIndexlList();
 }
 
