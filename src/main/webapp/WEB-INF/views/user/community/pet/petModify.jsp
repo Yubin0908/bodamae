@@ -111,7 +111,7 @@
             <br>
             <span class="sub-text">(최대 1장 등록 가능)</span>
           </td>
-          <td><input type="file" name="pet_img_form" accept="image/**"></td>
+          <td><input type="file" name="pet_img_form" accept="image/**" required></td>
           <input type="hidden" name="pet_img" value="${pet.pet_img}">
         </tr>
         <tr>
@@ -120,7 +120,7 @@
             <br>
             <span class="sub-text">(최대 3장 등록 가능)</span>
           </td>
-          <td><input type="file" name="pet_detail_img_form" accept="image/**" multiple></td>
+          <td><input type="file" name="pet_detail_img_form" accept="image/**" multiple required></td>
           <input type="hidden" name="pet_detail_img" value="${pet.pet_detail_img}">
         </tr>
         <tr>
@@ -144,7 +144,13 @@
     const img_form = $('input[name="pet_img_form"]');
     const img = $('input[name="pet_img"]');
     const pet_detail_img_form = $('input[name="pet_detail_img_form"]');
-    const pet_detail_img = $('input[name="pet_detail_img"]')
+    const pet_detail_img = $('input[name="pet_detail_img"]');
+    /* modify tempolary */
+    const pet_img_temp = img.val();
+    const pet_detail_temp = pet_detail_img.val();
+    /* form 소거 */
+    pet_detail_img.val('');
+    img.val('');
 
     img_form.on('change', function (event) {
       const file = event.target.files[0];
@@ -182,7 +188,6 @@
             processData: false,
             contentType: false,
             success: function (res) {
-              console.log(res);
               pet_detail_img.val(pet_detail_img.val() +','+ res.data.url);
             },
             error: function (err) {
