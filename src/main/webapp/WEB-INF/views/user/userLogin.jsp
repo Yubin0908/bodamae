@@ -110,8 +110,8 @@
         <div class="form_wrap">
           <form action="${context}user/login" method="post">
             <div class="txt_box" id="txt_box">
-              <div><input class="user_id" name="user_id" type="text" id="user_id" placeholder="ID" minlength="5" maxlength="15" autofocus ></div>
-              <div><input class="user_password" name="user_password" id="user_password" type="password" placeholder="PW" minlength="8" maxlength="20"></div>
+              <div><input class="user_id" name="user_id" type="text" id="user_id" placeholder="ID" minlength="5" maxlength="15" autofocus required></div>
+              <div><input class="user_password" name="user_password" id="user_password" type="password" placeholder="PW" minlength="8" maxlength="20" required></div>
             </div>
             <div class="btn_box">
               <button class="btn_sign_up" type="button" onclick="location.href='${context}user/checkRegister'">sign-up</button>
