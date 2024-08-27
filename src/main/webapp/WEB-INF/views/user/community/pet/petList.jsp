@@ -50,6 +50,26 @@
     .arrow {
       width: 20px;
     }
+
+    #community_text p {
+      margin-top: 50px;
+      margin-bottom: 40px;
+      font-size: 1.75rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .btn-new-pet {
+      border: none;
+      border-radius: 10px;
+      padding: 15px 50px;
+      background-color: whitesmoke;
+      font-weight: bold;
+    }
+
+    .btn-new-pet:hover {
+      background-color: #dddddd;
+    }
   </style>
 </head>
 <body>
@@ -58,18 +78,11 @@
 
 
 	<div class="content">
-<%--		<div class="search-group">--%>
-<%--			<!-- searchForm -->--%>
-<%--			<form class="category-search-box" action="${ context }">--%>
-<%--				<label class="cmp-category" for="column"></label><label for="search"></label>--%>
-<%--				<input type="search" name="search" id="search">--%>
-<%--        <input type="submit" id="submit" value="검색">--%>
-<%--			</form>--%>
-
-<%--			<button class="btn-new-pet" href="#">등록</button>--%>
-<%--			</a>--%>
-<%--		</div>--%>
-<%--		<hr />--%>
+		<div class="search-group">
+      <div id="community_text"><p>커뮤니티 > 반려동물 자랑</p></div>
+			<button class="btn-new-pet" onclick="location.href='${context}community/pets/write'">등  록</button>
+		</div>
+		<hr />
 
 		<div class="content">
       <c:forEach var="pet" items="${pets}">

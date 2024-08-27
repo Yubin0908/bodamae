@@ -42,7 +42,7 @@ public class PetController {
     @PostMapping("/write")
     public String petWritePost(@ModelAttribute("pet") Pet pet) {
         boolean result = petRepository.petAdd(pet);
-        return "redirect:community/pets";
+        return "redirect:/community/pets";
     }
 
     @GetMapping("/modify/{pet_no}")
