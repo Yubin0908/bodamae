@@ -76,7 +76,7 @@
         <div class="card">
           <img src="${pet.pet_img}" class="card-img-top" alt="${pet.pet_name}">
           <div class="card-body">
-            <a class="cardA" href="${ context }community/pets/detail/${pet.pet_no}">
+            <a class="cardA" href="${ context }community/pets/${pet.pet_no}">
               <h5 class="card-title">${pet.pet_name}</h5>
               <p class="card-text">작성자: ${pet.user_id}<br>등록일: <fmt:formatDate value="${pet.pet_date}" pattern="YYYY-MM-dd hh분 mm초" /></p>
             </a>

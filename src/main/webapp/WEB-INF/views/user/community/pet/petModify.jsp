@@ -91,7 +91,7 @@
       <p>반려동물 자랑 하기</p>
     </div>
     <hr>
-    <form action="${context}community/pets/write" method="post">
+    <form action="${context}community/pets/modify" method="post">
       <table>
         <colgroup>
           <col style="width: 20%">
@@ -129,6 +129,7 @@
         </tr>
       </table>
       <input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
+      <input type="hidden" name="pet_no" value="${pet.pet_no}">
       <hr>
       <div class="btn-group">
         <input type="submit" value="글등록">

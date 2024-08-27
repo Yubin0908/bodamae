@@ -1,8 +1,7 @@
 package himedia.project.bodamae.repository;
 
 import himedia.project.bodamae.dto.Pet;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -15,7 +14,7 @@ public interface PetRepository {
     List<Pet> findAllPets();
 
     @Select("select * from pet order by pet_no desc limit #{limit} offset #{offset}")
-    List<Pet> findAllPetsPaging(int limit, int offset);
+    List<Pet> findAllPetsPaging(@Param("limit") int limit, @Param("offset") int offset);
 
     @Select("select count(*) count from pet")
     int countAllPets();
@@ -25,5 +24,11 @@ public interface PetRepository {
 
     @Select("select * from pet limit 4")
     List<Pet> petIndexlList();
+
+    @Delete("delete from pet where pet_no = #{pet_no}")
+    boolean deletePetByPetNo(int pet_no);
+
+    @Update("update pet set pet_img = #{pet_img}, pet_name = #{pet_name}, pet_detail_img = #{pet_detail_img}, pet_date = now(), pet_title = #{pet_title}, pet_info = #{pet_info} where pet_no = #{pet_no}")
+    boolean updatePet(Pet pet);
 }
 

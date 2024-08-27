@@ -7,10 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/community/pets")
@@ -48,11 +45,29 @@ public class PetController {
         return "redirect:community/pets";
     }
 
-    @GetMapping("/modify")
-    public String petModify(Model model, int pet_no) {
+    @GetMapping("/modify/{pet_no}")
+    public String petModify(Model model, @PathVariable int pet_no) {
         model.addAttribute("pet", petRepository.findPetByPetNo(pet_no));
-
         System.out.println(petRepository.findPetByPetNo(pet_no));
         return "user/community/pet/petModify";
+    }
+
+    @PostMapping("/modify")
+    public String petModifyPost(@ModelAttribute("pet") Pet pet) {
+        int pet_no = pet.getPet_no();
+        boolean result = petRepository.updatePet(pet);
+        return "redirect:"+pet_no;
+    }
+
+    @GetMapping("/delete/{pet_no}")
+    public String petDelete(@PathVariable int pet_no) {
+        boolean result = petRepository.deletePetByPetNo(pet_no);
+        return "redirect:/community/pets";
+    }
+
+    @GetMapping("/{pet_no}")
+    public String petDetail(@PathVariable("pet_no") int pet_no, Model model) {
+        model.addAttribute("pet", petRepository.findPetByPetNo(pet_no));
+        return "user/community/pet/petDetail";
     }
 }
