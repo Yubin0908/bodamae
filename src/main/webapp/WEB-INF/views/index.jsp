@@ -73,7 +73,7 @@
               <div class="card-body">
                 <h5 class="card-title">${ petList.pet_name  }</h5>
                 <p class="card-text">${ petList.user_id }</p>
-                <a href="${ context }}community/pets/" class="btn btn-info">상세보기 ></a>
+                <a href="${ context }community/pets/${ petList.pet_no }" class="btn btn-info">상세보기 ></a>
               </div>
             </div>
           </div>

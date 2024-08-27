@@ -40,15 +40,15 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav navbar-menu">
-        <li class="nav-item"><a class="nav-link" href="place" aria-current="page">장소</a></li>
-        <li class="nav-item"><a class="nav-link" href="notice" aria-current="page">공지사항</a></li>
+        <li class="nav-item"><a class="nav-link" href="${ context }place" aria-current="page">장소</a></li>
+        <li class="nav-item"><a class="nav-link" href="${ context }notice" aria-current="page">공지사항</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" 
           aria-expanded="false">커뮤니티</a>
           
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="community/pets">반려동물 자랑</a></li>
-            <li><a class="dropdown-item" href="community/free_board">자유게시판</a></li>
+            <li><a class="dropdown-item" href="${ context }community/pets">반려동물 자랑</a></li>
+            <li><a class="dropdown-item" href="${ context }community/free_board">자유게시판</a></li>
           </ul>
       </ul>
       
