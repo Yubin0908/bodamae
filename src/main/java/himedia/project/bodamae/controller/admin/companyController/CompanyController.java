@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import himedia.project.bodamae.dto.Company;
+import himedia.project.bodamae.dto.CompanyImage;
 import himedia.project.bodamae.repository.CompanyImageRepository;
 import himedia.project.bodamae.repository.CompanyRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +36,7 @@ public class CompanyController {
 	@GetMapping("/companyList")
 	public String companyList(Model model) {
 
+		// 업체리스트를 불러오기 위한 companyList()메소드 실행
 		List<Company> companyList = companyRepository.companyList();
 		model.addAttribute("companyList", companyList);
 
@@ -46,12 +48,12 @@ public class CompanyController {
 	public String search(Model model, @RequestParam(value = "column") String column,
 			@RequestParam(value = "search") String search) {
 
-		// 검색을 아무것도 적지 않았을 때는 전체리스트를 조회할 수 있도록 함
+		// 검색을 아무것도 적지 않았을 때는 전체리스트를 조회
 		if (column.equals("선택") && search == "") {
 			List<Company> companyList = companyRepository.companyList();
 			model.addAttribute("companyList", companyList);
 			return "admin/company/companyList";
-		// 선택에 두고 검색했을 경우 모든 컬럼에 해당 데이터가 있는지 확인
+		// 선택에 두고 검색했을 경우 모든 컬럼에 해당 데이터가 있는지 조건확인
 		} else if (column.equals("선택")) {
 			List<Company> findByChoose = companyRepository.findByChoose(search);
 			model.addAttribute("companyList", findByChoose);
@@ -66,10 +68,24 @@ public class CompanyController {
 
 	// 업체 신규 등록 페이지 =============================
 	@GetMapping("/companyAdd")
-	public String companyAdd(@ModelAttribute("company") Company company) {
-		
+	public String companyAdd() {
 		return "admin/company/companyAdd";
 	}
+	
+	// 신규 등록 후 페이지 ===============================
+	@PostMapping("/companyList")
+	public String add(@ModelAttribute("company") Company company, @RequestParam("cmp_img_url") String cmp_img_url) {
+		log.info("저장된 URL >> " + cmp_img_url);
+		log.info("저장된 객체의 업체 이름 >> " + company.getCmp_name());
+		
+		// 이미지 저장
+		CompanyImage saveImg = imgRepository.saveImg(cmp_img_url);
+		// 저장된 이미지의 번호가져와서 객체와 함께 전달
+		companyRepository.saveCompany(saveImg.getCmp_img_no(), company);
+		
+		return "redirect:companyList";
+	}
+	
 	
 	// 업체 상세 페이지 ==================================
 	  @GetMapping("/companyDetail/{cmp_code}")
@@ -80,7 +96,6 @@ public class CompanyController {
 	  	
 	  	return "admin/company/companyDetail"; 
 	  }
-	 
 
 	// 업체 수정 페이지 ==================================
 	@GetMapping("/companyEdit/{cmp_code}")

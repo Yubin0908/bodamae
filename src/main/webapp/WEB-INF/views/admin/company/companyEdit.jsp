@@ -62,7 +62,7 @@
                   <input name="cmp_code" type="text" id="cmp_code" value="${ cmp.cmp_code }" disabled="disabled">
                 </div>
                 <div class="cmp-name">
-                  <label for="cmp_name">업체 주소 : </label>
+                  <label for="cmp_name">업체 이름 : </label>
                   <input name="cmp_name" type="text" id="cmp_name" value="${ cmp.cmp_name }" >
                 </div>
                 <div class="cmp-address">
