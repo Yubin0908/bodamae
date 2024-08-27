@@ -20,7 +20,7 @@
   .searchvar { width: 400px; height: 70px; border-radius: 40px; }
   .navbar-searchvarForm { margin: 0; line-height: 100px; } 
   
-  .mypage { width: 45px; margin: auto; }
+  .mypage { width: 40px; margin: auto; }
   .nav-item { font-size: 22px; font-weight: bold; line-height: 70px; }
   .mypage-a { display: inline-block; }
 </style>
@@ -66,11 +66,15 @@
       <!-- 내 계정 / 로그아웃 -->
       <c:if test="${user != null}">
         <ul class="navbar-nav navbar-userInfo">
-          <li class="nav-item"><a class="nav-link mypage-a" href="${context}mypage/list"><img class="mypage" alt="" src="${ resPath }img/user-icon.png"></a></li>
+          <li class="nav-item">
+            <a class="nav-link mypage-a" href="${context}mypage/list">
+              <span class="userName fs-4">${sessionScope.user.user_name == null ? "이름":sessionScope.user.user_name}님</span>
+              <img class="mypage" alt="" src="${ resPath }img/user-icon.png">
+            </a>
+          </li>
           <li class="nav-item"><a class="nav-link logout" href="${context}user/logout">로그아웃</a></li>
         </ul>
       </c:if>
-
     </div>
   </div>
 </nav>

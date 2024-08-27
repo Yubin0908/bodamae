@@ -52,4 +52,10 @@
 	  <property name="mapperInterface" value="himedia.project.bodamae.repository.MypageRepository" />
 	  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+
+  <bean id="petRepository" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="himedia.project.bodamae.repository.PetRepository" />
+    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+  </bean>
+
 </beans>

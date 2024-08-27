@@ -153,7 +153,7 @@ public class AdminController {
             model.addAttribute("failMsg", new DropUserException(e.getMessage()));
         }
 
-        return "redirect:/admin/user";
+        return "redirect:/admin/userList";
     }
 
     @GetMapping("/admin/logout")
