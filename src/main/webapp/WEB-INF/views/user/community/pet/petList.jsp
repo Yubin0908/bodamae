@@ -18,7 +18,7 @@
     }
 
     .card {
-      width: calc(1100px / 4);
+      width: calc(95% / 4);
       float: left;
       margin: 5px;
     }
@@ -26,6 +26,29 @@
     .card img {
       width: 100%;
       height: 200px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .card-text {
+      color: gray;
+    }
+
+    .pagination {
+      display: inline-block;
+      width: 1200px;
+      text-align: center;
+    }
+
+    .pagination b {
+      font-weight: bold;
+    }
+
+    .arrow {
+      width: 20px;
     }
   </style>
 </head>
@@ -53,15 +76,38 @@
         <div class="card">
           <img src="${pet.pet_img}" class="card-img-top" alt="${pet.pet_name}">
           <div class="card-body">
-            <a class="cardA" href="${ context }community/pets/detail/${pet.pet_no}">
+            <a class="cardA" href="${ context }community/pets/${pet.pet_no}">
               <h5 class="card-title">${pet.pet_name}</h5>
-              <p class="card-text">${pet.user_id} | <fmt:formatDate value="${pet.pet_date}" pattern="YYYY-MM-dd hh분 mm초" /></p>
+              <p class="card-text">작성자: ${pet.user_id}<br>등록일: <fmt:formatDate value="${pet.pet_date}" pattern="YYYY-MM-dd hh분 mm초" /></p>
             </a>
           </div>
         </div>
       </c:forEach>
+
+      <div class="pagination">
+        <c:if test="${paging.startPage > paging.blockSize}">
+          <a href="${context}community/pets?page=${paging.startPage - 1}">
+            <img class="arrow" src="${resPath}img/left-arrow-icon.png" alt="">
+          </a>
+        </c:if>
+        <c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}">
+          <c:if test="${paging.currentPage == i}">
+            <b>${i}</b>
+          </c:if>
+          <c:if test="${paging.currentPage != i}">
+            <a href="${context}community/pets?page=${i}">${i}</a>
+          </c:if>
+        </c:forEach>
+        <c:if test="${paging.endPage < paging.totalPages}">
+          <a href="${context}community/pets?page=${paging.startPage + 10}">
+            <img class="arrow" src="${resPath}img/right-arrow-icon.png" alt="">
+          </a>
+        </c:if>
+      </div>
 		</div>
 	</div>
+  <br>
+  <br>
 	<!--  footer -->
 	<jsp:include page="/WEB-INF/views/user/common/footer.jsp" />
 </body>
