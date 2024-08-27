@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -48,7 +50,6 @@ public class CompanyController {
 		if (column.equals("선택") && search == "") {
 			List<Company> companyList = companyRepository.companyList();
 			model.addAttribute("companyList", companyList);
-			log.info("아무 것도 입력하지 않았을 때 실행" + companyList);
 			return "admin/company/companyList";
 		// 선택에 두고 검색했을 경우 모든 컬럼에 해당 데이터가 있는지 확인
 		} else if (column.equals("선택")) {
@@ -57,7 +58,7 @@ public class CompanyController {
 			return "admin/company/companyList";
 		}
 		
-		// 검색 ====================================================
+		// 검색
 		List<Company> companyList = companyRepository.findByColumn(column, search);
 		model.addAttribute("companyList", companyList);
 		return "admin/company/companyList";
@@ -65,25 +66,39 @@ public class CompanyController {
 
 	// 업체 신규 등록 페이지 =============================
 	@GetMapping("/companyAdd")
-	public String companyAdd() {
+	public String companyAdd(@ModelAttribute("company") Company company) {
+		
 		return "admin/company/companyAdd";
 	}
 	
 	// 업체 상세 페이지 ==================================
-	
 	  @GetMapping("/companyDetail/{cmp_code}")
 	  public String companyDetail(@PathVariable int cmp_code, Model model) { 
+	  	
 	  	model.addAttribute("cmp", companyRepository.findByCode(cmp_code).get());
 	  	model.addAttribute("img", imgRepository.findImgUrl(cmp_code).get());
-	  	log.info("이미지가 들어왔나" + imgRepository.findImgUrl(cmp_code));
+	  	
 	  	return "admin/company/companyDetail"; 
 	  }
 	 
 
-	// 업체 수정 페이지
-	@GetMapping("/companyEdit")
-	public String companyEdit() {
+	// 업체 수정 페이지 ==================================
+	@GetMapping("/companyEdit/{cmp_code}")
+	public String companyEdit(@PathVariable int cmp_code, Model model) {
+		
+		model.addAttribute("cmp", companyRepository.findByCode(cmp_code).get());
+		model.addAttribute("img", imgRepository.findImgUrl(cmp_code).get());
+		
 		return "admin/company/companyEdit";
 	}
-
+	
+	// 업체 수정 후 상세보기 페이지로 이동
+	@PostMapping("/companyDetail/{cmp_code}")
+	public String edit(@PathVariable int cmp_code, @ModelAttribute("company") Company company) {
+		
+		companyRepository.update(cmp_code, company);
+		
+		return "redirect:{cmp_code}";
+	}
+	
 }
