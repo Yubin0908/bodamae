@@ -1,11 +1,22 @@
 package himedia.project.bodamae.dto;
 
-import lombok.Data;
 import java.sql.Timestamp;
 
+import org.apache.ibatis.annotations.Mapper;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter @Getter
+@Mapper
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class FreeBoard {
-    private long board_no;
+    private int board_no;
     private String user_id;
     private String board_title;
     private String board_content;

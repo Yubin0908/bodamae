@@ -68,18 +68,57 @@
 					<h3>자유 게시판</h3>
 				</div>
 
+				<div class="board-btn">
+					<c:if test="${ sessionScope.user.user_id eq freeBoard.user_id}">
+						<a href="${ context }community/board/edit/${ freeBoard.board_no }">
+							<button type="button" class="btn btn-outline-info">수정</button>
+						</a>
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-outline-info"
+							data-bs-toggle="modal"
+							data-bs-target="#Modal-${ freeBoard.board_no }">삭제</button>
+					</c:if>
+
+					<!-- Modal -->
+					<div class="modal fade" id="Modal-${ freeBoard.board_no }"
+						tabindex="-1" aria-labelledby="exampleModalLabel"
+						aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h1 class="modal-title fs-5 text-size-bold"
+										id="exampleModalLabel">삭제 하시겠습니까 ?</h1>
+									<button type="button" class="btn-close" data-bs-dismiss="modal"
+										aria-label="Close"></button>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-bs-dismiss="modal">취소</button>
+									<button type="button" class="btn btn-info"
+										onclick="location.href='${ context }community/board/delete/${ freeBoard.board_no }'">삭제</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div class="board-table">
 					<h3>${ freeBoard.board_title }</h3>
 					<div class="display-flex">
 						<div class="board-info">
-							<span class="board-info">${freeBoard.user_id}</span> 
-							<span class="board-info">${freeBoard.board_date}</span> 
-							<span class="board-info">${freeBoard.board_hits}</span>
+							<span class="board-info">${freeBoard.user_id}</span> <span
+								class="board-info">${freeBoard.board_date}</span> <span
+								class="board-info">조회수 : ${freeBoard.board_hits}</span>
 						</div>
 					</div>
 					<div class="board-content">
 						<p>${ freeBoard.board_content }</p>
 					</div>
+				</div>
+				<div class="col">
+					<button type="button" class="btn btn-outline-info w-100 btn-lg"
+						onclick="location.href='${ context }community/board'">뒤로
+						가기</button>
 				</div>
 			</div>
 		</div>

@@ -4,19 +4,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:url var="resPath" value="/resources/" />
 <c:url var="context" value="/" />
-<html>
 
+<!DOCTYPE html>
+<html>
 <head>
-<title>보담 愛 | 자유게시판</title>
+<title>보담 愛 | 자유게시판 조회</title>
 <link href="${ resPath }css/webSettings.css" rel="stylesheet">
 <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
 <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
+<link href="${ resPath }css/petlogout.css" rel="stylesheet">
 
 
 <style type="text/css">
-	/* input x자 표시 없애기 크롬(https://wazacs.tistory.com/33) */ input::-webkit-search-decoration,
-	input::-webkit-search-cancel-button, input::-webkit-search-results-button,
-	input::-webkit-search-results-decoration {
+/* input x자 표시 없애기 크롬(https://wazacs.tistory.com/33) */
+input::-webkit-search-decoration, input::-webkit-search-cancel-button,
+	input::-webkit-search-results-button, input::-webkit-search-results-decoration
+	{
 	display: none;
 }
 
@@ -38,7 +41,7 @@
 	justify-content: flex-start;
 }
 
-.btn-new-board {
+.btn-new-notice {
 	display: inline-block;
 	margin-right: auto;
 	border: 1px solid #888;
@@ -85,24 +88,9 @@ input#submit {
 th {
 	text-align: center;
 }
-
-.pagination {
-	display: inline-block;
-	width: 1200px;
-	text-align: center;
-}
-
-.pagination b {
-	font-weight: bold;
-}
-
-.arrow {
-	width: 20px;
-}
 </style>
 </head>
 <body>
-
 	<div id="container">
 		<!--  navar -->
 		<jsp:include page="/WEB-INF/views/user/common/navar.jsp" />
@@ -124,7 +112,7 @@ th {
 						</select> <label for="search"></label> <input type="search" name="search"
 							id="search"> <input type="submit" id="submit" value="검색">
 					</form>
-					<a href="${ context }community/board/write">
+					<a href="${ context }community/board/boardWrite">
 						<button class="btn-new-board">등록</button>
 					</a>
 				</div>
@@ -140,51 +128,27 @@ th {
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="boardList" items="${ boardList }">
+							<c:forEach var="freeBoard" items="${ freeBoard }">
 								<tr>
 									<td><a class="text-primary"
-										href="${ context }community/board/${ boardList.board_no }">${ boardList.board_no }</a>
+										href="${ context }community/board/${ freeBoard.board_no }">${ freeBoard.board_no }</a>
 									</td>
 									<td><a class="text-primary"
-										href="${ context }community/board/${ boardList.board_no }">${ boardList.board_title }</a>
+										href="${ context }community/board/${ freeBoard.board_no }">${ freeBoard.board_title }</a>
 									</td>
-									<td>${ boardList.user_id}</td>
-									<td><fmt:formatDate value="${ boardList.board_date }"
+									<td>${ freeBoard.user_id}</td>
+									<td><fmt:formatDate value="${ freeBoard.board_date }"
 											type="both" /></td>
-									<td>${ boardList.board_hits }</td>
+									<td>${ freeBoard.board_hits }</td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-
-				</div>
-				<div class="pagination">
-					<c:if test="${paging.startPage > paging.blockSize}">
-						<a href="${context}community/board?page=${paging.startPage - 1}">
-							<img class="arrow" src="${resPath}img/left-arrow-icon.png" alt="">
-						</a>
-					</c:if>
-					<c:forEach var="i" begin="${paging.startPage}"
-						end="${paging.endPage}">
-						<c:if test="${paging.currentPage == i}">
-							<b>${i}</b>
-						</c:if>
-						<c:if test="${paging.currentPage != i}">
-							<a href="${context}community/board?page=${i}">${i}</a>
-						</c:if>
-					</c:forEach>
-					<c:if test="${paging.endPage < paging.totalPages}">
-						<a href="${context}community/board?page=${paging.startPage + 10}">
-							<img class="arrow" src="${resPath}img/right-arrow-icon.png"
-							alt="">
-						</a>
-					</c:if>
 				</div>
 			</div>
 		</div>
-
-		<!--  footer -->
 	</div>
+	<!--  footer -->
 	<jsp:include page="/WEB-INF/views/user/common/footer.jsp" />
 </body>
 </html>

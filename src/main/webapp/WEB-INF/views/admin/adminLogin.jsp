@@ -121,3 +121,12 @@
   </div>
 </body>
 </html>
+
+<script>
+  document.getElementById('board_content').addEventListener('submit', function (e) {
+    const content = tinymce.get('board_content').getContent();
+    if (content === '') {
+      e.preventDefault();
+    }
+  });
+</script>

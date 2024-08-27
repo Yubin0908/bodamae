@@ -17,8 +17,6 @@
   }
   
   .intro { color: #888 }
-  .admin-btn { display: flex; justify-content: right; }
-  .admin-a { margin: 0 30px 30px 0; }
   </style>
 </head>
 
@@ -32,11 +30,5 @@
 
     <p class="intro">Created by 박기훈, 이홍준, 장종락, 장태일, 진혜정</p>
     <p class="text-center text-body-secondary">&copy; 2024 Company, BodamAe Inc</p>
-  </div>
-  
-  <div class="admin-btn">
-    <a href="${ context }admin/login" class="nav-link px-2 text-body-secondary admin-a">
-      <button type="button" class="btn btn-outline-warning">GO admin</button>
-    </a>
   </div>
 </footer>

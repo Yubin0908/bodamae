@@ -47,9 +47,11 @@ public class RegisterController {
 	}
 
 	@ResponseBody
+	@PostMapping("/idCheck")
 	public String idCheck(String id) {
 		
-		User user = userRepository.findByUserId(id);
+		User user = userRepository.findByUserCheck(id);
+		log.info("user : {}", user);
 		if (user != null) {
 			return "1";
 		}

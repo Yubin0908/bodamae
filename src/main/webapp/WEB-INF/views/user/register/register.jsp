@@ -42,8 +42,7 @@
     <div class="register">
       <form action="${context}user/register" method="post" id="registrationForm">
         <div class="form-floating mb-3">
-          <!-- oninput="validateForm()" -->
-          <input type="text" class="form-control" onChange = "checkId()" 
+          <input type="text" class="form-control" onChange = "checkId()" required 
                  id="user_id" name="user_id" minlength="5" maxlength="15" placeholder="ID"> 
           <label for="floatingInput">아이디</label>
           <div class="id_check">
@@ -53,21 +52,21 @@
           </div>
         </div>
         <div class="form-floating mb-3">
-          <input type="password" class="form-control" id="user_password" oninput="validatePasswords()"
+          <input type="password" class="form-control" id="user_password" oninput="validatePasswords()" required 
                  name="user_password" minlength="8" maxlength="20" placeholder="Password"> 
-          <label for="floatingPassword">비밀번호</label>
+          <label for="floatingPassword">비밀번호 (8 ~ 15 글자)</label>
         </div>
         <div class="form-floating mb-3">
-          <input type="password" class="form-control" id="user_r_password" oninput="validatePasswords()"
+          <input type="password" class="form-control" id="user_r_password" oninput="validatePasswords()" required 
                  name="user_r_password" minlength="8" maxlength="20" placeholder="Password"> 
-          <label for="floatingPassword">비밀번호 확인</label>
+          <label for="floatingPassword">비밀번호 확인 (8 ~ 15 글자)</label>
           <p id="password-error" class="error"></p>
         </div>
         
         <div>
           <label class="label" for="user_name">이름</label>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="user_name" oninput="validateForm()"
+            <input type="text" class="form-control" id="user_name" oninput="validateForm()" required 
                    name="user_name" minlength="2" maxlength="5" placeholder="name"> 
             <label for="floatingInput">이름</label>
           </div>
@@ -76,7 +75,7 @@
         <div>
           <label class="label" for="user_tel">연락처</label>
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="user_tel" oninput="oninputPhone(this)"
+            <input type="text" class="form-control" id="user_tel" oninput="oninputPhone(this)" required 
                    name="user_tel" maxlength="14" placeholder="tel"> 
             <label for="floatingInput">연락처</label>
           </div>
@@ -85,7 +84,7 @@
         <div class="date">
           <label class="label" for="user_birthdate">생년월일</label>
           <div>
-            <input type="date" id="user_birthdate" name="user_birthdate" value="1990-01-01"
+            <input type="date" id="user_birthdate" name="user_birthdate" value="1990-01-01" required 
                    class="form-control" max="2024-12-31" min="1900-01-01" oninput="validateForm()">
           </div>
         </div>
@@ -94,11 +93,11 @@
           <label class="label" for="user_gender">성별</label>
           <div class="gender-check">
             <div class="form-check check-box check-l">
-              <input class="form-check-input" type="radio" id="F" name="user_gender" value="F" checked>
+              <input class="form-check-input" type="radio" id="F" name="user_gender" value="F" required checked>
               <label class="form-check-label" for="flexRadioDefault2">여자</label>
             </div>
             <div class="form-check check-box check-r">
-              <input class="form-check-input" type="radio" id="M" name="user_gender" value="M">
+              <input class="form-check-input" type="radio" id="M" name="user_gender" value="M" required >
               <label class="form-check-label" for="flexRadioDefault1">남자</label>
             </div>
           </div>
@@ -114,10 +113,11 @@
     function checkId(){
         var id = $('#user_id').val(); //id값이 "id"인 입력란의 값을 저장
         $.ajax({
-            url:'${context}idCheck', //Controller에서 요청 받을 주소
+            url:'${context}user/idCheck', //Controller에서 요청 받을 주소
             type:'post', //POST 방식으로 전달
             data:{ id : id },
-            success:function(cnt){ //컨트롤러에서 넘어온 cnt값을 받는다 
+            success:function(cnt){ // 컨트롤러에서 넘어온 cnt값을 받는다 
+            		console.log("cnt >>>" , cnt)
                 if(cnt == "0"){ //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디
                     id = document.getElementById('user_id').value.trim();
                     if (id.length >= 5 && id.length <= 15) {
@@ -131,7 +131,7 @@
                       $('.id_not').css("display", "inline-block"); 
                       return false;
                     }
-                } else { // cnt가 1일 경우 -> 이미 존재하는 아이디
+                } else if(cnt == "1") { // cnt가 1일 경우 -> 이미 존재하는 아이디
                     if (id.length >= 5 && id.length <= 15) {
                       $('.id_already').css("display", "inline-block");  
                       $('.id_ok').css("display","none"); 
@@ -147,11 +147,11 @@
                     }
                 }
             },
-/*             error:function(){
+/*             	error:function(){
                 alert("에러입니다");
-            } */
+            }  */
         });
-        };
+    };
 	
     function oninputPhone(target) {
       target.value = target.value

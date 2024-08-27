@@ -27,7 +27,10 @@ public interface UserRepository {
 	
 	@Select("select * from user where user_id like #{ user_id } and admin_check = 0")
 	User findByUserId(String user_id);
+	
+	@Select("select * from user where user_id like #{ user_id }")
+	User findByUserCheck(String user_id);
 
 	@Update("update user set user_password = #{user_password} where user_id like #{user_id}")
-    boolean updatePassword(@Param("user_id") String user_id, @Param("user_password") String user_password);
+  boolean updatePassword(@Param("user_id") String user_id, @Param("user_password") String user_password);
 }

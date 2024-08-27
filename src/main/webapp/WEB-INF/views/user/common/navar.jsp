@@ -48,7 +48,7 @@
           
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="${ context }community/pets">반려동물 자랑</a></li>
-            <li><a class="dropdown-item" href="${ context }community/free_board">자유게시판</a></li>
+            <li><a class="dropdown-item" href="${ context }community/board">자유게시판</a></li>
           </ul>
       </ul>
       
@@ -69,7 +69,6 @@
           <li class="nav-item">
             <a class="nav-link mypage-a" href="${context}mypage/list">
               <span class="userName fs-4">${sessionScope.user.user_name == null ? "이름":sessionScope.user.user_name}님</span>
-              <img class="mypage" alt="" src="${ resPath }img/user-icon.png">
             </a>
           </li>
           <li class="nav-item"><a class="nav-link logout" href="${context}user/logout">로그아웃</a></li>

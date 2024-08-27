@@ -24,7 +24,6 @@
       </div>
       <div>
         <ul class="menu-ul">
-
           <li class="menu-list"><a class="menu-anchor" href="${ context }">사이트로 이동</a></li>
           <li class="menu-list"><a class="menu-anchor" href="${ context }admin/userList">회원 관리</a></li>
           <li class="menu-list"><a class="menu-anchor" href="${ context }admin/adminList">관리자 관리</a></li>

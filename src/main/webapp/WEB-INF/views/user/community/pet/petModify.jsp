@@ -82,6 +82,13 @@
   </style>
 </head>
 <body>
+  <%-- 비로그인상태에서 접속 시, 접근 제어 --%>
+  <c:if test="${sessionScope.user == null}">
+    <script>
+      alert('잘못된 접근입니다. 로그인 후 다시 시도해주세요.');
+      location.href = '${context}user/login';
+    </script>
+  </c:if>
   <!--  navar -->
   <jsp:include page="/WEB-INF/views/user/common/navar.jsp" />
 
@@ -99,11 +106,11 @@
         </colgroup>
         <tr>
           <td>제 목</td>
-          <td><input type="text" name="pet_title" value="${pet.pet_title}"></td>
+          <td><input type="text" name="pet_title" value="${pet.pet_title}" required></td>
         </tr>
         <tr>
           <td>반려동물 이름</td>
-          <td><input type="text" name="pet_name" value="${pet.pet_name}"></td>
+          <td><input type="text" name="pet_name" value="${pet.pet_name}" required></td>
         </tr>
         <tr>
           <td>
@@ -125,7 +132,7 @@
         </tr>
         <tr>
           <td class="pet-info">소개글</td>
-          <td><textarea name="pet_info">${pet.pet_info}</textarea></td>
+          <td><textarea name="pet_info" required>${pet.pet_info}</textarea></td>
         </tr>
       </table>
       <input type="hidden" name="user_id" value="${sessionScope.user.user_id}">
