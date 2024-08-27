@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import himedia.project.bodamae.dto.Company;
 
@@ -39,7 +40,6 @@ public interface CompanyRepository {
   @Select("select * from company where cmp_code like concat('%',#{search},'%')\r\n"
   		+ "						or cmp_name like concat('%',#{search},'%')\r\n"
   		+ "						or cmp_address_gu like concat('%',#{search},'%')\r\n"
-  		+ "           or theme_no like concat('%',#{search},'%')\r\n"
   		+ "           or cmp_tel_no like concat('%',#{search},'%');") 
   List<Company> findByChoose(String search);
 	 
@@ -50,6 +50,10 @@ public interface CompanyRepository {
   // 상세 페이지 진입 시 cmp_code에 해당하는 업체 조회
   @Select("select * from company where cmp_code = ${cmp_code}")
   Optional<Company> findByCode(int cmp_code);
+  
+  // 업체정보 수정
+  @Update("update company set cmp_name = #{ updateCompany.cmp_name }, cmp_address = #{ updateCompany.cmp_address }, cmp_address_gu = #{ updateCompany.cmp_address_gu }, cmp_tel_no = #{ updateCompany.cmp_tel_no }, cmp_holidays = #{ updateCompany.cmp_holidays }, operation_hours = #{ updateCompany.operation_hours }, pet_restriction = #{ updateCompany.pet_restriction } where cmp_code = #{ cmp_code }")
+  int update(@Param("cmp_code") int cmp_code, @Param("updateCompany") Company updateCompany);
   
   
 	/*

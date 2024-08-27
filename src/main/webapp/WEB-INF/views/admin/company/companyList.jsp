@@ -78,6 +78,16 @@
 			line-height: 30px;
 			background-color: #D9D9D9;
 		}
+		button[type="reset"] {
+      border: none;
+      padding: 3px 30px;
+      background-color: #BEDAE2;
+      border-radius: 10px;
+    }
+    .cmp-table {
+      text-align: center;
+    }
+    a { color: #000 }
 	</style>
 
 </head>
@@ -115,7 +125,6 @@
 				</div>
 				<!-- 업체 리스트 -->
 				<div class="cmp-table">
-				<a  href="${ context }admin/company/companyDetail">상세보기</a>
 					<table class="table">
 						<thead class="table-light">
 							<tr>
@@ -130,18 +139,18 @@
 							<c:forEach var="companyList" items="${ companyList }">
 								<tr>
 									<td><a href="${ context }admin/company/companyDetail/${companyList.cmp_code}" >${ companyList.cmp_code }</a></td>
-									<td>${ companyList.cmp_name }</td>
-									<td>${ companyList.cmp_address_gu }</td>
-									<td>${ companyList.cmp_tel_no }</td>
-									<td></td>
-								</tr>
-								</c:forEach>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+									<td><a href="${ context }admin/company/companyDetail/${companyList.cmp_code}" >${ companyList.cmp_name }</a></td>
+                  <td>${ companyList.cmp_address_gu }</td>
+                  <td>${ companyList.cmp_tel_no }</td>
+                  <td><button type="reset" onclick="location.href='${ context }admin/company/companyEdit/${ companyList.cmp_code }'" >수정</button> </td>
+                </tr>
+                </c:forEach>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

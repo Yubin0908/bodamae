@@ -12,6 +12,13 @@
     <link href="${ resPath }css/admin-header.css" rel="stylesheet">
     <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
 	<style type="text/css">
+  
+  #cmp-img { 
+    width: 500px; 
+    height: 400px; 
+    object-fit: contain; 
+    border: 1px solid #888; 
+  }
 	</style>
 </head>
 <body>
@@ -27,14 +34,17 @@
 		
 			<div class="cmp-detail-page" >
 				<div>
-					<h2>업체 관리 > 상세</h2>
+					<h2>업체 관리 > 상세 > ${ cmp.cmp_name }</h2>
 				</div>
 				<div class="cmp-detail" >
 					<div>
-						<img alt="이미지 미리보기"  src ="${ img }">
+						<img id="cmp-img" alt="이미지 미리보기"  src ="${ img }">
 					</div>
 					<div>
 						업체 코드 : ${ cmp.cmp_code }
+					</div>
+					<div>
+						업체명 : ${ cmp.cmp_name }
 					</div>
 					<div>
 						업체 주소 : ${ cmp.cmp_address }
