@@ -11,6 +11,7 @@
 <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
 <link href="${ resPath }css/admin-header.css" rel="stylesheet">
 <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 
 <style type="text/css">
 /* input x자 표시 없애기 크롬(https://wazacs.tistory.com/33) */
@@ -48,14 +49,16 @@ input::-webkit-search-results-button, input::-webkit-search-results-decoration
   
   .preview {
   	margin: 10px 10px;
+    padding: 5px;
   	border: 1px solid #888;
     border-radius: 15px;
   	width: 410px;
   	height: 200px;
+    vertical-align: middle;
   }
   img.cmp-img {
     width: 400px;
-    height: 200px;
+    height: 100%;
     object-fit: contain;
   }
   
@@ -112,7 +115,6 @@ input::-webkit-search-results-button, input::-webkit-search-results-decoration
 </style>
 </head>
 <body>
-
   <div id="container">
     <!-- nav -->
     <jsp:include page="/WEB-INF/views/admin/common/navar.jsp" />
@@ -126,7 +128,7 @@ input::-webkit-search-results-button, input::-webkit-search-results-decoration
         <div>
           <h2>업체 관리 > 등록</h2>
         </div>
-        <form class="cmp-add-form" action="">
+        <form class="cmp-add-form" action="${ context }admin/company/companyList" method="post">
           <div class="upside">
             <div class="image">
               <div class="preview" id="img_preview"></div>
@@ -134,19 +136,17 @@ input::-webkit-search-results-button, input::-webkit-search-results-decoration
                 <label for="img_url"></label> 
                 <input id="img_url" type="file" onchange="setPreview(event);" accept="image/*"  placeholder="이미지 URL">
               </div>
-              <div>
-                <label for="cmp_img_url" >변환된 URL</label>
-                <input id="cmp_img_url" type="url" readonly="readonly" >
+              <div >
+                <input type="hidden" name="cmp_img_url" id="cmp_img_url" type="url">
               </div>  
             </div>
-            
             <%-- 이미지 미리보기 --%>
             <script type="text/javascript">
             function setPreview(event) {
-              var reader = new FileReader();
+              const reader = new FileReader();
 
               reader.onload = function(event) {
-                var img = document.createElement('img');
+                const img = document.createElement('img');
                 img.setAttribute("src", event.target.result);
                 img.setAttribute("class", "cmp-img");
                 document.querySelector("div#img_preview.preview").appendChild(img);
@@ -158,14 +158,43 @@ input::-webkit-search-results-button, input::-webkit-search-results-decoration
             document.getElementById('img_url').addEventListener('change', function(event) {
               const file = event.target.files[0];
               if (file) {
+              		const imgList = document.querySelectorAll("div#img_preview.preview");
+              		console.log("이미지 저장된 리스트",imgList[0]);
+              		if(imgList[0].children.length >= 1) {
+              			const firstChild = document.querySelectorAll('div#img_preview.preview.firstChild');
+              			console.log("선택된 첫번째 자식",firstChild);
+              			imgList[0].removeChild(imgList[0].children[0]);
+              		}
                   // 파일을 브라우저 내에서 URL로 변환
                   const imageUrl = URL.createObjectURL(file);
                   console.log("파일로 변환된",file);
 
                   // 변환된 URL을 input[type="url"] 요소에 담기
-                  const cmpImgUrl = document.getElementById('cmp_img_url');
-                  cmpImgUrl.value = imageUrl;
-              }
+                  /* const cmpImgUrl = document.getElementById('cmp_img_url'); */
+                  /* cmpImgUrl.value = imageUrl; */
+                  const cmpImgUrl = $('#cmp_img_url')
+                  // url데이터 변환
+                  const formData = new FormData();
+                  formData.append('image', file);
+                  $.ajax({
+                    url: 'https://api.imgbb.com/1/upload?key=536e86c464cec8babb1221e0332e4097',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (res) {
+                    	console.log(res);
+                    	console.log(cmpImgUrl);
+                    	console.log(cmpImgUrl.val());
+                    	cmpImgUrl.val(res.data.url);
+                    },
+                    error: function (err) {
+                      console.error(err);
+                    }
+                  });
+                } else {
+                  img.val("");
+                }
           });
             </script>
             

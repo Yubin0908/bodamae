@@ -87,7 +87,7 @@
     .cmp-table {
       text-align: center;
     }
-    a { color: #000 }
+    .link { color: #000 }
 	</style>
 
 </head>
@@ -138,8 +138,8 @@
 						<tbody>
 							<c:forEach var="companyList" items="${ companyList }">
 								<tr>
-									<td><a href="${ context }admin/company/companyDetail/${companyList.cmp_code}" >${ companyList.cmp_code }</a></td>
-									<td><a href="${ context }admin/company/companyDetail/${companyList.cmp_code}" >${ companyList.cmp_name }</a></td>
+									<td><a class="link" href="${ context }admin/company/companyDetail/${companyList.cmp_code}" >${ companyList.cmp_code }</a></td>
+									<td><a class="link" href="${ context }admin/company/companyDetail/${companyList.cmp_code}" >${ companyList.cmp_name }</a></td>
                   <td>${ companyList.cmp_address_gu }</td>
                   <td>${ companyList.cmp_tel_no }</td>
                   <td><button type="reset" onclick="location.href='${ context }admin/company/companyEdit/${ companyList.cmp_code }'" >수정</button> </td>
