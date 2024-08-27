@@ -20,7 +20,7 @@ public interface NoticeRepositoty {
 	void save(Notice notice);
 	
 	// 전체 조회
-	@Select("select * from notice")
+	@Select("select * from notice order by notice_no DESC")
 	List<Notice> noticeList();
 	
 	// 조회수

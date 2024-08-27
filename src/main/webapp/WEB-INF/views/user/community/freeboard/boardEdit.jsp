@@ -8,13 +8,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>보담 愛 | 자유게시판</title>
+<title>보담 愛 | 자유게시판 수정</title>
 
 <link href="${ resPath }css/webSettings.css" rel="stylesheet">
 <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
 <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
 <script
-	src="https://cdn.tiny.cloud/1/nd8grynjd8268gdl5ya7l9blew0p9nql98thf7fre8azeeg6/tinymce/6/tinymce.min.js"></script>
+	src="https://cdn.tiny.cloud/1/nd8grynjd8268gdl5ya7l9blew0p9nql98thf7fre8azeeg6/tinymce/6/tinymce.min.js"
+	referrerpolicy="origin"></script>
 
 <style type="text/css">
 .board-list {
@@ -39,12 +40,6 @@
 </head>
 
 <body>
-	<c:if test="${ sessionScope.user ==null}">
-		<script type="text/javascript">
-			alert("로그인이 필요합니다.")
-			location.href = "${ context }user/login"
-		</script>
-	</c:if>
 	<!--  navar -->
 	<div id="container">
 		<jsp:include page="/WEB-INF/views/user/common/navar.jsp" />
@@ -56,26 +51,24 @@
 		<div class="board-list">
 			<div class="board-list-content">
 				<div>
-					<h3>자유 게시판 등록</h3>
+					<h3>자유 게시판 수정</h3>
 				</div>
 
 				<div class="board-form">
-					<form method="post" action="${context}community/board/writeAction" id="board_form">
+					<form method="post"
+						action="${context}community/board/edit/${freeBoard.board_no}"
+						id="board_form">
 
-						<div class="user" style="display: none">
-							<input type="text" id="user_id" name="user_id"
-								value="${ sessionScope.user.user_id }">
-						</div>
 						<div class="row my-2">
 							<div class="col-2 fw-bolder">
 								<label for="board_title">제목</label>
 							</div>
 							<div class="col">
 								<input type="text" id="board_title" name="board_title"
-									class="form-control" value="${ board_title }" required>
+									class="form-control" value="${ freeBoard.board_title }"
+									required>
 							</div>
 						</div>
-
 
 						<div class="row my-2">
 							<div class="col-2 fw-bolder">
@@ -83,10 +76,10 @@
 							</div>
 							<div class="col">
 								<textarea cols="79" rows="10" id="board_content"
-									name="board_content" value="${ board_content}"></textarea>
+									name="board_content"><c:out
+										value="${ freeBoard.board_content}" /></textarea>
 							</div>
 						</div>
-
 
 						<!-- 버튼 -->
 						<div class="row mt-5">
@@ -105,6 +98,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!--  footer -->
 	<jsp:include page="/WEB-INF/views/user/common/footer.jsp" />
@@ -128,7 +122,6 @@
 				min_height : 800,
 				max_height : 800,
 				content_style : 'body { text-align: center; }',
-
 			});
 </script>
 <script>
@@ -140,4 +133,5 @@
 				}
 			});
 </script>
+
 </html>
