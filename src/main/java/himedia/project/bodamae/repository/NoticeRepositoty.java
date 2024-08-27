@@ -15,6 +15,7 @@ import himedia.project.bodamae.dto.Notice;
 public interface NoticeRepositoty {
 	
 	// 등록
+	@Transactional
 	@Insert("insert into notice(user_id, notice_title, notice_content) values(#{user_id}, #{notice_title}, #{notice_content})")
 	@Options(useGeneratedKeys = true, keyProperty = "notice_no")
 	void save(Notice notice);
