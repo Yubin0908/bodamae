@@ -74,7 +74,6 @@
           <li class="nav-item"><a class="nav-link logout" href="${context}user/logout">로그아웃</a></li>
         </ul>
       </c:if>
-
     </div>
   </div>
 </nav>
