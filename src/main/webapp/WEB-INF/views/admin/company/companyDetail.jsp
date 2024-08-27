@@ -38,7 +38,7 @@
 				</div>
 				<div class="cmp-detail" >
 					<div>
-						<img id="cmp-img" alt="이미지 미리보기"  src ="${ img }">
+						<img id="cmp-img" alt="이미지 미리보기"  src ="${ cmp.cmp_img_url }">
 					</div>
 					<div>
 						업체 코드 : ${ cmp.cmp_code }
