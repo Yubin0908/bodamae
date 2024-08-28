@@ -16,8 +16,7 @@ public class CompanyImage {
 	private int cmp_img_no;
 	private String cmp_img_url;
 	
-	public CompanyImage(int cmp_img_no, String cmp_img_url) {
-		this.cmp_img_no = cmp_img_no;
+	public CompanyImage(String cmp_img_url) {
 		this.cmp_img_url = cmp_img_url;
 	}
 }

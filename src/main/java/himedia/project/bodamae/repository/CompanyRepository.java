@@ -3,6 +3,7 @@ package himedia.project.bodamae.repository;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
@@ -14,13 +15,13 @@ import himedia.project.bodamae.dto.Company;
 public interface CompanyRepository {
 	
 	// 신규 업체 등록(이미지는 따로 불러와서 진행)
-	@Insert("insert into company(cmp_img_no,cmp_name,cmp_address,cmp_address_gu,cmp_tel_no,cmp_holidays,operating_hours,pet_restriction)\r\n"
-			+ "values(#{cmp_img_no},#{newCompany.cmp_name},#{newCompany.cmp_address},#{newCompany.cmp_address_gu},#{newCompany.cmp_tel_no},#{newCompany.cmp_holidays},#{newCompany.operating_hours},#{newCompany.pet_restriction})")
+	@Insert("insert into company(cmp_img_no,cmp_name,cmp_address,cmp_address_gu,cmp_tel_no,cmp_holidays,operation_hours,pet_restriction)"
+      + "values(#{cmp_img_no},#{cmp_name},#{cmp_address},#{cmp_address_gu},#{cmp_tel_no},#{cmp_holidays},#{operation_hours},#{pet_restriction})")
 	@Options(useGeneratedKeys = true, keyProperty = "cmp_img_no")
-	void saveCompany(int cmp_img_no, @Param("company") Company newCompany);
+	void saveCompany(Company newCompany);
 	
 	// 업체정보 전체 조회
-	@Select("select * from company order by cmp_code desc")
+	@Select("select * from company cmp join company_image cmp_img on cmp.cmp_img_no = cmp_img.cmp_img_no order by cmp_code desc")
 	List<Company> companyList();
 	
 	// 인덱스 장소 4개 조회
@@ -39,11 +40,27 @@ public interface CompanyRepository {
   List<Company> findByColumn(@Param("column") String column, @Param("other") String other);
 	
   // 상세 페이지 진입 시 cmp_code에 해당하는 업체 조회
-  @Select("select * from company where cmp_code = ${cmp_code}")
+  @Select("select * from company cmp join company_image cmp_img on cmp.cmp_img_no = cmp_img.cmp_img_no  where cmp_code = ${cmp_code}")
   Optional<Company> findByCode(int cmp_code);
   
   // 업체정보 수정
   @Update("update company set cmp_name = #{ updateCompany.cmp_name }, cmp_address = #{ updateCompany.cmp_address }, cmp_address_gu = #{ updateCompany.cmp_address_gu }, cmp_tel_no = #{ updateCompany.cmp_tel_no }, cmp_holidays = #{ updateCompany.cmp_holidays }, operation_hours = #{ updateCompany.operation_hours }, pet_restriction = #{ updateCompany.pet_restriction } where cmp_code = #{ cmp_code }")
   int update(@Param("cmp_code") int cmp_code, @Param("updateCompany") Company updateCompany);
+  
+  // 업체정보 삭제
+  @Delete("delete company_image, company from company join company_image on company.cmp_img_no = company_image.cmp_img_no where company.cmp_code = #{ cmp_code }")
+  boolean deleteCompany(@Param("cmp_code") int cmp_code);
+  
+	// 장소정보 전체 조회
+	@Select("select * from company cmp join company_image cmp_img on cmp.cmp_img_no = cmp_img.cmp_img_no order by cmp_code desc")
+	List<Company> placeList();
+  
+  // 장소리스트 검색(카테고리 선택이 "선택"으로 됐을 경우)
+	@Select("select * from company where cmp_name like concat('%',#{search},'%') or cmp_address_gu like concat('%',#{search},'%')")
+  List<Company> findByChoosePlace(String search);
+	
+	//업체정보 검색 모든 컬럼으로 검색
+	 @Select("select * from company where ${column} like concat('%', #{other}, '%')")
+	 List<Company> findByColumnPlace(@Param("column") String column, @Param("other") String other);
   
 }

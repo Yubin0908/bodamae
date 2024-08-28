@@ -1,96 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-		<c:url var="resPath" value="/resources/" />
-		<c:url var="context" value="/" />
-		<!DOCTYPE html>
-		<html>
+<c:url var="resPath" value="/resources/" />
+<c:url var="context" value="/" />
+<!DOCTYPE html>
+<html>
 
-		<head>
-			<meta charset="UTF-8">
-			<title>보담 愛-관리자</title>
-			<link href="${ resPath }css/webSettings.css" rel="stylesheet">
-    	<link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
- 	  	<link href="${ resPath }css/admin-header.css" rel="stylesheet">
-   	  <script src="${ resPath }js/bootstrap.bundle.min.js" ></script>
-   	  
-			<style type="text/css">
-				/* input x자 표시 없애기 크롬(https://wazacs.tistory.com/33) */
-				input::-webkit-search-decoration,
-				input::-webkit-search-cancel-button,
-				input::-webkit-search-results-button,
-				input::-webkit-search-results-decoration {
-					display: none;
-				}
-
-		.cmp-list {
-			margin: 0 auto;
-			width: 1000px;
-		}
-
-		/* 양쪽 정렬(https://seons-dev.tistory.com/entry/display-flex-좌우-정렬) */
-		.search-group {
-			margin: 20px 0;
-			display: flex;
-			flex-wrap: no-wrap;
-			line-height: 50px;
-			justify-content: flex-start;
-		}
-
-		.btn-new-company {
-			display: inline-block;
-			margin-right: auto;
-			border: 1px solid #888;
-			border-radius: 10px;
-			font-size: 30px;
-			background-color: #D9D9D9;
-			text-align: center;
-			width: 200px;
-			line-height: 56px
-		}
-
-		/* serch박스 css */
-		.category-search-box {
-			display: inline-block;
-			border: 1px solid #888;
-			width: 400px;
-			line-height: 59px;
-			border-radius: 10px;
-			margin-left: auto; /* 추가 */
-		}
-
-		form>input {
-			line-height: 30px;
-			border-radius: 10px;
-			border: 1px solid #888;
-		}
-
-		select#column {
-			margin-left: 5px;  /* 추가 */
-			padding: 2.5px 6px;
-		}
-
-		input#search {
-			width: 206px;
-		}
-
-		input#submit {
-			width: 50px;
-			line-height: 30px;
-			background-color: #D9D9D9;
-		}
-		button[type="reset"] {
-      border: none;
-      padding: 3px 30px;
-      background-color: #BEDAE2;
-      border-radius: 10px;
-    }
-    .cmp-table {
-      text-align: center;
-    }
-    .link { color: #000 }
-	</style>
-
-</head>
+  <head>
+  	<meta charset="UTF-8">
+  	<title>보담 愛-관리자</title>
+  	<link href="${ resPath }css/webSettings.css" rel="stylesheet">
+  	<link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
+  	<link href="${ resPath }css/admin-header.css" rel="stylesheet">
+    <script src="${ resPath }js/bootstrap.bundle.min.js" ></script>
+    
+  	<style type="text/css">
+  		/* input x자 표시 없애기 크롬(https://wazacs.tistory.com/33) */
+  		input::-webkit-search-decoration,
+  		input::-webkit-search-cancel-button,
+  		input::-webkit-search-results-button,
+  		input::-webkit-search-results-decoration {
+  			display: none;
+  		}
+      .cmp-list {
+      	margin: 0 auto;
+      	width: 1000px;
+      }
+      
+      /* 양쪽 정렬(https://seons-dev.tistory.com/entry/display-flex-좌우-정렬) */
+      .search-group {
+      	margin: 20px 0;
+      	display: flex;
+      	flex-wrap: no-wrap;
+      	line-height: 50px;
+      	justify-content: flex-start;
+      }
+      
+      .btn-new-company {
+      	display: inline-block;
+      	margin-right: auto;
+      	border: 1px solid #888;
+      	border-radius: 10px;
+      	font-size: 30px;
+      	background-color: #D9D9D9;
+      	text-align: center;
+      	width: 200px;
+      	line-height: 56px
+      }
+      
+      /* serch박스 css */
+      .category-search-box {
+      	display: inline-block;
+      	border: 1px solid #888;
+      	width: 400px;
+      	line-height: 59px;
+      	border-radius: 10px;
+      	margin-left: auto; 
+      }
+      form>input {
+      	line-height: 30px;
+      	border-radius: 10px;
+      	border: 1px solid #888;
+      }
+      select#column {
+      	margin-left: 5px;  
+      	padding: 2.5px 6px;
+      }
+      input#search {
+      	width: 206px;
+        padding-left: 10px;
+      }
+      input#submit {
+      	width: 50px;
+      	line-height: 30px;
+      	background-color: #D9D9D9;
+      }
+      button[type="reset"] {
+        border: none;
+        padding: 3px 30px;
+        background-color: #BEDAE2;
+        border-radius: 10px;
+      }
+      .cmp-table {
+        text-align: center;
+      }
+      .link { color: #000 }
+  	</style>
+  </head>
 
 <body>
 	<div id="container" > 
@@ -116,7 +111,6 @@
 							<option value="cmp_name">업체명</option>
 							<option value="cmp_address">주소별</option>
 							<option value="cmp_tel_no">전화번호</option>
-							<option value="theme_name">테마별</option>
 						</select>
 						<label for="search"></label>
 						<input type="search" name="search" id="search">

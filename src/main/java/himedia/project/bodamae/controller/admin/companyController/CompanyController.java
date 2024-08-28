@@ -75,39 +75,40 @@ public class CompanyController {
 	// 신규 등록 후 페이지 ===============================
 	@PostMapping("/companyList")
 	public String add(@ModelAttribute("company") Company company, @RequestParam("cmp_img_url") String cmp_img_url) {
-		log.info("저장된 URL >> " + cmp_img_url);
-		log.info("저장된 객체의 업체 이름 >> " + company.getCmp_name());
-		
-		// 이미지 저장
-		CompanyImage saveImg = imgRepository.saveImg(cmp_img_url);
-		// 저장된 이미지의 번호가져와서 객체와 함께 전달
-		companyRepository.saveCompany(saveImg.getCmp_img_no(), company);
-		
-		return "redirect:companyList";
+    log.info("저장된 URL >> " + cmp_img_url);
+    log.info("저장된 객체의 업체 이름 >> " + company.getCmp_name());
+
+    CompanyImage companyImage = new CompanyImage(cmp_img_url);
+    // 이미지 저장
+    int result = imgRepository.saveImg(companyImage);
+    log.info("result : " + companyImage.getCmp_img_no());
+    // 저장된 이미지의 번호가져와서 객체와 함께 전달
+    company.setCmp_img_no(companyImage.getCmp_img_no());
+    System.out.println("company : " + company);
+    companyRepository.saveCompany(company);
+
+    return "redirect:companyList";
 	}
 	
-	
 	// 업체 상세 페이지 ==================================
-	  @GetMapping("/companyDetail/{cmp_code}")
-	  public String companyDetail(@PathVariable int cmp_code, Model model) { 
-	  	
-	  	model.addAttribute("cmp", companyRepository.findByCode(cmp_code).get());
-	  	model.addAttribute("img", imgRepository.findImgUrl(cmp_code).get());
-	  	
-	  	return "admin/company/companyDetail"; 
-	  }
+  @GetMapping("/companyDetail/{cmp_code}")
+  public String companyDetail(@PathVariable int cmp_code, Model model) { 
+  	
+  	model.addAttribute("cmp", companyRepository.findByCode(cmp_code).get());
+  	
+  	return "admin/company/companyDetail"; 
+  }
 
 	// 업체 수정 페이지 ==================================
 	@GetMapping("/companyEdit/{cmp_code}")
 	public String companyEdit(@PathVariable int cmp_code, Model model) {
 		
 		model.addAttribute("cmp", companyRepository.findByCode(cmp_code).get());
-		model.addAttribute("img", imgRepository.findImgUrl(cmp_code).get());
 		
 		return "admin/company/companyEdit";
 	}
 	
-	// 업체 수정 후 상세보기 페이지로 이동
+	// 업체 수정 후 상세보기 페이지로 이동 ==============
 	@PostMapping("/companyDetail/{cmp_code}")
 	public String edit(@PathVariable int cmp_code, @ModelAttribute("company") Company company) {
 		
@@ -115,5 +116,17 @@ public class CompanyController {
 		
 		return "redirect:{cmp_code}";
 	}
+	
+	// 업체 삭제 후 전체리스트 이동 =====================
+	@GetMapping("/delete/{cmp_code}")
+	public String noticeDelete(@PathVariable int cmp_code) {
+
+	    companyRepository.deleteCompany(cmp_code);
+
+	    // 루트 경로에서부터 시작하는 절대 경로로 리다이렉트
+	    return "redirect:/admin/company/companyList";
+	}
+	
+	
 	
 }
