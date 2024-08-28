@@ -53,8 +53,8 @@
       </ul>
       
       <form action="${ context }search" method="get">
-        <label for="search"></label> 
-        <input class="searchvar form-control" name="search" type="search" name="search" id="search" placeholder="장소를 검색해주세요.">
+        <label for="search"></label>
+        <input class="searchvar form-control" name="place" type="search" id="place" placeholder="장소를 검색해주세요.">
       </form>
       
       <!-- 로그인 / 회원가입 -->

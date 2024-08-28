@@ -1,6 +1,7 @@
 package himedia.project.bodamae.controller.user;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,9 +51,10 @@ public class IndexController {
 	}
 	
 	@GetMapping("/search")
-	public String companySearch(@RequestParam(value = "search") String search) {
+	public String placeSearch(@RequestParam(value = "place") String place, Model model) {
+		List<Company> placeList = companyRepository.findByPlace("%" + place + "%");
+		model.addAttribute("placeList", placeList);
 		
-		return "index";
+		return "user/place/placeList";
 	}
-	
 }
