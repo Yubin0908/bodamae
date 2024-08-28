@@ -49,7 +49,7 @@ public class PlaceController {
 		} else if (column.equals("선택")) {
 			List<Company> findByChoose = companyRepository.findByChoosePlace(search);
 			model.addAttribute("companyList", findByChoose);
-			return "admin/company/companyList";
+			return "redirect:user/place/placeList";
 		}
 		
 		// 검색
@@ -59,10 +59,10 @@ public class PlaceController {
 	}
 	
 	// 장소 상세 페이지
-	@GetMapping("{cmp_code}")
-	public String placeDetail(@PathVariable int cmp_code, Model model) {
+	@GetMapping("{cmp_name}")
+	public String placeDetail(@PathVariable String cmp_name, Model model) {
 		
-		model.addAttribute("place", companyRepository.findByCode(cmp_code));
+		model.addAttribute("place", companyRepository.findByName(cmp_name).get());
 		
 		return "user/place/placeDetail";
 	}
