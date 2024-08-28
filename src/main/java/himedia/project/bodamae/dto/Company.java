@@ -20,6 +20,7 @@ public class Company {
 	private String cmp_holidays;
 	private String operation_hours;
 	private String pet_restriction;
+	private String cmp_img_url;
 	private Date cmp_date;
 	
 	public Company(String cmp_name, String cmp_address, String cmp_address_gu, String cmp_tel_no,
