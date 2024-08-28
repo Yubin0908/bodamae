@@ -87,9 +87,6 @@
         </div>
       </div>
     </div>
-    
-    <!-- footer -->
-    <jsp:include page="/WEB-INF/views/admin/common/footer.jsp" />
   </div>
 </body>
 
