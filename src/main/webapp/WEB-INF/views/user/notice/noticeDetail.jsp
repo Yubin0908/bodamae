@@ -32,7 +32,7 @@
       <div class="display-flex">
         <div class="notice-info">
           <span class="notice-info">관리자</span>
-          <span class="notice-info">${ notice.notice_date }</span>
+          <span><fmt:formatDate value="${ notice.notice_date }" type="both" /></span>
           <span class="notice-info">조회 ${ notice.notice_hits }</span>
         </div>
       </div>
