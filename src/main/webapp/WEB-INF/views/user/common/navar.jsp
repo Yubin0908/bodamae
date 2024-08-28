@@ -52,8 +52,9 @@
           </ul>
       </ul>
       
-      <form class="show navbar-searchvarForm" role="search">
-        <input class="searchvar form-control" type="search" placeholder="Search" aria-label="Search">
+      <form action="${ context }search" method="get">
+        <label for="search"></label> 
+        <input class="searchvar form-control" name="search" type="search" name="search" id="search" placeholder="장소를 검색해주세요.">
       </form>
       
       <!-- 로그인 / 회원가입 -->
