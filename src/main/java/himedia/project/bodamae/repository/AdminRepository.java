@@ -19,14 +19,20 @@ public interface AdminRepository {
     @Select("select a.admin_no, a.admin_date, u.user_id, u.user_name, u.user_birthdate, u.user_regist_date from admin a join user u on a.admin_no = u.admin_no where ${option} like concat('%', #{keyword}, '%')")
     List<Admin> searchAdmin(@Param("option") String option, @Param("keyword") String keyword);
 
-    @Insert("insert into admin (admin_date) values (now())")
-    int createAdmin();
-
     @Select("select admin_no from admin order by admin_no desc limit 1")
     int findNewAdminNo();
 
     @Update("update user set admin_no = #{admin_no}, admin_check = 1 where user_id like #{user_id}")
     boolean changeUserToAdmin(@Param("user_id") String user_id, @Param("admin_no") int admin_no);
+
+    // 관리자 번호 삭제
+    @Delete("delete from admin where admin_no = #{admin_no}")
+    boolean deleteAdmin(@Param("admin_no") int admin_no);
+    
+    // 관리자 번호 생성
+    @Transactional
+    @Insert("insert into admin (admin_date) values (now())")
+    void createAdminNo();
 
     /* [관리자] 회원 관리 */
     @Select("select count(*) count from user where admin_check = 0")

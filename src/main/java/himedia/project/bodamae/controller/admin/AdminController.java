@@ -1,5 +1,6 @@
 package himedia.project.bodamae.controller.admin;
 
+import himedia.project.bodamae.dto.Admin;
 import himedia.project.bodamae.dto.User;
 import himedia.project.bodamae.repository.AdminRepository;
 import himedia.project.bodamae.service.Pagination;
@@ -87,7 +88,7 @@ public class AdminController {
 
     @GetMapping("/admin/updateUser/{user_id}")
     public String updateUser(@PathVariable("user_id") String user_id, Model model) {
-        adminRepository.createAdmin();
+        adminRepository.createAdminNo();
         int new_admin_id = adminRepository.findNewAdminNo();
         log.info("new admin_id: " + new_admin_id);
         boolean result = adminRepository.changeUserToAdmin(user_id, new_admin_id);
@@ -103,7 +104,10 @@ public class AdminController {
 
     @GetMapping("/admin/updateAdmin/{user_id}")
     public String updateAdmin(@PathVariable("user_id") String user_id, Model model, String page) {
+        User user = adminRepository.findUserById(user_id);
         boolean result = adminRepository.changeAdminToUser(user_id);
+        boolean admin_delete = adminRepository.deleteAdmin(user.getAdmin_no());
+
         int limit = 10;
         int offSet = 0;
         if (page != null && Integer.parseInt(page) != 1) {
