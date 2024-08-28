@@ -137,23 +137,24 @@
     <button class="to_list_btn" onclick="location.href='${context}community/pets'">목록으로</button>
     <c:if test="${sessionScope.user.user_id.equals(pet.user_id)}">
       <button class="to_list_btn" onclick="location.href='${context}community/pets/modify/${pet.pet_no}'">수정하기</button>
-      <button class="to_list_btn" onclick="location.href='${context}community/pets/delete/${pet.pet_no}'" data-bs-target="#exampleModal">삭제하기</button>
+      <button class="to_list_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">삭제하기</button>
 
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-body">
-              해당 회원을 삭제하시겠습니까?
+              해당 게시물을 삭제하시겠습니까?
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-              <button type="button" class="btn btn-primary" onclick="location.href='${context}admin/userDrop/${user.user_id}'">삭제</button>
+              <button type="button" class="btn btn-primary" onclick="location.href='${context}community/pets/delete/${pet.pet_no}'">삭제</button>
             </div>
           </div>
         </div>
       </div>
     </c:if>
 	</div>
+  <jsp:include page="/WEB-INF/views/user/common/footer.jsp" />
 </body>
 </html>

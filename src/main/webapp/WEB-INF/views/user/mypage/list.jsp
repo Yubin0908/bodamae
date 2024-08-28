@@ -182,7 +182,7 @@
         <c:forEach var="freeboard" items="${freeBoards}">
           <tr>
             <td>${freeboard.board_no}</td>
-            <td><a href="#">${freeboard.board_title}</a></td>
+            <td><a href="${context}community/board/${freeboard.board_no}">${freeboard.board_title}</a></td>
             <td>${freeboard.board_hits}</td>
             <td><fmt:formatDate value="${freeboard.board_date}" pattern="YYYY-MM-dd hh분 mm초"/></td>
           </tr>
