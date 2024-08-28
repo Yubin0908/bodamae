@@ -117,5 +117,4 @@ public class AdminNoticeController {
 		
 		return "redirect:/admin/noticeList/";
 	}
-	
 }

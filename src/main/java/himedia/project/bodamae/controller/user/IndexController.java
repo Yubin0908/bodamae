@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import himedia.project.bodamae.dto.Company;
 import himedia.project.bodamae.dto.CompanyImage;
@@ -24,7 +25,6 @@ public class IndexController {
 	private final CompanyRepository companyRepository;
 	private final CompanyImageRepository imgRepository;
 	private final PetRepository petRepository;
-	
 	
 	@Autowired
 	public IndexController(CompanyRepository companyRepository, CompanyImageRepository imgRepository, PetRepository petRepository) {
@@ -48,4 +48,11 @@ public class IndexController {
 		model.addAttribute("companyUrlList", companyUrlList);
 		return "index";
 	}
+	
+	@GetMapping("/search")
+	public String companySearch(@RequestParam(value = "search") String search) {
+		
+		return "index";
+	}
+	
 }

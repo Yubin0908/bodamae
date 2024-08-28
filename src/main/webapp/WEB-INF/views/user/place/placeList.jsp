@@ -27,9 +27,13 @@
         line-height: 50px;
         justify-content: flex-start;
       }
-      .place-list {
+      .place-list-page {
         width: 1200px;
         margin: 0 auto;
+      }
+      .place-list {
+        width: 1100px;
+        margin: 50px;
         margin-top: 100px;
       }
       /* serch박스 css */
@@ -59,49 +63,61 @@
         line-height: 30px;
         background-color: #D9D9D9;
       }
+      .card {
+        margin: 10px;
+        
+      }
+      .card-img-top {
+        height: 280px;
+        padding: 2px;
+        object-fit: cover;
+      }
 </style>
 </head>
 <body>
 	<div id="container">
 		<!--  navar -->
 		<jsp:include page="/WEB-INF/views/user/common/navar.jsp" />
-
-		<div class="place-list">
-			<div class="place-list-header">
-				<div>
-					<h3>장소</h3>
-				</div>
-        <!-- 검색 -->
-        <div class="search-group">
-          <!-- searchForm -->
-          <form class="category-search-box" action="${ context }admin/company/search" method="get" >
-            <label class="cmp-category" for="column"></label>
-            <select id="column" name="column">
-              <option selected>선택</option>
-              <option value="cmp_name">장소명</option>
-              <option value="cmp_address">주소별</option>
-            </select>
-            <label for="search"></label>
-            <input type="search" name="search" id="search">
-            <input type="submit" id="submit" value="검색">
-          </form>
-        </div>        
-			</div>
-      <div class="place-list-content" >
-        <c:forEach var="companyList" items="${ companyList }" varStatus="status">
-            <div class="cnt">
-              <div class="card" style="width: 18rem;">
-                <img src="${ companyUrlList[status.index].cmp_img_url }" class="card-img-top cnt_img" alt="업체_${ companyUrlList[status.index].cmp_img_no }">
-                <div class="card-body">
-                  <h5 class="card-title">${ companyList.cmp_name  }</h5>
-                  <p class="card-text">서울 특별시 ${ companyList.cmp_address_gu }</p>
-                  <a href="${ context }place/${ companyList.cmp_name }" class="btn btn-info">상세보기 ></a>
+    <div class="place-list-page" >
+  		<div class="place-list">
+  			<div class="place-list-header">
+  				<div>
+  					<h3>장소</h3>
+  				</div>
+          <!-- 검색 -->
+          <div class="search-group">
+            <!-- searchForm -->
+            <form class="category-search-box" action="${ context }place/search" method="get" >
+              <label class="cmp-category" for="column"></label>
+              <select id="column" name="column">
+                <option selected>선택</option>
+                <option value="cmp_name">장소명</option>
+                <option value="cmp_address">주소별</option>
+              </select>
+              <label for="search"></label>
+              <input type="search" name="search" id="search">
+              <input type="submit" id="submit" value="검색">
+            </form>
+          </div>        
+  			</div>
+        <div class="place-list-content" >
+          <div class="row row-cols-1 row-cols-md-4 g-8"  >
+            <c:forEach var="placeList" items="${ placeList }" varStatus="status">
+              <div class="col">
+                <div class="card w-100" style="width: 18rem;">
+                  <img src="${ placeList.cmp_img_url }" class="card-img-top cnt_img" alt="업체_${ placeList.cmp_img_no }">
+                  <div class="card-body">
+                    <h5 class="card-title">${ placeList.cmp_name  }</h5>
+                    <p class="card-text">서울특별시 ${ placeList.cmp_address_gu }</p>
+                    <a href="${ context }place/${ placeList.cmp_name }" class="btn btn-info">상세보기 ></a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </c:forEach>
-      </div>
-		</div>
+            </c:forEach>
+          </div>
+        </div>
+  		</div>
+    </div>
 	</div>
 
 		<!--  footer -->

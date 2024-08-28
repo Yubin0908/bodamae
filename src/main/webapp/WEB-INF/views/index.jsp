@@ -99,7 +99,7 @@
               <img src="${ companyUrlList[status.index].cmp_img_url }" class="card-img-top cnt_img" alt="업체_${ companyUrlList[status.index].cmp_img_no }">
               <div class="card-body">
                 <h5 class="card-title">${ companyList.cmp_name  }</h5>
-                <p class="card-text">서울 특별시 ${ companyList.cmp_address_gu }</p>
+                <p class="card-text">서울특별시 ${ companyList.cmp_address_gu }</p>
                 <a href="${ context }place/${ companyList.cmp_name }" class="btn btn-info">상세보기 ></a>
               </div>
             </div>
