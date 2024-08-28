@@ -3,12 +3,12 @@ package himedia.project.bodamae.repository;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.transaction.annotation.Transactional;
 
 import himedia.project.bodamae.dto.Company;
 
@@ -21,7 +21,7 @@ public interface CompanyRepository {
 	void saveCompany(Company newCompany);
 	
 	// 업체정보 전체 조회
-	@Select("select * from company order by cmp_code desc")
+	@Select("select * from company cmp join company_image cmp_img on cmp.cmp_img_no = cmp_img.cmp_img_no order by cmp_code desc")
 	List<Company> companyList();
 	
 	// 인덱스 장소 4개 조회
@@ -46,5 +46,21 @@ public interface CompanyRepository {
   // 업체정보 수정
   @Update("update company set cmp_name = #{ updateCompany.cmp_name }, cmp_address = #{ updateCompany.cmp_address }, cmp_address_gu = #{ updateCompany.cmp_address_gu }, cmp_tel_no = #{ updateCompany.cmp_tel_no }, cmp_holidays = #{ updateCompany.cmp_holidays }, operation_hours = #{ updateCompany.operation_hours }, pet_restriction = #{ updateCompany.pet_restriction } where cmp_code = #{ cmp_code }")
   int update(@Param("cmp_code") int cmp_code, @Param("updateCompany") Company updateCompany);
+  
+  // 업체정보 삭제
+  @Delete("delete company_image, company from company join company_image on company.cmp_img_no = company_image.cmp_img_no where company.cmp_code = #{ cmp_code }")
+  boolean deleteCompany(@Param("cmp_code") int cmp_code);
+  
+	// 장소정보 전체 조회
+	@Select("select * from company cmp join company_image cmp_img on cmp.cmp_img_no = cmp_img.cmp_img_no order by cmp_code desc")
+	List<Company> placeList();
+  
+  // 장소리스트 검색(카테고리 선택이 "선택"으로 됐을 경우)
+	@Select("select * from company where cmp_name like concat('%',#{search},'%') or cmp_address_gu like concat('%',#{search},'%')")
+  List<Company> findByChoosePlace(String search);
+	
+	//업체정보 검색 모든 컬럼으로 검색
+	 @Select("select * from company where ${column} like concat('%', #{other}, '%')")
+	 List<Company> findByColumnPlace(@Param("column") String column, @Param("other") String other);
   
 }

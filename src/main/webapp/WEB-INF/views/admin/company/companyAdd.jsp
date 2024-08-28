@@ -19,7 +19,7 @@ input::-webkit-search-decoration, input::-webkit-search-cancel-button,
 input::-webkit-search-results-button, input::-webkit-search-results-decoration
 	{ display: none; }
 
-  .cmp-add {
+  .cmp-add-page {
   	width: 1000px;
   	margin: 0 auto;
   }
@@ -31,46 +31,55 @@ input::-webkit-search-results-button, input::-webkit-search-results-decoration
     text-align: center;  
   }
   
-  .upside {
+  .up-side {
   	display: flex;
   }
   
-  .image {
+  .u-left-side {
+    width: 500px;
+  }
+  .
+  /* .image {
     margin: 10px;
   	width: 480px;
   	text-align: center;
   }
-  
-  .right-side {
-    margin-top: 20px;
+   */
+  .u-right-side {
   	width: 500px;
+    margin-right: 25px;
+    margin-top: 10px
   }
-  
+  .inner {
+    margin: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+  }
   
   .preview {
   	margin: 10px 10px;
     padding: 5px;
   	border: 1px solid #888;
     border-radius: 15px;
-  	width: 410px;
-  	height: 200px;
+  	width: 460px;
+  	height: 280px;
     vertical-align: middle;
   }
   img.cmp-img {
-    width: 400px;
+    width: 450px;
     height: 100%;
     object-fit: contain;
   }
   
   label {
-  	display: inline-block;
-  	margin: 10px;
+    display: inline-block;
+    margin: 10px;
+    font-weight: bold;
   }
   
-  input {
-    display: inline-block;
-  	padding: 3px;
-    width: 300px;
+  input[type="text"] {
+    padding-left: 10px;
+    width: 330px;
   }
   .down-side {
     margin: 0 auto;
@@ -123,22 +132,24 @@ input::-webkit-search-results-button, input::-webkit-search-results-decoration
       <div class="admin-logo">
         <img class="admin-logo-img" alt="관리자로고이미지" src="${resPath}img/logo_admin.png">
       </div>
-
-      <div class="cmp-add">
+    <!-- 메인 콘텐츠 -->
+      <div class="cmp-add-page">
         <div>
           <h2>업체 관리 > 등록</h2>
         </div>
         <form class="cmp-add-form" action="${ context }admin/company/companyList" method="post">
-          <div class="upside">
-            <div class="image">
-              <div class="preview" id="img_preview"></div>
-              <div class="img-url">
-                <label for="img_url"></label> 
-                <input id="img_url" type="file" onchange="setPreview(event);" accept="image/*"  placeholder="이미지 URL">
+          <div class="up-side">
+            <div class="u-left-side" >
+              <div class="image">
+                <div class="preview" id="img_preview"></div>
+                <div class="img-url">
+                  <label for="img_url"></label> 
+                  <input id="img_url" type="file" onchange="setPreview(event);" accept="image/*"  placeholder="이미지 URL">
+                </div>
+                <div >
+                  <input type="hidden" name="cmp_img_url" id="cmp_img_url" type="url">
+                </div>  
               </div>
-              <div >
-                <input type="hidden" name="cmp_img_url" id="cmp_img_url" type="url">
-              </div>  
             </div>
             <%-- 이미지 미리보기 --%>
             <script type="text/javascript">
@@ -198,39 +209,36 @@ input::-webkit-search-results-button, input::-webkit-search-results-decoration
           });
             </script>
             
-            <div class="right-side">
-              <div class="cmp-code">
-                <label for="cmp_name">업체 이름 :</label> 
+            <div class="u-right-side">
+              <div class="cmp-code inner">
+                <label for="cmp_name">업체 이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</label> 
                 <input name="cmp_name" type="text" id="cmp_name" >
               </div>
-              <div class="cmp-address">
-                <label for="cmp_address">업체 주소 : </label> 
+              <div class="cmp-address inner">
+                <label for="cmp_address">업체 주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label> 
                 <input name="cmp_address" type="text" id="cmp_address" placeholder="도로명주소">
               </div>
-              <div class="cmp-address-gu">
-                <label for="cmp_address_gu">업체 주소_구 : </label> 
-                <input name="cmp_address_gu" type="text" id="cmp_address_gu" placeholder="ex) 강남구">
+              <div class="cmp-address-gu inner">
+                <label for="cmp_address_gu">업체 주소_구&nbsp;&nbsp;&nbsp; : </label> 
+                <input name="cmp_address_gu" type="text" id="cmp_address_gu" placeholder="ex) 강남구 등">
               </div>
-              <div class="cmp-tel-no">
-                <label for="cmp_tel_no">전화번호 : </label> 
-                <input name="cmp_tel_no" type="text" id="cmp_tel_no">
+              <div class="cmp-tel-no inner">
+                <label for="cmp_tel_no">전화번호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label> 
+                <input name="cmp_tel_no" type="text" id="cmp_tel_no"placeholder="ex) (010)12341234, (0507)12341234">
               </div>
-              <div>
-                <label for="cmp_holidays">업체 휴무일 : </label> 
-                <input type="text" name="cmp_holidays" id="cmp-holidays">
+              <div class="cmp-holidays inner" >
+                <label for="cmp_holidays ">업체 휴무일&nbsp;&nbsp;&nbsp;&nbsp; : </label> 
+                <input type="text" name="cmp_holidays" id="cmp-holidays"placeholder="ex) 연중무휴, 매주 수요일, 주말 등" >
               </div>
-              <div>
-                <label for="operation_hours">운영시간 : </label> 
-                <input type="text" name="operation_hours" id="operation-hours">
+              <div class="operation-hours inner" >
+                <label for="operation_hours ">운영시간&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : </label> 
+                <input type="text" name="operation_hours" id="operation-hours" placeholder="ex) 24시간, 09시~20시, 오전7시~오후9시" >
               </div>
             </div>
           </div>
           <div class="down-side">
-            <div>
               <label class="pet_restriction" for="pet_restriction">반려동물 제한사항 내용</label>
-              <!-- <input type="text" name="pet_restriction" id="pet-restriction" > -->
               <input name="pet_restriction" id="pet_restriction" placeholder="ex) 맹견류, 공격성, 짖음 심한 경우 불가, 5차 접종, 매너벨트 필수"></input>
-            </div>
           </div>
           <div class="btn-submit">
             <input type="submit" value="등록 완료">

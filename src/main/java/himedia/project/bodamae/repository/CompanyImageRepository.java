@@ -3,6 +3,7 @@ package himedia.project.bodamae.repository;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
@@ -28,4 +29,5 @@ public interface CompanyImageRepository {
 	// 인덱스 장소 이미지 4개 조회
 	@Select("select * from company_image limit 4")
 	List<CompanyImage> companyIndexUrlList();
+	
 }
