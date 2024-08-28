@@ -20,12 +20,17 @@
   .place-detail {
     width: 1000px;
     margin: 100px;
+    text-align: center;
   }
   .place-detail-content {
     border: 1px solid #888;
     border-radius: 20px;
     text-align: center;
     font-size: 20px;
+  }
+  h3 {
+    text-align: left;
+    margin-bottom: 20px;
   }
   .place-img {
     margin: 10px auto;
@@ -40,17 +45,26 @@
   }
   .down-side {
     display: flex;
+    margin-bottom: 20px;
   }
   .d-left-side{
-    padding-left:100px;
-    width: 460px;
+    margin-top: 20px;
+    padding-left:20px;
+    width: 500px;
     text-align: left;
+  }
+  .inner-line {
+    margin-top: 10px;
   }
   .column {
     display: inline-block;  
   }
   .detail {
     display: inline-block;
+  }
+  .d-right-side {
+    margin-left: auto;
+    margin-right: 20px;
   }
   #pet-restriction {
     width: 110px;
@@ -60,8 +74,21 @@
     border: 1px solid #D9D9D9;
     background-color: #D9D9D9;
     border-radius: 30px;
-    width: 540px;
-    line-height: 160px;
+    width: 500px;
+    line-height: 130px;
+  }
+  .btn-reset {
+    margin: 0 auto;
+  }
+  button[type="reset"] {
+    display : inline-block;
+    margin: 10px;
+    width: 200px;
+    line-height: 60px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: bold;
   }
 </style>
  
@@ -84,31 +111,46 @@
           </div>
           <div class="down-side" >
             <div class="d-left-side" >
-              <div>
+              <div class="inner-line" >
                 <div class="column">
-                  장소 이름 : 
+                  장소 이름&nbsp;&nbsp; : 
                 </div>
                 <div class="detail" >
                   ${ place.cmp_name }
                 </div>
               </div>
+              <div class="inner-line" >
                 <div class="column" >
-                  주소 :
+                  주소&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :
                 </div>
                 <div class="detail" >
-                ${ place.cmp_address }</div>
-                <div class="column" >
-                  전화번호 : 
+                  ${ place.cmp_address }
                 </div>
-                <div class="detail" >${ place.cmp_tel_no }</div>
+              </div>
+              <div class="inner-line" >
                 <div class="column" >
-                  휴무일 : 
+                  전화번호&nbsp;&nbsp;&nbsp; : 
                 </div>
-                <div class="detail" >${ place.cmp_holidays }</div>
+                <div class="detail" >
+                  ${ place.cmp_tel_no }
+                </div>
+              </div>
+              <div class="inner-line" >
                 <div class="column" >
-                  운영시간 : 
+                  휴무일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 
                 </div>
-                <div class="detail" >${ place.operation_hours }</div>
+                <div class="detail" >
+                  ${ place.cmp_holidays }
+                </div>
+              </div>
+              <div class="inner-line" >
+                <div class="column" >
+                  운영시간&nbsp;&nbsp;&nbsp; : 
+                </div>
+                <div class="detail" >
+                  ${ place.operation_hours }
+                </div>
+              </div>
             </div>
             <div class="d-right-side" >
               <div class="pet-restriction-up" >
@@ -120,6 +162,9 @@
             </div>
           </div>
         </div>
+          <div class="btn-reset" >
+            <button type="reset"  onclick="location.href='${context}place'">목록으로</button>
+          </div>
 			</div>
 		</div>
 	</div>

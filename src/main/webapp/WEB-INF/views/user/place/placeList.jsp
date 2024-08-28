@@ -87,7 +87,7 @@
           <!-- 검색 -->
           <div class="search-group">
             <!-- searchForm -->
-            <form class="category-search-box" action="${ context }place/placeList/search" method="get" >
+            <form class="category-search-box" action="${ context }place/search" method="get" >
               <label class="cmp-category" for="column"></label>
               <select id="column" name="column">
                 <option selected>선택</option>

@@ -42,19 +42,19 @@ public class PlaceController {
 
 		// 검색을 아무것도 적지 않았을 때는 전체리스트를 조회
 		if (column.equals("선택") && search == "") {
-			List<Company> companyList = companyRepository.placeList();
-			model.addAttribute("companyList", companyList);
-			return "admin/company/companyList";
+			List<Company> placeList = companyRepository.placeList();
+			model.addAttribute("placeList", placeList);
+			return "user/place/placeList";
 		// 선택에 두고 검색했을 경우 모든 컬럼에 해당 데이터가 있는지 조건확인
 		} else if (column.equals("선택")) {
 			List<Company> findByChoose = companyRepository.findByChoosePlace(search);
-			model.addAttribute("companyList", findByChoose);
-			return "redirect:user/place/placeList";
+			model.addAttribute("placeList", findByChoose);
+			return "user/place/placeList";
 		}
 		
 		// 검색
 		List<Company> companyList = companyRepository.findByColumnPlace(column, search);
-		model.addAttribute("companyList", companyList);
+		model.addAttribute("placeList", companyList);
 		return "user/place/placeList";
 	}
 	
