@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:url var="resPath" value="/resources/" />
 <c:url var="context" value="/" />
 
@@ -158,7 +159,7 @@
                   <td>${admin.admin_no}</td>
                   <td>${admin.user_name}</td>
                   <td>${admin.user_id}</td>
-                  <td>${admin.admin_date}</td>
+                  <td><fmt:formatDate value="${admin.admin_date}" pattern="YYYY-MM-dd" /> </td>
                   <td><button type="reset" onclick="location.href='${context}admin/adminManagement'">수정</button></td>
                 </tr>
               </c:forEach>
