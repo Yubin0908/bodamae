@@ -65,7 +65,10 @@ public interface CompanyRepository {
 	@Select("select * from company where ${column} like concat('%', #{other}, '%')")
 	List<Company> findByColumnPlace(@Param("column") String column, @Param("other") String other);
 	
-	@Select("select * from company cmp join company_image cmp_img on cmp.cmp_img_no = cmp_img.cmp_img_no  where cmp_name like '${cmp_name}'")
+	@Select("select * from company cmp join company_image cmp_img on cmp.cmp_img_no = cmp_img.cmp_img_no where cmp_name like '${cmp_name}'")
 	Optional<Company> findByName(@Param("cmp_name") String cmp_name);
-
+	
+	// index 검색 기능 : 업체명으로 검색
+	@Select("select * from company cmp join company_image cmp_img on cmp.cmp_img_no = cmp_img.cmp_img_no where cmp_name like #{place}")
+	List<Company> findByPlace(@Param("place") String place);
 }
