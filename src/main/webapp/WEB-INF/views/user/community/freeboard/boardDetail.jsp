@@ -70,9 +70,8 @@
 
 				<div class="board-btn">
 					<c:if test="${ sessionScope.user.user_id eq freeBoard.user_id}">
-						<a href="${ context }community/board/edit/${ freeBoard.board_no }">
-							<button type="button" class="btn btn-outline-info">수정</button>
-						</a>
+						<button type="button" class="btn btn-outline-info"
+							onclick="location.href='${ context }community/board/edit/${ freeBoard.board_no }'">수정</button>
 						<!-- Button trigger modal -->
 						<button type="button" class="btn btn-outline-info"
 							data-bs-toggle="modal"
