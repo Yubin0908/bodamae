@@ -1,7 +1,12 @@
 package himedia.project.bodamae.controller.user;
 
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import himedia.project.bodamae.dto.Company;
 import himedia.project.bodamae.dto.CompanyImage;
@@ -56,5 +62,10 @@ public class IndexController {
 		model.addAttribute("placeList", placeList);
 		
 		return "user/place/placeList";
+	}
+	
+	@GetMapping("error-404")
+	public String error404() {
+		return "error";
 	}
 }
