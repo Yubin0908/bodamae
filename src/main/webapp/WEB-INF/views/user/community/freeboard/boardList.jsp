@@ -156,7 +156,6 @@ th {
 							</c:forEach>
 						</tbody>
 					</table>
-
 				</div>
 				<div class="pagination">
 					<c:if test="${paging.startPage > paging.blockSize}">

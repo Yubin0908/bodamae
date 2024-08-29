@@ -14,7 +14,7 @@ import himedia.project.bodamae.dto.Company;
 
 public interface CompanyRepository {
 
-	/** 관리자 뷰 > 업체 **/
+	/** 관리자 뷰 > 업체 company **/
 	// 신규 업체 등록(이미지는 따로 불러와서 진행)
 	@Insert("insert into company(cmp_img_no,cmp_name,cmp_address,cmp_address_gu,cmp_tel_no,cmp_holidays,operation_hours,pet_restriction)"
 			+ "values(#{cmp_img_no},#{cmp_name},#{cmp_address},#{cmp_address_gu},#{cmp_tel_no},#{cmp_holidays},#{operation_hours},#{pet_restriction})")
@@ -52,19 +52,20 @@ public interface CompanyRepository {
 	@Delete("delete company_image, company from company join company_image on company.cmp_img_no = company_image.cmp_img_no where company.cmp_code = #{ cmp_code }")
 	boolean deleteCompany(@Param("cmp_code") int cmp_code);
 
-	/** 사용자 뷰 > 장소 **/
+	/** 사용자 뷰 > 장소 place **/
 	// 장소정보 전체 조회
 	@Select("select * from company cmp join company_image cmp_img on cmp.cmp_img_no = cmp_img.cmp_img_no order by cmp_code desc")
 	List<Company> placeList();
 
-	// 장소리스트 검색(카테고리 선택이 "선택"으로 됐을 경우)
-	@Select("select * from company where cmp_name like concat('%',#{search},'%') or cmp_address_gu like concat('%',#{search},'%')")
+	// 장소리스트 검색(컬럼 선택이 "선택"으로 됐을 경우)
+	@Select("select * from company cmp join company_image cmp_img on cmp.cmp_img_no = cmp_img.cmp_img_no where cmp_name like concat('%',#{search},'%') or cmp_address_gu like concat('%',#{search},'%')")
 	List<Company> findByChoosePlace(String search);
 
 	// 업체정보 검색 모든 컬럼으로 검색
-	@Select("select * from company where ${column} like concat('%', #{other}, '%')")
+	@Select("select * from company cmp join company_image cmp_img on cmp.cmp_img_no = cmp_img.cmp_img_no where ${column} like concat('%', #{other}, '%')")
 	List<Company> findByColumnPlace(@Param("column") String column, @Param("other") String other);
 	
+	// 카드 형식의 업체 정보에서 장소 이름으로 상세보기 이동
 	@Select("select * from company cmp join company_image cmp_img on cmp.cmp_img_no = cmp_img.cmp_img_no where cmp_name like '${cmp_name}'")
 	Optional<Company> findByName(@Param("cmp_name") String cmp_name);
 	

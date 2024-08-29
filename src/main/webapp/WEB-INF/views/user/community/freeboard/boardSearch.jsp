@@ -41,7 +41,7 @@ input::-webkit-search-decoration, input::-webkit-search-cancel-button,
 	justify-content: flex-start;
 }
 
-.btn-new-notice {
+.btn-new-board {
 	display: inline-block;
 	margin-right: auto;
 	border: 1px solid #888;
@@ -88,6 +88,20 @@ input#submit {
 th {
 	text-align: center;
 }
+
+.pagination {
+	display: inline-block;
+	width: 1200px;
+	text-align: center;
+}
+
+.pagination b {
+	font-weight: bold;
+}
+
+.arrow {
+	width: 20px;
+}
 </style>
 </head>
 <body>
@@ -112,7 +126,7 @@ th {
 						</select> <label for="search"></label> <input type="search" name="search"
 							id="search"> <input type="submit" id="submit" value="검색">
 					</form>
-					<a href="${ context }community/board/boardWrite">
+					<a href="${ context }community/board/write">
 						<button class="btn-new-board">등록</button>
 					</a>
 				</div>
@@ -144,6 +158,28 @@ th {
 							</c:forEach>
 						</tbody>
 					</table>
+				</div>
+				<div class="pagination">
+					<c:if test="${paging.startPage > paging.blockSize}">
+						<a href="${context}community/board?page=${paging.startPage - 1}">
+							<img class="arrow" src="${resPath}img/left-arrow-icon.png" alt="">
+						</a>
+					</c:if>
+					<c:forEach var="i" begin="${paging.startPage}"
+						end="${paging.endPage}">
+						<c:if test="${paging.currentPage == i}">
+							<b>${i}</b>
+						</c:if>
+						<c:if test="${paging.currentPage != i}">
+							<a href="${context}community/board?page=${i}">${i}</a>
+						</c:if>
+					</c:forEach>
+					<c:if test="${paging.endPage < paging.totalPages}">
+						<a href="${context}community/board?page=${paging.startPage + 10}">
+							<img class="arrow" src="${resPath}img/right-arrow-icon.png"
+							alt="">
+						</a>
+					</c:if>
 				</div>
 			</div>
 		</div>

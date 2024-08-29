@@ -60,7 +60,8 @@
 				</div>
 
 				<div class="board-form">
-					<form method="post" action="${context}community/board/writeAction" id="board_form">
+					<form method="post" action="${context}community/board/writeAction"
+						id="board_form">
 
 						<div class="user" style="display: none">
 							<input type="text" id="user_id" name="user_id"
@@ -132,12 +133,12 @@
 			});
 </script>
 <script>
-	document.getElementById('board_form').addEventListener('submit',
-			function(e) {
-				const content = tinymce.get('board_content').getContent();
-				if (content === '') {
-					e.preventDefault();
-				}
-			});
+document.getElementById('board_form').addEventListener('submit',
+		function(e) {
+			const content = tinymce.get('board_content').getContent();
+			if (content === '') {
+				e.preventDefault();
+			}
+		});
 </script>
 </html>
