@@ -170,7 +170,7 @@
             <!-- Button trigger modal -->
             <div class="btn-modal">
               <button id="btn-modal" type="button" class="btn btn-outline-info" 
-                data-bs-toggle="modal" data-bs-target="#Modal-${ cmp.cmp_code }">업체삭제</button>
+                data-bs-toggle="modal" data-bs-target="#Modal-${ cmp.cmp_code }">업체 삭제</button>
             </div>
           </div>
           <!-- Modal -->
