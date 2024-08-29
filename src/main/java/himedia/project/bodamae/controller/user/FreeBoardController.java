@@ -32,11 +32,16 @@ public class FreeBoardController {
 	// [자유게시판 조회]
 	@GetMapping("/search")
 	public String boardSearch(@RequestParam(name = "search") String search,
-			@RequestParam(name = "filter") String filter, Model model) {
-
+			@RequestParam(name = "filter") String filter, String page, Model model) {
+		int limit = 10;
+		int offSet = 0;
+		if (page != null && Integer.parseInt(page) != 1) {
+			offSet = (Integer.parseInt(page) - 1) * limit;
+		}
 		try {
 			List<FreeBoard> freeBoard = freeBoardRepository.findByBoard(filter, "%" + search + "%");
 			model.addAttribute("freeBoard", freeBoard);
+			model.addAttribute("paging", new Pagination(freeBoardRepository.board_count(), page, limit, 5));
 		} catch (Exception e) {
 		}
 
@@ -70,11 +75,11 @@ public class FreeBoardController {
 
 	// [자유게시판 등록]
 	@PostMapping("/writeAction")
-	public String writeAction(@ModelAttribute(name="freeBoard") FreeBoard freeBoard) {
-		
+	public String writeAction(@ModelAttribute(name = "freeBoard") FreeBoard freeBoard) {
+
 		freeBoardRepository.save(freeBoard);
 		int boardId = freeBoard.getBoard_no();
-		
+
 		return "redirect:/community/board";
 	}
 

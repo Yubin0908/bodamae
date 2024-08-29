@@ -1,9 +1,7 @@
 package himedia.project.bodamae.dto;
 
 import java.sql.Timestamp;
-
 import org.apache.ibatis.annotations.Mapper;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
