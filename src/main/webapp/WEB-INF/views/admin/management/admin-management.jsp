@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>보담 愛 | 관리자 조회</title>
+  <title>보담 愛 | 관리자 등록/수정</title>
   
   <link href="${ resPath }css/webSettings.css" rel="stylesheet">
   <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
