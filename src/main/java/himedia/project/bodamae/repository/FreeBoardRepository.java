@@ -13,13 +13,15 @@ import org.springframework.transaction.annotation.Transactional;
 import himedia.project.bodamae.dto.FreeBoard;
 
 public interface FreeBoardRepository {
-
+	
+	// 목록
     @Select("select * from free_board")
     List<FreeBoard> boardList();
 
     @Select("select count(*) as count from free_board")
     int board_count();
 
+    //페이지네이션, 자유게시판 목록
     @Select("select * from free_board order by board_no desc limit #{limit} offset #{offSet}")
     List<FreeBoard> findByPage(@Param("limit") int limit, @Param("offSet") int offSet);
     
@@ -29,9 +31,8 @@ public interface FreeBoardRepository {
     void save(FreeBoard freeBoard);
     
     // 게시글 조회
-    @Select("select * from free_board where ${ filter } like #{ search }")
+    @Select("select * from free_board where ${ filter } like #{ search } order by board_no desc")
     List<FreeBoard> findByBoard(@Param("filter") String filter, @Param("search") String search);
-    
     
     // 수정
     @Select("update free_board set board_title = #{updateBoard.board_title}, board_content = #{updateBoard.board_content} where board_no = #{board_no}")
@@ -41,6 +42,7 @@ public interface FreeBoardRepository {
     @Delete("delete from free_board where board_no = #{board_no}")
     boolean deleteBoard(@Param("board_no") String board_no);
    
+    // 상세페이지
     @Select("select * from free_board where board_no = #{board_no}")
     Optional<FreeBoard> boardDetail(int board_no);
     
