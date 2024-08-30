@@ -169,7 +169,7 @@
                   const formData = new FormData();
                   formData.append('image', file);
                   $.ajax({
-                    url: 'https://api.imgbb.com/1/upload?key=536e86c464cec8babb1221e0332e4097',
+                    url: 'https://api.imgbb.com/1/upload?key=',
                     type: 'POST',
                     data: formData,
                     processData: false,
