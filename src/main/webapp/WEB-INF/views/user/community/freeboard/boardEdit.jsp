@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>보담 愛 | 자유게시판 수정</title>
+<title>보담 愛 | 자유게시판</title>
 
 <link href="${ resPath }css/webSettings.css" rel="stylesheet">
 <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">

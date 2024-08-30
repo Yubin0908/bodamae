@@ -43,7 +43,7 @@ public class RegisterController {
 				user.getUser_id(), user.getUser_name(), user.getUser_password(), user.getUser_gender(),
 				user.getUser_birthdate(), user.getUser_tel());
 		
-		return "redirect:/";
+		return "redirect:/user/login";
 	}
 
 	@ResponseBody
