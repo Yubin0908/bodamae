@@ -45,7 +45,9 @@ public interface CompanyRepository {
 	Optional<Company> findByCode(int cmp_code);
 
 	// 업체정보 수정
-	@Update("update company set cmp_name = #{ updateCompany.cmp_name }, cmp_address = #{ updateCompany.cmp_address }, cmp_address_gu = #{ updateCompany.cmp_address_gu }, cmp_tel_no = #{ updateCompany.cmp_tel_no }, cmp_holidays = #{ updateCompany.cmp_holidays }, operation_hours = #{ updateCompany.operation_hours }, pet_restriction = #{ updateCompany.pet_restriction } where cmp_code = #{ cmp_code }")
+	@Update("update company set cmp_name = #{ updateCompany.cmp_name }, cmp_address = #{ updateCompany.cmp_address }, "
+			+ "cmp_address_gu = #{ updateCompany.cmp_address_gu }, cmp_tel_no = #{ updateCompany.cmp_tel_no }, cmp_holidays = #{ updateCompany.cmp_holidays }, "
+			+ "operation_hours = #{ updateCompany.operation_hours }, pet_restriction = #{ updateCompany.pet_restriction } where cmp_code = #{ cmp_code }")
 	int update(@Param("cmp_code") int cmp_code, @Param("updateCompany") Company updateCompany);
 
 	// 업체정보 삭제

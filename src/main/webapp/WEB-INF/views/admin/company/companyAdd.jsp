@@ -5,123 +5,109 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>보담 愛-업체등록</title>
-<link href="${ resPath }css/webSettings.css" rel="stylesheet">
-<link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
-<link href="${ resPath }css/admin-header.css" rel="stylesheet">
-<script src="${ resPath }js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-
-<style type="text/css">
-/* input x자 표시 없애기 크롬(https://wazacs.tistory.com/33) */
-input::-webkit-search-decoration, input::-webkit-search-cancel-button,
-input::-webkit-search-results-button, input::-webkit-search-results-decoration
-	{ display: none; }
-
-  .cmp-add-page {
-  	width: 1000px;
-  	margin: 0 auto;
-  }
+  <meta charset="UTF-8">
+  <title>보담 愛-업체등록</title>
   
-  .cmp-add-form {
-  	width: 1000px;
-  	border: 1px solid #888;
-  	border-radius: 20px;
-    text-align: center;  
-  }
-  
-  .up-side {
-  	display: flex;
-  }
-  
-  .u-left-side {
-    width: 500px;
-  }
-  .
-  /* .image {
-    margin: 10px;
-  	width: 480px;
-  	text-align: center;
-  }
-   */
-  .u-right-side {
-  	width: 500px;
-    margin-right: 25px;
-    margin-top: 10px
-  }
-  .inner {
-    margin: 10px 0;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .preview {
-  	margin: 10px 10px;
-    padding: 5px;
-  	border: 1px solid #888;
-    border-radius: 15px;
-  	width: 460px;
-  	height: 280px;
-    vertical-align: middle;
-  }
-  img.cmp-img {
-    width: 450px;
-    height: 100%;
-    object-fit: contain;
-  }
-  
-  label {
-    display: inline-block;
-    margin: 10px;
-    font-weight: bold;
-  }
-  
-  input[type="text"] {
-    padding-left: 10px;
-    width: 330px;
-  }
-  .down-side {
-    margin: 0 auto;
-  	width: 500px;
-  	text-align: left;
-  }
-  .pet_restriction {
-    text-align: left;
-  }
-  #pet_restriction {
-  	padding: 5px;
-  	width: 480px;
-  	line-height: 50px;
-  }
-  input[type="submit"] {
-    margin: 10px;
-    width: 200px;
-    line-height: 60px;
-    border: 1px solid #888;
-    border-radius: 10px;
-    font-size: 25px;
-    font-weight: bold;
-  }
-  .btn-submit {
-    display: inline-block;
-    justify-content: center;
-    text-align: center;
-  }
-  button[type="reset"] {
-    margin: 10px;
-    width: 200px;
-    line-height: 60px;
-    border: 1px solid #888;
-    border-radius: 10px;
-    font-size: 25px;
-    font-weight: bold;
-  }
-  .btn-reset {
-    text-align: right;
-  }
-  
-</style>
+  <link href="${ resPath }css/webSettings.css" rel="stylesheet">
+  <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
+  <link href="${ resPath }css/admin-header.css" rel="stylesheet">
+  <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <style type="text/css">
+    input::-webkit-search-decoration,
+    input::-webkit-search-cancel-button,
+    input::-webkit-search-results-button,
+    input::-webkit-search-results-decoration {
+  	  display: none; }
+    .cmp-add-page {
+    	width: 1000px;
+    	margin: 0 auto;
+    }
+    .cmp-add-form {
+    	width: 1000px;
+    	border: 1px solid #888;
+    	border-radius: 20px;
+      text-align: center;  
+    }
+    .up-side {
+    	display: flex;
+    }
+    .u-left-side {
+      width: 500px;
+    }
+    .u-right-side {
+    	width: 500px;
+      margin-right: 25px;
+      margin-top: 10px
+    }
+    .inner {
+      margin: 10px 0;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .preview {
+    	margin: 10px 10px;
+      padding: 5px;
+    	border: 1px solid #888;
+      border-radius: 15px;
+    	width: 460px;
+    	height: 280px;
+      vertical-align: middle;
+    }
+    img.cmp-img {
+      width: 450px;
+      height: 100%;
+      object-fit: contain;
+    }
+    label {
+      display: inline-block;
+      margin: 10px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      padding-left: 10px;
+      width: 330px;
+    }
+    .down-side {
+      margin: 0 auto;
+    	width: 500px;
+    	text-align: left;
+    }
+    .pet_restriction {
+      text-align: left;
+    }
+    #pet_restriction {
+    	padding: 5px;
+    	width: 480px;
+    	line-height: 50px;
+    }
+    input[type="submit"] {
+      margin: 10px;
+      width: 200px;
+      line-height: 60px;
+      border: 1px solid #888;
+      border-radius: 10px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+    .btn-submit {
+      display: inline-block;
+      justify-content: center;
+      text-align: center;
+    }
+    button[type="reset"] {
+      margin: 10px;
+      width: 200px;
+      line-height: 60px;
+      border: 1px solid #888;
+      border-radius: 10px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+    .btn-reset {
+      text-align: right;
+    }
+  </style>
 </head>
 <body>
   <div id="container">
@@ -164,25 +150,20 @@ input::-webkit-search-results-button, input::-webkit-search-results-decoration
               };
 
               reader.readAsDataURL(event.target.files[0]);
-              console.log(event.target.files[0]);
-            }
-            document.getElementById('img_url').addEventListener('change', function(event) {
+            };
+            <%-- 이미지 파일을 URL형식 변환 --%>
+             document.getElementById('img_url').addEventListener('change', function(event) {
               const file = event.target.files[0];
               if (file) {
               		const imgList = document.querySelectorAll("div#img_preview.preview");
-              		console.log("이미지 저장된 리스트",imgList[0]);
               		if(imgList[0].children.length >= 1) {
               			const firstChild = document.querySelectorAll('div#img_preview.preview.firstChild');
-              			console.log("선택된 첫번째 자식",firstChild);
               			imgList[0].removeChild(imgList[0].children[0]);
               		}
                   // 파일을 브라우저 내에서 URL로 변환
                   const imageUrl = URL.createObjectURL(file);
-                  console.log("파일로 변환된",file);
 
-                  // 변환된 URL을 input[type="url"] 요소에 담기
-                  /* const cmpImgUrl = document.getElementById('cmp_img_url'); */
-                  /* cmpImgUrl.value = imageUrl; */
+                  // 변환된 URL을 input[type="hidden"] 요소에 담기
                   const cmpImgUrl = $('#cmp_img_url')
                   // url데이터 변환
                   const formData = new FormData();
@@ -194,18 +175,14 @@ input::-webkit-search-results-button, input::-webkit-search-results-decoration
                     processData: false,
                     contentType: false,
                     success: function (res) {
-                    	console.log(res);
-                    	console.log(cmpImgUrl);
-                    	console.log(cmpImgUrl.val());
                     	cmpImgUrl.val(res.data.url);
                     },
                     error: function (err) {
-                      console.error(err);
                     }
                   });
                 } else {
                   img.val("");
-                }
+                } 
           });
             </script>
             

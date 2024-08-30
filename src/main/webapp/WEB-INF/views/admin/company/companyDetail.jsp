@@ -5,61 +5,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>보담 愛-업체상세</title>
-    <link href="${ resPath }css/webSettings.css" rel="stylesheet">
-    <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
-    <link href="${ resPath }css/admin-header.css" rel="stylesheet">
-    <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
-	<style type="text/css">
-  .cmp-detail-page {
-    width: 1000px;
-    margin: 0 auto;
-  }
-  .cmp-detail {
-    width: 1000px;
-    border: 1px solid #888;
-    border-radius: 20px;
-    text-align: center; 
-    justify-content: center;
-  }
- .cmp-img {
-    width:480px;
-    padding: 10px;
-  }
-  .down-side {
-    display: flex;
-    font-size: 20px;
-  }
-  .d-left-side {
-    width: 600px;
-    padding-left: 50px;
-    text-align: left;
-  }
-  .d-right-side {
-    width: 400px;
-    padding-left: 30px;
-    text-align: left;
-  }
-  .d-right-side>div {
-    margin-top: 10px;
-  }
-  .d-down-side {
-    width: 1000x;
-    margin: 10px 0;
-    font-size: 20px;
-    text-align: center;
-  }
-  button[type="reset"] {
-    margin: 10px;
-    width: 200px;
-    line-height: 60px;
-    border: 1px solid #888;
-    border-radius: 10px;
-    font-size: 25px;
-    font-weight: bold;
-  }
-	</style>
+  <meta charset="UTF-8">
+  <title>보담 愛-업체상세</title>
+  
+  <link href="${ resPath }css/webSettings.css" rel="stylesheet">
+  <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
+  <link href="${ resPath }css/admin-header.css" rel="stylesheet">
+  <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
+  <style type="text/css">
+    .cmp-detail-page {
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .cmp-detail {
+      width: 1000px;
+      border: 1px solid #888;
+      border-radius: 20px;
+      text-align: center; 
+      justify-content: center;
+    }
+    .cmp-img {
+      width:480px;
+      padding: 10px;
+    }
+    .down-side {
+      display: flex;
+      font-size: 20px;
+    }
+    .d-left-side {
+      width: 600px;
+      padding-left: 50px;
+      text-align: left;
+    }
+    .d-right-side {
+      width: 400px;
+      padding-left: 30px;
+      text-align: left;
+    }
+    .d-right-side>div {
+      margin-top: 10px;
+    }
+    .d-down-side {
+      width: 1000x;
+      margin: 10px 0;
+      font-size: 20px;
+      text-align: center;
+    }
+    button[type="reset"] {
+      margin: 10px;
+      width: 200px;
+      line-height: 60px;
+      border: 1px solid #888;
+      border-radius: 10px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 

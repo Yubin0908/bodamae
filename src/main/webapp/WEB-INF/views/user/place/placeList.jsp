@@ -5,74 +5,71 @@
 <c:url var="resPath" value="/resources/" />
 <c:url var="context" value="/" />
 <html>
-
 <head>
-<title>보담 愛 | 장소</title>
-<link href="${ resPath }css/webSettings.css" rel="stylesheet">
-<link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
-<script src="${ resPath }js/bootstrap.bundle.min.js"></script>
-
-<style type="text/css">
-      /* input x자 표시 없애기 크롬(https://wazacs.tistory.com/33) */
-      input::-webkit-search-decoration,
-      input::-webkit-search-cancel-button,
-      input::-webkit-search-results-button,
-      input::-webkit-search-results-decoration {
-        display: none;
-      }
-      .search-group {
-        margin: 20px 0;
-        display: flex;
-        flex-wrap: no-wrap;
-        line-height: 50px;
-        justify-content: flex-start;
-      }
-      .place-list-page {
-        width: 1200px;
-        margin: 0 auto;
-      }
-      .place-list {
-        width: 1100px;
-        margin: 50px;
-        margin-top: 100px;
-      }
-      /* serch박스 css */
-     .category-search-box {
-        display: inline-block;
-        border: 1px solid #888;
-        width: 400px;
-        line-height: 59px;
-        border-radius: 10px;
-        margin-left: auto; 
-      }
-      form>input {
-        line-height: 30px;
-        border-radius: 10px;
-        border: 1px solid #888;
-      }
-      select#column {
-        margin-left: 5px;  
-        padding: 2.5px 6px;
-      }
-      input#search {
-        width: 206px;
-        padding-left: 10px;
-      }
-      input#submit {
-        width: 50px;
-        line-height: 30px;
-        background-color: #D9D9D9;
-      }
-      .card {
-        margin: 10px;
-        
-      }
-      .card-img-top {
-        height: 280px;
-        padding: 2px;
-        object-fit: cover;
-      }
-</style>
+  <title>보담 愛 | 장소</title>
+  
+  <link href="${ resPath }css/webSettings.css" rel="stylesheet">
+  <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
+  <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
+  <style type="text/css">
+    input::-webkit-search-decoration,
+    input::-webkit-search-cancel-button,
+    input::-webkit-search-results-button,
+    input::-webkit-search-results-decoration {
+      display: none;
+    }
+    .search-group {
+      margin: 20px 0;
+      display: flex;
+      flex-wrap: no-wrap;
+      line-height: 50px;
+      justify-content: flex-start;
+    }
+    .place-list-page {
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .place-list {
+      width: 1100px;
+      margin: 50px;
+      margin-top: 100px;
+    }
+    .category-search-box {
+      display: inline-block;
+      border: 1px solid #888;
+      width: 400px;
+      line-height: 59px;
+      border-radius: 10px;
+      margin-left: auto; 
+    }
+    form>input {
+      line-height: 30px;
+      border-radius: 10px;
+      border: 1px solid #888;
+    }
+    select#column {
+      margin-left: 5px;  
+      padding: 2.5px 6px;
+    }
+    input#search {
+      width: 206px;
+      padding-left: 10px;
+    }
+    input#submit {
+      width: 50px;
+      line-height: 30px;
+      background-color: #D9D9D9;
+    }
+    .card {
+      margin: 10px;
+      
+    }
+    .card-img-top {
+      height: 280px;
+      padding: 2px;
+      object-fit: cover;
+    }
+  </style>
 </head>
 <body>
 	<div id="container">

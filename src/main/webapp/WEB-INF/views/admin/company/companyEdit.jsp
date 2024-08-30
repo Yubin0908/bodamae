@@ -5,100 +5,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>보담 愛-업체상세</title>
-<link href="${ resPath }css/webSettings.css" rel="stylesheet">
-<link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
-<link href="${ resPath }css/admin-header.css" rel="stylesheet">
-<script src="${ resPath }js/bootstrap.bundle.min.js"></script>
-<style type="text/css">
-  .cmp-edit-page{
-    width: 1000px;
-    margin: 0 auto;
-  }
-  .cmp-edit-form {
-    width: 1000px;
-    border: 1px solid #888;
-    border-radius: 20px;
-    text-align: center;  
-  }
-  .up-side {
-    display: flex;
-  }
-  .left-side {
-    width: 500px;
-    
-  }
-  .right-side {
-    width: 500px;
-    margin-right: 25px;
-    margin-top: 10px
-  }
-  label {
-    display: inline-block;
-    margin: 10px;
-    font-weight: bold;
-  }
-  input[type="text"] {
-    padding-left: 10px;
-    width: 330px;
-  }
-  .cmp-img {
-    width:480px;
-    padding: 10px;
-   
-  }
-  .inner {
-    margin: 10px 0;
-    display: flex;
-  }
-  .down-side {
-    
-  }
-  #pet_restriction {
-    width: 500px;
-    line-height: 40px;
-  }
+  <meta charset="UTF-8">
+  <title>보담 愛-업체수정</title>
   
-  input[type="submit"] {
-    margin: 10px;
-    width: 200px;
-    line-height: 60px;
-    border: 1px solid #888;
-    border-radius: 10px;
-    font-size: 25px;
-    font-weight: bold;
-  }
-   .btn-side {
-    display: flex;
-  }
-  button[type="reset"] {
-    margin: 10px;
-    width: 200px;
-    line-height: 60px;
-    border: 1px solid #888;
-    border-radius: 10px;
-    font-size: 25px;
-    font-weight: bold;
-  }
-  .btn-reset {
-    text-align: left;
-  }
-  .btn-modal {
-    margin-left: auto;
-  }
-  button#btn-modal {
-    margin: 10px;
-    width: 200px;
-    height: 60px;
-    border: 1px solid #888;
-    border-radius: 10px;
-    font-size: 25px;
-    font-weight: bold;
-    background-color: #F0F0F0;
-    color:#000;
- }
-</style>
+  <link href="${ resPath }css/webSettings.css" rel="stylesheet">
+  <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
+  <link href="${ resPath }css/admin-header.css" rel="stylesheet">
+  <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
+  <style type="text/css">
+    .cmp-edit-page{
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .cmp-edit-form {
+      width: 1000px;
+      border: 1px solid #888;
+      border-radius: 20px;
+      text-align: center;  
+    }
+    .up-side {
+      display: flex;
+    }
+    .left-side {
+      width: 500px;
+      
+    }
+    .right-side {
+      width: 500px;
+      margin-right: 25px;
+      margin-top: 10px
+    }
+    label {
+      display: inline-block;
+      margin: 10px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      padding-left: 10px;
+      width: 330px;
+    }
+    .cmp-img {
+      width:480px;
+      padding: 10px;
+     
+    }
+    .inner {
+      margin: 10px 0;
+      display: flex;
+    }
+    .down-side {
+      
+    }
+    #pet_restriction {
+      width: 500px;
+      line-height: 40px;
+    }
+    
+    input[type="submit"] {
+      margin: 10px;
+      width: 200px;
+      line-height: 60px;
+      border: 1px solid #888;
+      border-radius: 10px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+     .btn-side {
+      display: flex;
+    }
+    button[type="reset"] {
+      margin: 10px;
+      width: 200px;
+      line-height: 60px;
+      border: 1px solid #888;
+      border-radius: 10px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+    .btn-reset {
+      text-align: left;
+    }
+    .btn-modal {
+      margin-left: auto;
+    }
+    button#btn-modal {
+      margin: 10px;
+      width: 200px;
+      height: 60px;
+      border: 1px solid #888;
+      border-radius: 10px;
+      font-size: 25px;
+      font-weight: bold;
+      background-color: #F0F0F0;
+      color:#000;
+   }
+  </style>
 </head>
 <body>
   <div id="container">

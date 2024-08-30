@@ -13,8 +13,8 @@ import lombok.ToString;
 @ToString
 public class CompanyImage {
 	
-	private int cmp_img_no;
-	private String cmp_img_url;
+	private int cmp_img_no;				// 업체 이미지 번호
+	private String cmp_img_url;		// 업체 이미지 URL
 	
 	public CompanyImage(String cmp_img_url) {
 		this.cmp_img_url = cmp_img_url;
