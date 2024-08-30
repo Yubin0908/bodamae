@@ -5,14 +5,14 @@ import java.sql.Timestamp;
 
 @Data
 public class Pet {
-    private int pet_no;
-    private String user_id;
-    private String pet_title;
-    private String pet_info;
-    private String pet_img;
-    private String pet_name;
-    private String pet_detail_img;
-    private Timestamp pet_date;
+    private int pet_no;             // 반려동물자랑 번호
+    private String user_id;         // 회원 아이디
+    private String pet_title;       // 반려동물자랑 제목
+    private String pet_info;        // 반려동물자랑 소개글
+    private String pet_img;         // 반려동물자랑 대표이미지
+    private String pet_name;        // 반려동물 이름
+    private String pet_detail_img;  // 반려동물자랑 상세이미지
+    private Timestamp pet_date;     // 반려동물자랑 등록일
 
     public Pet (String user_id, String pet_title, String pet_info, String pet_img, String pet_name, String pet_detail_img) {
         this.user_id = user_id;

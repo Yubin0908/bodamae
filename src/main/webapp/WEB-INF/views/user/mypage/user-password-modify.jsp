@@ -7,7 +7,7 @@
 
 <html>
 <head>
-  <title>보담 愛 | 비밀번호 변경</title>
+  <title>보담 愛 | 마이페이지</title>
   <link rel="stylesheet" href="${resPath}css/webSettings.css">
   <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
   <script src="${ resPath }js/bootstrap.bundle.min.js"></script>

@@ -6,7 +6,7 @@
 
 <html>
 <head>
-  <title>보담 愛 | 반려동물자랑 등록</title>
+  <title>보담 愛 | 반려동물자랑</title>
   <link href="${ resPath }css/webSettings.css" rel="stylesheet">
   <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
   <script src="${ resPath }js/bootstrap.bundle.min.js"></script>

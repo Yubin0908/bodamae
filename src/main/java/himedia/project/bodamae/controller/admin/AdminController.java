@@ -169,6 +169,5 @@ public class AdminController {
 }
 
 class DropUserException extends RuntimeException {
-    DropUserException() {}
     DropUserException(String message) { super("해당 유저는 삭제가 불가능합니다. 관리자에게 문의하세요."); }
 }
