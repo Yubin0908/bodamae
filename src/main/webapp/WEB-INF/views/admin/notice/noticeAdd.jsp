@@ -14,13 +14,12 @@
     <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
     <link href="${ resPath }css/admin-header.css" rel="stylesheet">
     <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.tiny.cloud/1/nd8grynjd8268gdl5ya7l9blew0p9nql98thf7fre8azeeg6/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/nd8grynjd8268gdl5ya7l9blew0p9nql98thf7fre8azeeg6/tinymce/6/tinymce.min.js" ></script>
     
     <style type="text/css">
       .notice-list { margin: 0 auto; width: 1200px; }
       .notice-list-content { margin: 100px; }
       .notice-form { margin: 50px auto; width: 800px; }
-      
       .form-notice-content { width: 100%; height: 200px; }
     </style>
   </head>
@@ -47,7 +46,6 @@
           <!-- 공지사항 추가폼 -->
           <div class="notice-form">
             <form action="${ context }admin/noticeList/add/" method="post">
-              
               <div class="admin" style="display: none">
                 <input type="text" id="user_id" name="user_id" value="${ sessionScope.admin.user_id }">
               </div>

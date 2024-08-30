@@ -13,12 +13,12 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Notice {
 	
-	private int notice_no;
-	private String user_id;
-	private String notice_title;
-	private String notice_content;
-	private int notice_hits;
-	private Timestamp notice_date;
+	private int notice_no;         // 게시글 번호
+	private String user_id;        // 게시글 작성자
+	private String notice_title;   // 게시글 제목
+	private String notice_content; // 게시글 내용
+	private int notice_hits;       // 게시글 조회수
+	private Timestamp notice_date; // 게시글 등록일
 	
 	public Notice(String user_id, String notice_title, String notice_content) {
 		this.user_id = user_id;

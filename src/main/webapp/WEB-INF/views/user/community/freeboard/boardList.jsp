@@ -114,6 +114,9 @@ th {
 				</div>
 
 				<div class="search-group">
+					<a href="${ context }community/board/write">
+						<button class="btn-new-board">등록</button>
+					</a>
 					<!-- searchForm -->
 					<form class="category-search-box"
 						action="${ context }community/board/search">
@@ -124,9 +127,6 @@ th {
 						</select> <label for="search"></label> <input type="search" name="search"
 							id="search"> <input type="submit" id="submit" value="검색">
 					</form>
-					<a href="${ context }community/board/write">
-						<button class="btn-new-board">등록</button>
-					</a>
 				</div>
 				<div class="board-table">
 					<table class="table">

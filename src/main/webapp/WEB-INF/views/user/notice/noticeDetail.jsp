@@ -45,5 +45,7 @@
           onclick="location.href='${ context }notice'">뒤로 가기</button>
     </div>
   </div>
+  <%-- footer --%>
+  <jsp:include page="/WEB-INF/views/user/common/footer.jsp" />
 </body>
 </html>

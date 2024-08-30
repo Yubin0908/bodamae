@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>보담 愛 | 자유게시판 조회</title>
+<title>보담 愛 | 자유게시판</title>
 <link href="${ resPath }css/webSettings.css" rel="stylesheet">
 <link href="${ resPath }css/bootstrap.min.css" rel="stylesheet">
 <script src="${ resPath }js/bootstrap.bundle.min.js"></script>
@@ -116,6 +116,9 @@ th {
 				</div>
 
 				<div class="search-group">
+					<a href="${ context }community/board/write">
+						<button class="btn-new-board">등록</button>
+					</a>
 					<!-- searchForm -->
 					<form class="category-search-box"
 						action="${ context }community/board/search">
@@ -126,9 +129,6 @@ th {
 						</select> <label for="search"></label> <input type="search" name="search"
 							id="search"> <input type="submit" id="submit" value="검색">
 					</form>
-					<a href="${ context }community/board/write">
-						<button class="btn-new-board">등록</button>
-					</a>
 				</div>
 				<div class="board-table">
 					<table class="table">
@@ -159,28 +159,7 @@ th {
 						</tbody>
 					</table>
 				</div>
-				<div class="pagination">
-					<c:if test="${paging.startPage > paging.blockSize}">
-						<a href="${context}community/board?page=${paging.startPage - 1}">
-							<img class="arrow" src="${resPath}img/left-arrow-icon.png" alt="">
-						</a>
-					</c:if>
-					<c:forEach var="i" begin="${paging.startPage}"
-						end="${paging.endPage}">
-						<c:if test="${paging.currentPage == i}">
-							<b>${i}</b>
-						</c:if>
-						<c:if test="${paging.currentPage != i}">
-							<a href="${context}community/board?page=${i}">${i}</a>
-						</c:if>
-					</c:forEach>
-					<c:if test="${paging.endPage < paging.totalPages}">
-						<a href="${context}community/board?page=${paging.startPage + 10}">
-							<img class="arrow" src="${resPath}img/right-arrow-icon.png"
-							alt="">
-						</a>
-					</c:if>
-				</div>
+
 			</div>
 		</div>
 	</div>

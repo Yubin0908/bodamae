@@ -46,7 +46,6 @@
           <!-- 공지사항 추가폼 -->
           <div class="notice-form">
             <form action="${ context }admin/noticeList/edit/${ notice.notice_no }" method="post">
-            
               <div class="row my-2">
                 <div class="col-2 fw-bolder">
                   <label for="notice_title">제목</label>
